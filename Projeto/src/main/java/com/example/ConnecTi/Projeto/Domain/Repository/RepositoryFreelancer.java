@@ -7,7 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RepositoryFreelancer extends JpaRepository<Freelancer,Long> {
 
 
-
-
-
+    Freelancer findByEmail(String email);
 }

@@ -34,6 +34,10 @@
         @JsonBackReference
         private Portifolio portifolio;
 
+        @OneToOne
+        @JoinColumn(name = "fk_Usuario")
+        private Usuario usuario;
+
 
 
 

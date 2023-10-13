@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -20,7 +21,7 @@ public class Servico {
     private  Long idServico;
     private String nome;
     private LocalDateTime prazo;
-    private LocalDateTime dataInicio;
+    private Date dataInicio;
     private LocalDateTime dataFinalizacao;
     private Double valor;
     private String descricao;

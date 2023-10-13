@@ -32,6 +32,10 @@ public class Empresa {
 
       @OneToMany(mappedBy = "empresa")
       private List<Servico> servicos;
+
+      @OneToOne
+      @JoinColumn(name = "fk_Usuario")
+      private Usuario usuario;
 //      @ManyToOne
 //      @JoinColumn(name = "id_especialidade")
 //      private Especialidade especialidade;

@@ -1,6 +1,8 @@
 package com.example.ConnecTi.Projeto.Domain.Controller;
 
+import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.AceitarServicoDTO;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.CadastrarConexaoDto;
+import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.ConexaoInfoDTO;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryFreelancer;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryServico;
 import com.example.ConnecTi.Projeto.Domain.Service.Conexao.ConexaoService;
@@ -25,11 +27,28 @@ public class ConexaoController {
         this.conexaoService = conexaoService;
     }
 
+    @PostMapping("/aceitar-servico")
+    public ResponseEntity<Conexao> aceitarServico(@RequestBody AceitarServicoDTO aceitarServicoDto) throws Exception {
+            // Lógica para aceitar o serviço e criar uma conexão
+            Conexao novaConexao = conexaoService.aceitarServicoECreateConexao(aceitarServicoDto);
+            return new ResponseEntity<>(novaConexao, HttpStatus.CREATED);
+    }
+
     @GetMapping("/listar")
     public ResponseEntity<List<Conexao>> listarConexoes() {
         try {
             List<Conexao> conexoes = conexaoService.listarTodasConexoes();
             return new ResponseEntity<>(conexoes, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/listar-info")
+    public ResponseEntity<List<ConexaoInfoDTO>> listarInfoConexoes() {
+        try {
+            List<ConexaoInfoDTO> conexoesInfo = conexaoService.listarInfoConexoes();
+            return new ResponseEntity<>(conexoesInfo, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
