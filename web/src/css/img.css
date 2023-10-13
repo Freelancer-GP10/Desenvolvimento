@@ -1,0 +1,17 @@
+.cont{
+    background: url(../img/backgroundTec.png);
+    lighting-color: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 55%;
+}
+
+.cont2{
+    background: url(../img/backgroundEmpreendedor.png);
+    lighting-color: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 55%;
+}
