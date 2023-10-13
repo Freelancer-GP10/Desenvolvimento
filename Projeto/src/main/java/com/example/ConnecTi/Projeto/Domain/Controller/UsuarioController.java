@@ -10,6 +10,7 @@ import com.example.ConnecTi.Projeto.Domain.Service.UsuarioService.UsuarioService
 import com.example.ConnecTi.Projeto.Model.Usuario;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.config.annotation.web.SecurityMarker;
 import org.springframework.security.core.Authentication;
@@ -28,11 +29,17 @@ public class UsuarioController {
     private AutenticacaoService autenticacaoService;
     @Autowired
     private RepositoryUsuario usuarioRepository;
+//    @PostMapping
+//    @SecurityRequirement(name="Bearer")
+//    public ResponseEntity<Void> criarUsuario(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
+//        usuarioService.criarUsuario(usuarioCriacaoDto);
+//        return ResponseEntity.ok().build();
+//    }
     @PostMapping
     @SecurityRequirement(name="Bearer")
-    public ResponseEntity<Void> criarUsuario(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
-        usuarioService.criarUsuario(usuarioCriacaoDto);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Usuario> criarUsuario(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) throws Exception {
+        Usuario usuarioCriado = usuarioService.criarUsuario(usuarioCriacaoDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
     }
     @PostMapping("/login")
     public ResponseEntity<UsuarioTokenDto> login(@RequestBody UsuarioLoginDto usuarioLoginDto){
@@ -43,6 +50,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> suaRota() {
         return ResponseEntity.ok(autenticacaoService.getUsuarioFromUsuarioDetails());
     }
+    
 
 
 

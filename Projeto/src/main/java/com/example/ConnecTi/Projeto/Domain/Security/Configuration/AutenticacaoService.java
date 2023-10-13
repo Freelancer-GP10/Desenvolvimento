@@ -2,6 +2,7 @@ package com.example.ConnecTi.Projeto.Domain.Security.Configuration;
 
 
 import com.example.ConnecTi.Projeto.Domain.Dto.Usuario.UsuarioDetalhesDto;
+import com.example.ConnecTi.Projeto.Domain.Exception.NaoAutorizadoException;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryUsuario;
 import com.example.ConnecTi.Projeto.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,16 @@ public class AutenticacaoService implements UserDetailsService {
         Optional<Usuario> usuario = usuarioRepository.findById(usuarioDetailsDto.getId());
         return usuario.get();
 
+    }
+    public void verificarPapelFreelancer(Usuario usuario) {
+        if (!"Freelancer".equalsIgnoreCase(usuario.getPapel())) {
+            throw new NaoAutorizadoException("Não autorizado. O usuário não é um Freelancer.");
+        }
+    }
+
+    public void verificarPapelEmpresa(Usuario usuario) {
+        if (!"Empresa".equalsIgnoreCase(usuario.getPapel())) {
+            throw new NaoAutorizadoException("Não autorizado. O usuário não é uma Empresa.");
+        }
     }
 }

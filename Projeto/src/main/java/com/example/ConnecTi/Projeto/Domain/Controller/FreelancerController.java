@@ -7,8 +7,10 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Freelancer.ListarFreelaDto;
 
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryServico;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryStatuServico;
+import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Model.Freelancer;
 
+import com.example.ConnecTi.Projeto.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,18 +25,28 @@ public class FreelancerController {
     private RepositoryFreelancer repository;
     @Autowired
     private RepositoryServico servico;
+
+    @Autowired
+    private AutenticacaoService autenticacaoService;
     @Autowired
     private RepositoryStatuServico statusServico;
 
     @PostMapping
-    public ResponseEntity<Freelancer> cadastrarFreelancer(@RequestBody CadastrarFreelaDto dto){
-        Freelancer freelancer = new Freelancer();
+    public ResponseEntity<Freelancer> cadastrarFreelancer(@RequestBody CadastrarFreelaDto dto) {
+        Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
+
+        // Verifica se o papel do usuário é "Freelancer"
+        autenticacaoService.verificarPapelFreelancer(usuariologado);
+
+        Freelancer freelancer = repository.findByEmail(usuariologado.getEmail());
+
         freelancer.setNome(dto.nome());
-        freelancer.setEmail(dto.email());
-        freelancer.setSenha(dto.senha());
+        freelancer.setEmail(usuariologado.getEmail());
+        freelancer.setSenha(usuariologado.getSenha());
         freelancer.setCpf(dto.cpf());
         freelancer.setAtivo(true);
         repository.save(freelancer);
+
         return ResponseEntity.ok(freelancer);
     }
     @GetMapping
@@ -53,9 +65,11 @@ public class FreelancerController {
         var retornar =new ListarFreelaDto(freelancer.getIdFreelancer(),freelancer.getNome(),freelancer.getEmail(),freelancer.getCpf());
         return ResponseEntity.ok(retornar);
     }
-    @PutMapping("/{id}")
+    @PutMapping("dev-/{id}")
     public ResponseEntity<Freelancer> atualizarFreelancer(@PathVariable int id, @RequestBody AtualizarFreelancerDto dto){
-        Freelancer freelancer = repository.findById((long) id).orElse(null);
+        Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
+
+        Freelancer freelancer = repository.findById((long)id).orElse(null);
         if(freelancer == null){
             return ResponseEntity.notFound().build();
         }
