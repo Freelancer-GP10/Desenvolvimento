@@ -73,13 +73,27 @@ body{
     color: #000;
     font-family: Oxanium;
     font-size: 16px;
-    font-style: normal;
+    font-style: bold;
     font-weight: 400;
-    line-height: normal;
+    line-height: bold;
 }
 .button:hover{
     border: 2px solid #215683;
     background-color: #215683;
 
     color: #ffffff;
+}
+
+.backGradient{
+    position: absolute;
+    width: 70%;
+    height: 62vh;
+    flex-shrink: 0;
+
+    margin-top: 19%;
+
+    border-radius: 1004px;
+    background: rgba(42, 160, 185, 0.40);
+
+    filter: blur(120px);
 }
