@@ -1,12 +1,13 @@
 // import CadastroMicroempreendedor from "../Cadastro_Microempreendedor";
-import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
+// import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Login from "../Login";
+import Tela_Escolha from "../Tela_Escolha";
 
 function App (){
     return(
         <>
-            <CadastroMicroempreendedor2 />
+            <Tela_Escolha/>
 
             {/* <BrowserRouter>
                 <Routes>
