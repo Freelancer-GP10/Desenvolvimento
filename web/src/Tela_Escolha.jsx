@@ -23,7 +23,7 @@ function Tela_Escolha() {
 
           <span> Como você deseja <br />se registrar?</span>
 
-          <div className='caixa_botao'>
+          <div className='caixa_  botao'>
             <button className="button1">Freelancer</button>
             <button className="button2">Microempreendedor</button>
           </div>
