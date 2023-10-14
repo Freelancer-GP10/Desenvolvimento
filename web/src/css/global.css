@@ -76,6 +76,7 @@ body{
     font-style: bold;
     font-weight: 400;
     line-height: bold;
+    cursor: pointer;
 }
 .button:hover{
     border: 2px solid #215683;
