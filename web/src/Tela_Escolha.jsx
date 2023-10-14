@@ -1,7 +1,7 @@
 import React from 'react';
 // import "/home/isaiasresende/Documentos/Projetos/Producao/web/src/css/Tela_escolha.css";
 import logoimg from"./img/logo.png";
-import TelaEscolha from "./css/Tela_Escolha.css";
+import "/home/isaiasresende/Documentos/Projetos/Desenvolvimento/web/src/css/Tela_escolha.css"
 
 
 
@@ -13,16 +13,19 @@ function Tela_Escolha() {
 
 
       <div className="body">
+
       <a href="./">
+        
                 <img src={logoimg} alt="" className="img-logo" />
             </a> 
+
         <div className='texto_cadastro'>
 
-          <span>Como você deseja <br />se registrar?</span>
+          <span> Como você deseja <br />se registrar?</span>
 
           <div className='caixa_botao'>
-            <button className="button">Freelancer</button>
-            <button className="button">Microempreendedor</button>
+            <button className="button1">Freelancer</button>
+            <button className="button2">Microempreendedor</button>
           </div>
 
         </div>
