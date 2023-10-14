@@ -1,23 +1,26 @@
 // import CadastroMicroempreendedor from "../Cadastro_Microempreendedor";
-<<<<<<< HEAD
-import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Login from "../Login";
-=======
+
 // import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Login from "../Login";
-import Tela_Escolha from "../Tela_Escolha";
->>>>>>> d77ad8b46c9145bafa9c532a0a3f9320ba01d319
+import Login from "../Login";
+
+// import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Tela_Escolha from "../Tela_Escolha";
+// import Index from "../Index";
+
 
 function App (){
     return(
         <>
-<<<<<<< HEAD
-            <CadastroMicroempreendedor2 />
-=======
-            <Tela_Escolha/>
->>>>>>> d77ad8b46c9145bafa9c532a0a3f9320ba01d319
+
+            {/* <CadastroMicroempreendedor2 /> */}
+
+            <Login/>
+
+            {/* <Tela_Escolha/> */}
+
+            {/* <Index/> */}
 
             {/* <BrowserRouter>
                 <Routes>

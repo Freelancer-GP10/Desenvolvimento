@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Oxanium', cursive;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+.imgLogo {
+    display: flex;
+    justify-content: flex-start;
+    width: 132px;
+    height: 135px;
+
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+li:hover {
+    color: #FFF;
+    transition: 1s;
+}
+
+a {
+    color: #BAD6ED;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+button {
+    color: #BAD6ED;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    background: transparent;
+
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button:hover {
+    color: #BAD6ED;
+    background-color: #204A7B;
+    transition: 1s;
+
+}
+
+section {
+    z-index: 2;
+    position: relative;
+     height: 400px;
+  
+}
+
+h1 {
+    color: #FFF;
+    text-align: center;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    margin-top: 50px;
+}
+
+h2 {
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+/* SESSÃO DOIS */
+
+.section-dois {
+    height: 615px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.conteudo-central {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    padding: 10px;
+  }
+
+.caixa-central {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo-grande {
+    width: 344px;
+    height: 277px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 100px;
+}
+
+.texto-direita {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* SESSÃO TRÊS*/
+.section-tres {
+    height: 615px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-servicos{
+    margin-top: 20px;
+    width: 10px;
+    height: 400px;
+
+}
+
+  /* SESSÃO QUATRO*/
+
+
+  .section-quatro {
+    height: 615px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
