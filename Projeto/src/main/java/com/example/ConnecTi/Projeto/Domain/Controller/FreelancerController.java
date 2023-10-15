@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelancer")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FreelancerController {
     @Autowired
     private RepositoryFreelancer repository;

@@ -7,11 +7,13 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.ConexaoInfoDTO;
 import com.example.ConnecTi.Projeto.Domain.Exception.ResourceNotFoundException;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
+import com.example.ConnecTi.Projeto.Domain.Service.UsuarioService.UsuarioService;
 import com.example.ConnecTi.Projeto.Model.*;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,11 +63,15 @@ public class ConexaoService {
 
     public Conexao aceitarServicoECreateConexao(AceitarServicoDTO aceitarServicoDto) throws Exception {
         // Busca o freelancer e o serviço pelos IDs fornecidos
-        int userLogado =2;
+
+        Long userLogado = autenticacaoService.getUsuarioFromUsuarioDetails().getId();
         System.out.println(autenticacaoService.getUsuarioFromUsuarioDetails());
 
-        Freelancer freelancer = freelancerRepository.findById((long) userLogado)
-                .orElseThrow(() -> new Exception("Freelancer não encontrado"));
+        Freelancer freelancer = freelancerRepository.findByFkUsuarioId(userLogado);
+        if(freelancer == null){
+            throw new Exception("Freelancer não encontrado");
+        }
+
 
         Servico servico = servicoRepository.findById(aceitarServicoDto.fkServico())
                 .orElseThrow(() -> new Exception("Serviço não encontrado"));
@@ -80,6 +86,7 @@ public class ConexaoService {
         Conexao novaConexao = new Conexao();
         novaConexao.setFreelancer(freelancer);
         novaConexao.setServico(servico);
+        novaConexao.setDataInsercao(LocalDateTime.now());
         novaConexao.setAceito(true);  // Como o freelancer está aceitando o serviço, definimos aceito como true
 
         // Salva a conexão no banco de dados
@@ -89,6 +96,7 @@ public class ConexaoService {
         return conexaoRepository.findAll().stream()
                 .map(conexao -> {
                     ConexaoInfoDTO dto = new ConexaoInfoDTO();
+                    dto.setId(conexao.getIdConexao());
                     dto.setStatusServico(conexao.isAceito() ? "Aceito" : "Pendente");
                     dto.setDataPostada(conexao.getServico().getDataInicio());
                     dto.setNomeServico(conexao.getServico().getNome());

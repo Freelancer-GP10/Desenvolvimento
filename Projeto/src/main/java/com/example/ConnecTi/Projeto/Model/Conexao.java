@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -16,6 +18,8 @@ public class Conexao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConexao;
     private boolean aceito;
+
+    private LocalDateTime dataInsercao;
 
     @ManyToOne
     @JoinColumn(name = "fkFreelancer", referencedColumnName = "idFreelancer")

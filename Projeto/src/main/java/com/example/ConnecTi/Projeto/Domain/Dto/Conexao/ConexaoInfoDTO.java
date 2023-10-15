@@ -11,6 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConexaoInfoDTO {
+        private Long id;
 
         private String statusServico;
         private Date dataPostada;
