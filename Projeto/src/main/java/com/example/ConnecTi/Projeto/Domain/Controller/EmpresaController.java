@@ -41,7 +41,7 @@ public class EmpresaController {
         empresa.setSenha(usuarioLogado.getSenha());
         empresa.setRamo(dto.ramo());
         empresa.setTelefone(dto.telefone());
-
+        System.out.println(empresa);
         repositoryEmpresa.save(empresa);
 
         return ResponseEntity.ok(empresa);
@@ -50,6 +50,7 @@ public class EmpresaController {
     public ResponseEntity<List<ListarEmpresaDto>> listarEmpresa(){
         List<Empresa> empresas = repositoryEmpresa.findAll();
         List<ListarEmpresaDto> listarEmpresaDtos = empresas.stream().map(empresa -> new ListarEmpresaDto(empresa.getIdEmpresa(),empresa.getNome(),empresa.getEmail())).collect(Collectors.toList());
+        System.out.println(listarEmpresaDtos);
         return ResponseEntity.ok(listarEmpresaDtos);
 
     }
