@@ -97,3 +97,17 @@ body{
 
     filter: blur(120px);
 }
+
+.backGradient2{
+    position: absolute;
+    width: 70%;
+    height: 62vh;
+    flex-shrink: 0;
+
+    margin-top: 19%;
+
+    border-radius: 1004px;
+    background: rgba(42, 160, 185, 0.40);
+
+    filter: blur(120px);
+}

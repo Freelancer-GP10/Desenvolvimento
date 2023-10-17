@@ -4,35 +4,38 @@ import "./css/cadastro.css";
 import imgLogo from "./img/logo.png"
 
 
-    // function CadastroMicroempreendedor(){
-    //     return(
-    //         <>
-    //         <section>
-    //             <div className="container">
+    export function CadastroMicroempreendedor(){
+        return(
+            <>
+            <div className="backGradient"></div>
+            
+            <section>
+                <div className="container">
 
-    //                 <a href="./"><img className="imgLogo" src={imgLogo} alt="ConecTI" /></a>
+                    <a href="./"><img className="imgLogo" src={imgLogo} alt="ConecTI" /></a>
 
-    //                 <div className="form">
-    //                     <h2 className="h2-title">Faça <br></br>seu registro!</h2>
+                    <div className="form">
+                        <h2 className="h2-title">Faça <br></br>seu registro!</h2>
 
-    //                     <p className="p-question">Já possui Cadastro? <a className="a-question" href="./">Login</a></p>
+                        <p className="p-question">Já possui Cadastro? <a className="a-question" href="./">Login</a></p>
 
-    //                     <form action="">
-    //                         <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa" />
-    //                         <input type="text" id="email" placeholder="E-mail" />
-    //                         <input type="password" id="senha" placeholder="Senha" />
-    //                     </form>
+                        <form action="">
+                            <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa" />
+                            <input type="text" id="email" placeholder="E-mail" />
+                            <input type="password" id="senha" placeholder="Crie uma senha" />
+                            <input type="password" id="senha" placeholder="Confirmar Senha" />
+                        </form>
 
-    //                     <button className="button" id="button">Prosseguir</button>
-    //                 </div>
-    //             </div>
-    //             <div className="cont"></div>
-    //         </section>
-    //         </>
-    //     )
-    // }
+                        <button className="button" id="button">Prosseguir</button>
+                    </div>
+                </div>
+                <div className="cont"></div>
+            </section>
+            </>
+        )
+    }
 
-function CadastroMicroempreendedor2() {
+export function CadastroMicroempreendedor2() {
     return (
         <>
 
@@ -48,7 +51,7 @@ function CadastroMicroempreendedor2() {
 
                     <a href="./"><img className="imgLogo2" src={imgLogo} alt="ConecTI" /></a>
 
-                    <div className="form2">
+                    <div className="form2Micro">
 
                     <a href="./" className="a2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
@@ -57,9 +60,9 @@ function CadastroMicroempreendedor2() {
                     </a>
 
                         <form action="">
-                            <input type="number" id="nomeEmpresa" placeholder="CNPJ" />
-                            <input type="text" id="email" placeholder="Ramo" />
-                            <input type="number" id="senha" placeholder="Telefone" />
+                            <input className="inputInfoMicro" type="number" id="nomeEmpresa" placeholder="CNPJ" />
+                            <input className="inputInfoMicro" type="text" id="email" placeholder="Ramo" />
+                            <input className="inputInfoMicro" type="number" id="senha" placeholder="Telefone" />
                         </form>
 
                         <button className="button" id="button">Cadastrar</button>
@@ -69,5 +72,3 @@ function CadastroMicroempreendedor2() {
         </>
     )
 }
-
-export default CadastroMicroempreendedor2;
