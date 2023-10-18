@@ -58,7 +58,7 @@ export function CadastroMicro2(){
                     </svg>
                     </a>
 
-                        <form action="">
+                        <form className="formMicro2" action="">
                             <input className="inputInfoMicro" type="number" id="nomeEmpresa" placeholder="CNPJ" />
                             <input className="inputInfoMicro" type="text" id="email" placeholder="Ramo" />
                             <input className="inputInfoMicro" type="number" id="senha" placeholder="Telefone" />

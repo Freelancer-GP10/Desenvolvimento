@@ -29,6 +29,15 @@ section{
     margin-top: 5%;
 }
 
+.form2Micro{
+    width: 90%;
+    margin-top: 15%;
+}
+
+.formMicro2{
+    margin-top: 5%;
+}
+
 form{
     display: flex;
     width: 100%;
