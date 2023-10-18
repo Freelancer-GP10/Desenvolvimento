@@ -14,11 +14,82 @@ section{
 }
 
 .form{
+    margin-left: 17%;
+    width: 80%;
+    margin-top: -2%;
+}
+
+.form2{
+    margin-top: 6%;
+    margin-left: 17%;
+    width: 80%;
+}
+
+.formFre2{
+    margin-top: 5%;
+}
+
+form{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+form input{
+    display: flex;
+    width: 80%;
+    height: 4vh;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+
+    font-family: Oxanium;
+
+    border-radius: 8px;
+    border: 1px solid #204A7B;
+}
+
+.inputNome{
+    display: flex;
+    width: 36.7%;
+    height: 4vh;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.inputInfo{
+    display: flex;
+    width: 45%;
+    height: 4vh;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputInfo2{
+    display: flex;
+    width: 36.7%;
+    height: 4vh;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*
+.form{
     margin-left: 20%;
 }
 .form2{
     margin-top: 6%;
     margin-left: 20%;
+    display: flex;
 }
 .form2Micro{
     margin-top: 20%;
@@ -27,7 +98,7 @@ section{
 
 form{
     display: flex;
-    width: 90%;
+    width: 100%;
     align-items: flex-start;
     align-content: flex-start;
     gap: 25px 7px;
@@ -52,7 +123,7 @@ form input{
 }
 
 .formFre2{
-    width: 80%;
+    width: 65%;
 }
 
 .inputInfoMicro{
@@ -66,7 +137,7 @@ form input{
 
 .inputNome{
     display: flex;
-    width: 43.8%;
+    width: 43%;
     height: 4vh;
     padding: 10px 12px;
     align-items: center;
@@ -81,4 +152,4 @@ form input{
     padding: 10px 12px;
     align-items: center;
     gap: 10px;
-}
+} */
