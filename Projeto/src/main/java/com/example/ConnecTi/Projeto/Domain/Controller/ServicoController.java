@@ -13,13 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/servico")
 public class ServicoController {
-
     @Autowired
     private RepositoryServico servico;
-
     @Autowired
     private RepositoryFreelancer repositoryFreelancer;
-
     @Autowired
     private RepostioryEmpresa repositoryEmpresa;
 

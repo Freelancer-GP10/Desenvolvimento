@@ -11,6 +11,7 @@ import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoSe
 import com.example.ConnecTi.Projeto.Model.Freelancer;
 
 import com.example.ConnecTi.Projeto.Model.Usuario;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,9 @@ public class FreelancerController {
     }
     @GetMapping
     public ResponseEntity<List<ListarFreelaDto>> listarFreelancer(){
+        Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
+
+        autenticacaoService.verificarPapelFreelancer(usuariologado);
         List<Freelancer> freelancers = repository.findAll();
         List<ListarFreelaDto> listarFreelaDtos = freelancers.stream().map(freelancer -> new ListarFreelaDto(freelancer.getIdFreelancer(),freelancer.getNome(),freelancer.getEmail(),freelancer.getCpf())).collect(Collectors.toList());
 

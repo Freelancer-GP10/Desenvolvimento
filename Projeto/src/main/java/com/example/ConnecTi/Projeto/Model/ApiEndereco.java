@@ -17,7 +17,6 @@ public class ApiEndereco {
     private  Long idEndereco;
     private String cep;
     private String logradouro;
-
     private String numero;
     private String UF;
 

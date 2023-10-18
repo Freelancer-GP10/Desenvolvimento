@@ -57,6 +57,11 @@ public class ConexaoService {
     public List<Conexao> listarTodasConexoes() {
         return conexaoRepository.findAll();
     }
+
+
+    public List<Conexao> listarTodasConexoesOrdenadasPorIdDesc() {
+        return conexaoRepository.listarTodasConexoesOrdenadasPorIdDesc();
+    }
     public Conexao getConexaoPorId(Long id) {
         return conexaoRepository.findById(id).orElse(null);
     }
