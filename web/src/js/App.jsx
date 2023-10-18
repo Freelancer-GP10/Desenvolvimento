@@ -28,7 +28,7 @@ function App (){
 
             {/* <Tela_Escolha/> */}
 
-            <Index/>
+            {/* <Index/> */}
 
             {/*<BrowserRouter>
                 <Routes>
