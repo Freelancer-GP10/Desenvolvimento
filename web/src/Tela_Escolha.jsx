@@ -1,6 +1,6 @@
 // import "/home/isaiasresende/Documentos/Projetos/Producao/web/src/css/Tela_escolha.css";
 import logoimg from"./img/logo.png";
-// import "/home/isaiasresende/Documentos/Projetos/Desenvolvimento/web/src/css/Tela_escolha.css"
+ import "./css/Tela_Escolha.css"
 
 
 

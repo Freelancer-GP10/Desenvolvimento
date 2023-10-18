@@ -2,7 +2,7 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { CadastroFree } from "../Cadastro_Freelancer";
+// import { CadastroFree } from "../Cadastro_Freelancer";
 // import { CadastroMicroempreendedor } from "../Cadastro_Microempreendedor";
 // import CadastroMicroempreendedor from "../Cadastro_Microempreendedor";
 
@@ -19,7 +19,7 @@ import Index from "../Index";
 function App (){
     return(
         <>
-            <CadastroFree/>
+            {/* <CadastroFree/> */}
 
             {/* <CadastroMicroempreendedor2 /> */}
 
@@ -27,7 +27,7 @@ function App (){
 
             {/* <Tela_Escolha/> */}
 
-            {/* <Index/> */}
+            <Index/>
 
             {/*<BrowserRouter>
                 <Routes>

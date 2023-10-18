@@ -5,6 +5,10 @@
     text-decoration: none;
     font-family: 'Oxanium', cursive;
 }
+.section-principal{
+    width: auto;
+    height: auto;
+}
 
 header {
     display: flex;
@@ -44,12 +48,11 @@ a {
 
 button {
     color: #BAD6ED;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
     background: transparent;
-
     display: flex;
     padding: 10px 20px;
     justify-content: center;
@@ -57,6 +60,9 @@ button {
     gap: 10px;
     cursor: pointer;
     border-radius: 8px;
+    border: 3px solid #204A7B;
+    width: 100px;
+    height: 55px;
 }
 
 button:hover {
@@ -66,7 +72,7 @@ button:hover {
 
 }
 
-section {
+.section-slogan {
     z-index: 2;
     position: relative;
     height: 400px;
@@ -138,6 +144,49 @@ h2 {
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+/* QUADRADOS */
+
+
+.quadrado1 {
+    width: 23%;
+    height: 39vh;
+    border: 3px solid #215683;
+    position: absolute;
+    transform: rotate(16deg);
+    margin-left: 100%;
+    margin-top: 0%;
+}
+
+.quadrado2 {
+    width: 21%;
+    height: 39vh;
+    border: 3px solid #215683;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 80%;
+    margin-top: -13%;
+}
+
+.quadrado3 {
+    width: 25%;
+    height: 42vh;
+    border: 3px solid #bdeff1;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 68%;
+    margin-top: 2%;
+}
+
+.quadrado4 {
+    width: 21%;
+    height: 39vh;
+    border: 3px solid #bdeff1;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 78%;
+    margin-top: -11.5%;
 }
 
 
@@ -235,7 +284,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    height: auto;
+    height: 210px;
 }
 
 .logofooter {
@@ -253,8 +302,8 @@ footer {
 }
 
 .coluna-logo img {
-    width: 158px;
-    height: 159px;
+    width: 120px;
+    height: 120px;
 
 }
 
