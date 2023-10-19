@@ -25,15 +25,12 @@ public class Servico {
     private LocalDateTime dataFinalizacao;
     private Double valor;
     private String descricao;
-
     @ManyToOne
     @JoinColumn(name = "fkStatusServico", referencedColumnName = "idStatusServico")
     private StatusServico statusServico;
-
     @ManyToOne
     @JoinColumn(name = "fkEspecialidade", referencedColumnName = "idEspecialidade")
     private Especialidade especialidade;
-
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;

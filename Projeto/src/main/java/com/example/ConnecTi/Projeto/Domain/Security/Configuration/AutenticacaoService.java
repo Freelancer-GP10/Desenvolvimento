@@ -29,6 +29,8 @@ public class AutenticacaoService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("O email %s não foi encontrado", username));
         }
 
+        
+
         return new UsuarioDetalhesDto(usuarioOpt.get());
     }
     public Usuario getUsuarioFromUsuarioDetails() {
