@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/gestor")
+@RequestMapping("/empresa")
 public class EmpresaController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class EmpresaController {
     public ResponseEntity<Empresa> cadastrarEmpresa(@RequestBody CadastrarEmpresaDto dto) {
         Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
         // Verifica se o papel do usuário é "Empresa"
-        autenticacaoService.verificarPapelEmpresa(usuarioLogado);
+     //   autenticacaoService.verificarPapelEmpresa(usuarioLogado);
         Empresa empresa = repositoryEmpresa.findByEmail(usuarioLogado.getEmail());
         empresa.setNome(dto.nome());
         empresa.setEmail(usuarioLogado.getEmail());

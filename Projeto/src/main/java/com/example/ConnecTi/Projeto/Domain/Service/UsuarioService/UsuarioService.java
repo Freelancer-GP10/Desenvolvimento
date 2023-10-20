@@ -76,6 +76,8 @@ public class UsuarioService {
         return novoUsuario;
     }
     public UsuarioTokenDto autenticar(UsuarioLoginDto usuarioLoginDto){
+        System.out.println(usuarioLoginDto.getEmail());
+        System.out.println(usuarioLoginDto.getSenha());
         final UsernamePasswordAuthenticationToken credentials = new UsernamePasswordAuthenticationToken(
                 usuarioLoginDto.getEmail(),
                 usuarioLoginDto.getSenha()

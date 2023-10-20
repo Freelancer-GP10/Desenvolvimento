@@ -24,6 +24,7 @@ public class Empresa {
       private String email;
       private String senha;
       private String ramo;
+      private String cnpj;
       private String telefone;
 
       @OneToOne

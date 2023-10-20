@@ -21,6 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class UsuarioController {
 
     @Autowired
@@ -46,6 +47,7 @@ public class UsuarioController {
         UsuarioTokenDto usuarioTokenDto = usuarioService.autenticar(usuarioLoginDto);
         return ResponseEntity.ok(usuarioTokenDto);
     }
+
     @GetMapping("/dados")
     public ResponseEntity<Usuario> suaRota() {
         return ResponseEntity.ok(autenticacaoService.getUsuarioFromUsuarioDetails());

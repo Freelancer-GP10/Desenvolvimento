@@ -29,17 +29,15 @@ public class AutenticacaoService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("O email %s não foi encontrado", username));
         }
 
-        
-
         return new UsuarioDetalhesDto(usuarioOpt.get());
     }
     public Usuario getUsuarioFromUsuarioDetails() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null)
+            return null;
         UsuarioDetalhesDto usuarioDetailsDto =  (UsuarioDetalhesDto) authentication.getPrincipal();
 
-        Optional<Usuario> usuario = usuarioRepository.findById(usuarioDetailsDto.getId());
-        return usuario.get();
-
+        Optional<Usuario> usuario = usuarioRepository.findById(usuarioDetailsDto.getId());return usuario.get();
     }
     public void verificarPapelFreelancer(Usuario usuario) {
         if (!"Freelancer".equalsIgnoreCase(usuario.getPapel())) {

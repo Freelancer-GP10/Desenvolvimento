@@ -41,10 +41,12 @@ public class FreelancerController {
         autenticacaoService.verificarPapelFreelancer(usuariologado);
 
         Freelancer freelancer = repository.findByEmail(usuariologado.getEmail());
-
         freelancer.setNome(dto.nome());
         freelancer.setEmail(usuariologado.getEmail());
         freelancer.setSenha(usuariologado.getSenha());
+        freelancer.setFormacao(dto.formacao());
+        freelancer.setAreaAtuacao(dto.areaAtuacao());
+        freelancer.setLinguagemDominio(dto.linguagemDominio());
         freelancer.setCpf(dto.cpf());
         freelancer.setAtivo(true);
         repository.save(freelancer);
