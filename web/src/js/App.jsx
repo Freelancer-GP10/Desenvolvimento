@@ -5,7 +5,7 @@
 // import { CadastroFree } from "../Cadastro_Freelancer";
 // import { CadastroMicroempreendedor } from "../Cadastro_Microempreendedor";
 // import CadastroMicro from "../Cadastro_Microempreendedor";
-import { CadastroMicro2 } from "../Cadastro";
+// import { CadastroMicro2 } from "../Cadastro";
 
 // import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,20 +13,20 @@ import { CadastroMicro2 } from "../Cadastro";
 
 // import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Tela_Escolha from "../Tela_Escolha";
-
-
+ //import Tela_Escolha from "../Tela_Escolha";
+import Contato from "../Contato";
+import Footer from "../Footer";
 
 function App (){
     return(
         <>
             {/* <CadastroFree/> */}
 
-            <CadastroMicro2 />
+            {/* <CadastroMicro2 /> */}
 
             {/* <Login/> */}
 
-            {/* <Tela_Escolha/> */}
+            <Contato/>
 
             {/* <Index/> */}
 

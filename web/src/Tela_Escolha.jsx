@@ -1,6 +1,7 @@
+import React from 'react';
 // import "/home/isaiasresende/Documentos/Projetos/Producao/web/src/css/Tela_escolha.css";
 import logoimg from"./img/logo.png";
- import "./css/Tela_Escolha.css"
+import "/home/isaiasresende/Documentos/Projetos/Desenvolvimento/web/src/css/Tela_escolha.css"
 
 
 
@@ -11,7 +12,7 @@ function Tela_Escolha() {
     <>
 
 
-      <div className="body">
+  
 
       <a href="./">
         
@@ -22,7 +23,7 @@ function Tela_Escolha() {
 
           <span> Como você deseja <br />se registrar?</span>
 
-          <div className='caixa_  botao'>
+          <div className='caixa_botao'>
             <button className="button1">Freelancer</button>
             <button className="button2">Microempreendedor</button>
           </div>
@@ -36,7 +37,7 @@ function Tela_Escolha() {
 
 
 
-      </div>
+     
 
     </>
   )
