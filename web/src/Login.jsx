@@ -8,6 +8,7 @@ import logopreta from "./img/logo.png";
 function Login() {
   return (
     <>
+     <div className="backGradient"></div>
       <section>
         {/* Imagem */}
         <img className="fundologin" src={fundologin} alt="ConecTI" />
@@ -28,7 +29,7 @@ function Login() {
               <input type="password" id="senha" placeholder="Senha" />
             </form>
 
-            <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox" /></h2>
+            <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox-login" /></h2>
             <button className="button" id="button">Login</button>
           
           </div>

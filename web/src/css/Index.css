@@ -5,7 +5,24 @@
     text-decoration: none;
     font-family: 'Oxanium', cursive;
 }
-.section-principal{
+
+.background-index {
+    animation: glow 4s linear infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0.9;
+        /* Define a opacidade inicial (pode ajustar conforme desejado) */
+    }
+
+    100% {
+        opacity: 1;
+        /* Define a opacidade máxima (pode ajustar conforme desejado) */
+    }
+}
+
+.section-principal {
     width: auto;
     height: auto;
 }
@@ -36,6 +53,7 @@ li {
 li:hover {
     color: #FFF;
     transition: 1s;
+    transform: scale(1.2);
 }
 
 a {
@@ -44,6 +62,11 @@ a {
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    transition: transform 0.2s ease;
+}
+
+a:hover {
+    transform: scale(1.1);
 }
 
 button {
@@ -79,6 +102,10 @@ button:hover {
 
 }
 
+.section-slogan h1 {
+    margin-top: 140px;
+}
+
 h1 {
     color: #FFF;
     text-align: center;
@@ -107,12 +134,12 @@ h2 {
 /* SESSÃO DOIS */
 
 .section-dois {
-    height: 615px;
+    min-height: 100vh;
+    /* Defina uma altura mínima para a seção */
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
+    max-height: 600px;
 }
 
 .conteudo-central {
@@ -124,10 +151,12 @@ h2 {
 }
 
 .caixa-central {
-    display: flex;
+    display: grid;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
 
 }
 
@@ -135,63 +164,76 @@ h2 {
     width: 344px;
     height: 277px;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     margin: 100px;
 }
 
 .texto-direita {
     flex: 1;
-    display: flex;
-    justify-content: center;
     text-align: center;
+    /* align-items: center; */
 }
+
+.texto-direita h3 {
+    font-size: 20px;
+    /* Ajuste o tamanho da fonte */
+    line-height: 1.4;
+    /* Ajuste o espaçamento entre linhas */
+}
+
 
 /* QUADRADOS */
+.quadrado-grupo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 
-
-.quadrado1 {
-    width: 23%;
-    height: 39vh;
-    border: 3px solid #215683;
+.quadrado {
+    width: 340px;
+    height: 340px;
+    border: 4px solid;
     position: absolute;
-    transform: rotate(16deg);
-    margin-left: 100%;
-    margin-top: 0%;
+
+    transform: rotate(-70deg);
+    /* Adicione a rotação para incliná-los */
 }
 
-.quadrado2 {
-    width: 21%;
-    height: 39vh;
-    border: 3px solid #215683;
-    position: fixed;
-    transform: rotate(16deg);
-    margin-left: 80%;
-    margin-top: -13%;
+.quadrado1-dois {
+    margin-bottom: -73px;
+    bottom: 55px;
+    right: 290px;
+    border: 4px solid #204A7B;
 }
 
-.quadrado3 {
-    width: 25%;
-    height: 42vh;
-    border: 3px solid #bdeff1;
-    position: fixed;
-    transform: rotate(16deg);
-    margin-left: 68%;
-    margin-top: 2%;
+.quadrado2-dois {
+    margin-bottom: -70px;
+    bottom: -10px;
+    right: 250px;
+    border: 4px solid #b5e6e9;
+    /* transform: rotate(-75deg); */
 }
 
-.quadrado4 {
-    width: 21%;
-    height: 39vh;
-    border: 3px solid #bdeff1;
-    position: fixed;
-    transform: rotate(16deg);
-    margin-left: 78%;
-    margin-top: -11.5%;
+.quadrado3-dois {
+    margin-bottom: -130px;
+    bottom: -90px;
+    right: 100px;
+    border: 4px solid #204A7B;
+}
+
+.quadrado4-dois {
+    bottom: -250px;
+    right: 150px;
+    border: 4px solid #b5e6e9;
 }
 
 
 /* SESSÃO TRÊS*/
 .section-tres {
+    margin-top: 110px;
     height: 615px;
     display: flex;
     justify-content: center;
@@ -199,11 +241,77 @@ h2 {
 }
 
 .img-servicos {
-    margin-top: 20px;
-    width: 10px;
-    height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Adicione position: relative; */
+    z-index: 2;
 
 }
+
+.img-servicos img {
+    margin-top: 20px;
+    height: 500px;
+    width: 980px;
+    display: flex;
+    align-items: center;
+    position: relative; /* Adicione position: relative; */
+    z-index: 2; /* Defina um z-index maior */
+
+}
+
+/* QUADRADOS SESSÃO TRÊS */
+
+.quadrado-grupo3 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute; /* Adicione position: absolute; */
+    z-index: 1;
+}
+
+.quadrado3 {
+    width: 340px;
+    height: 340px;
+    border: 4px solid;
+    position: absolute;
+
+    transform: rotate(-70deg);
+    /* Adicione a rotação para incliná-los */
+}
+
+.quadrado1-tres {
+    margin-bottom: 40px;
+    bottom: 55px;
+    right: 50px;
+    border: 4px solid #204A7B;
+}
+
+.quadrado2-tres {
+    margin-bottom: 150px;
+    bottom: -80px;
+    right: 130px;
+    border: 4px solid #b5e6e9;
+    /* transform: rotate(-75deg); */
+}
+
+.quadrado3-tres {
+    margin-bottom: 30px;
+    bottom: -100px;
+    right: 150px;
+    border: 4px solid #204A7B;
+}
+
+.quadrado4-tres {
+    bottom: 10px;
+    right: 190px;
+    border: 4px solid #b5e6e9;
+}
+
 
 /* SESSÃO QUATRO*/
 
@@ -214,16 +322,19 @@ h2 {
     align-items: center;
 }
 
-.section-pagina{
+.section-pagina {
     display: flex;
-    flex-direction: column; /* Alinhe os elementos verticalmente */
+    flex-direction: column;
+    /* Alinhe os elementos verticalmente */
     align-items: center;
-    text-align: center; /* Alinhe o texto centralmente */
+    text-align: center;
+    /* Alinhe o texto centralmente */
     height: 615px;
 }
 
 .titulo-planos {
-    margin-bottom: 20px; /* Adicione espaço entre o título e os cards */
+    margin-bottom: -30px;
+    /* Adicione espaço entre o título e os cards */
 }
 
 h5 {
@@ -240,15 +351,16 @@ h5 {
     padding: 50px;
     gap: 57px;
     /* Adicione um espaçamento horizontal de 20px entre os cards */
+    
 }
 
 .card {
     border-radius: 8px;
     background: #024F60;
     box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.40);
-    width: 300px;
-    height: 490px;
-    padding: 40px;
+    width: 295px;
+    height: 450px;
+    padding: 20px;
 }
 
 .icone {
@@ -259,20 +371,74 @@ h5 {
 }
 
 .card h2 {
-    font-size: 20px;
+    font-size: 22px;
     padding-bottom: 20px;
 
 }
 
 .card h4 {
     color: #FFF;
-    font-size: 14px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     padding-left: 10px;
     text-align: start;
-    
+
+}
+
+
+/* QUADRADOS SESSÃO QUATRO */
+
+.quadrado-grupo4 {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+   
+}
+
+.quadrado4 {
+    width: 340px;
+    height: 340px;
+    border: 4px solid;
+    position: absolute;
+    transform: rotate(-70deg);
+    z-index: 1;
+}
+
+.quadrado1-quatro {
+    margin-bottom: 140px;
+    bottom: 55px;
+    left: -60px;
+    border: 4px solid #204A7B;
+}
+
+.quadrado2-quatro {
+    margin-bottom: 120px;
+    bottom: 45px;
+    left: -100px;
+    border: 4px solid #b5e6e9;
+    /* transform: rotate(-75deg); */
+}
+
+.quadrado3-quatro {
+    margin-bottom: 130px;
+    bottom: -140px;
+    left: -360px;
+    border: 4px solid #204A7B;
+}
+
+.quadrado4-quatro {
+    margin-bottom: 100px;
+    bottom: -60px;
+    left: -300px;
+    border: 4px solid #b5e6e9;
+}
+.card{
+    z-index: 2;
 }
 
 /* FOOTER */

@@ -13,9 +13,10 @@
 
 // import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
- //import Tela_Escolha from "../Tela_Escolha";
-import Contato from "../Contato";
-import Footer from "../Footer";
+//  import TelaEscolha from "../TelaEscolha";
+// import Contato from "../Contato";
+// import Footer from "../Footer";
+import Index from "../Index";
 
 function App (){
     return(
@@ -25,10 +26,12 @@ function App (){
             {/* <CadastroMicro2 /> */}
 
             {/* <Login/> */}
+            
+            {/* <TelaEscolha/> */}
 
-            <Contato/>
+            {/* <Contato/> */}
 
-            {/* <Index/> */}
+            <Index/>
 
             {/*<BrowserRouter>
                 <Routes>

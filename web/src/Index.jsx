@@ -54,9 +54,16 @@ function Index() {
 
                         <div className="conteudo-central">
 
+                            {/* QUADRADOS */}
+                            <div className="quadrado-grupo">
+                                <div className="quadrado quadrado4-dois"></div>
+                                <div className="quadrado quadrado3-dois"></div>
+                                <div className="quadrado quadrado1-dois"></div>
+                                <div className="quadrado quadrado2-dois"></div>
+                            </div>
+
 
                             <div className="caixa-central">
-
                                 <div className="logo-grande">
                                     <img src={logogrande} alt="" />
                                 </div>
@@ -69,143 +76,156 @@ function Index() {
                                         excelência, criando assim...<br />
                                         <br />
 
-                                        A química da conexão perfeita! <br /></h3>
+                                        A química da conexão perfeita! <br />
+                                    </h3>
                                 </div>
                             </div>
 
+
+                        </div>
+
+
+                    </section>
+
+
+                    {/* SESSÃO TRÊS */}
+
+                    <div className="backGradient"></div>
+                    <section className="section-tres">
+                        <div className="cards-imagem">
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+                                <div style={{ background: '#024C5E', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
+                                    <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Workplace</div>
+                                    <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
+                                        O Workplace é o nosso ambiente de trabalho integrado onde você pode visualizar, organizar e saber o progresso dos seus serviços                            </div>
+                                </div>
+
+                                <div style={{ background: '#024B5C', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
+                                    <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Service</div>
+                                    <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
+                                        Em nossa página de Services, você cliente pode tanto cadastrar um serviço como aceitar um serviço
+                                    </div>
+                                </div>
+
+                                <div style={{ background: '#02495A', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
+                                    <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Pay</div>
+                                    <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
+                                        Nossa página de pagamento, Pay, é onde garantimos a segurança dos nossos clientes na hora de pagar ou receber por um serviço realizado
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="img-servicos">
+                                <img src={imgservicos} alt="" />
+                            </div>
                         </div>
 
                         {/* QUADRADOS */}
-                        <div className="quadrado4"></div>
-                        <div className="quadrado3"></div>
-                        <div className="quadrado1"></div>
-                        <div className="quadrado2"></div>
-                        <div className='circulo_azul2'></div>
-
-                </section>
-
-
-                {/* SESSÃO TRÊS */}
-
-                <div className="backGradient"></div>
-                <section className="section-tres">
-                    <div className="cards-imagem">
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
-                            <div style={{ background: '#024C5E', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
-                                <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Workplace</div>
-                                <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
-                                    O Workplace é o nosso ambiente de trabalho integrado onde você pode visualizar, organizar e saber o progresso dos seus serviços                            </div>
-                            </div>
-
-                            <div style={{ background: '#024B5C', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
-                                <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Service</div>
-                                <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
-                                    Em nossa página de Services, você cliente pode tanto cadastrar um serviço como aceitar um serviço
-                                </div>
-                            </div>
-
-                            <div style={{ background: '#02495A', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
-                                <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Pay</div>
-                                <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
-                                    Nossa página de pagamento, Pay, é onde garantimos a segurança dos nossos clientes na hora de pagar ou receber por um serviço realizado
-                                </div>
-                            </div>
+                        <div className="quadrado-grupo3">
+                            <div className="quadrado3 quadrado4-tres"></div>
+                            <div className="quadrado3 quadrado3-tres"></div>
+                            <div className="quadrado3 quadrado1-tres"></div>
+                            <div className="quadrado3 quadrado2-tres"></div>
                         </div>
-
-                        <div className="img-servicos">
-                            <img src={imgservicos} alt="" />
-                        </div>
-                    </div>
-                </section>
-
-
-                {/* SESSÃO QUATRO*/}
-                <div className="backGradient"></div>
-                <section className="section-quatro">
-
-                    <div className="section-pagina">
+                    </section>
 
 
 
-                        <div className="titulo-planos">
-                            <h5>Nossos planos</h5>
-                        </div>
+                    {/* SESSÃO QUATRO*/}
+                    <div className="backGradient"></div>
+                    <section className="section-quatro">
 
+                        <div className="section-pagina">
 
-                        {/* CARDS */}
-                        <div className="grupo-cards">
-
-                            <div className="card">
-                                <h2>Básico</h2>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>Acesso ao Workspace, Services e Pay  </h4> <b />
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /><h4> 2 avaliações mensais de portifólio<br /></h4>
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconnao} alt="" className="icone-nao" /> <h4>Avaliação mais rápida de portifólio<br /></h4>
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconnao} alt="" className="icone-nao" /> <h4> Prioridade na indicação para empresas / microempreendedores </h4><br />
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconnao} alt="" className="icone-nao" /> <h4> Acesso a um email com cursos da alura </h4><br />
-                                </div>
+                            <div className="titulo-planos">
+                                <h5>Nossos planos</h5>
                             </div>
 
-                            <div className="card">
-                                <h2>Premium</h2>
 
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /><h4>Acesso ao Workspace, Services e Pay </h4><br />
+                            {/* CARDS */}
+                            <div className="grupo-cards">
+
+                                <div className="card">
+                                    <h2>Básico</h2>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>Acesso ao Workspace, Services e Pay  </h4> <b />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /><h4> 2 avaliações mensais de portifólio<br /></h4>
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconnao} alt="" className="icone-nao" /> <h4>Avaliação mais rápida de portifólio<br /></h4>
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconnao} alt="" className="icone-nao" /> <h4> Prioridade na indicação para empresas / microempreendedores </h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconnao} alt="" className="icone-nao" /> <h4> Acesso a um email com cursos da alura </h4><br />
+                                    </div>
                                 </div>
 
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>2 avaliações mensais de portifólio</h4><br />
+                                <div className="card">
+                                    <h2>Premium</h2>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /><h4>Acesso ao Workspace, Services e Pay </h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>2 avaliações mensais de portifólio</h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /><h4>Avaliação mais rápida de portifólio</h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconnao} alt="" className="icone-nao" /> <h4>Prioridade na indicação para empresas / microempreendedores</h4> <br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconnao} alt="" className="icone-nao" /> <h4>Acesso a um email com cursos da alura</h4> <br />
+                                    </div>
                                 </div>
 
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /><h4>Avaliação mais rápida de portifólio</h4><br />
+                                <div className="card">
+                                    <h2>Ultra</h2>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>Acesso ao Workspace, Services e Pay </h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>2 Avaliações mensais de portifólio</h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>Avaliação mais rápida de portifólio</h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>Prioridade na indicação para empresas / microempreendedores</h4><br />
+                                    </div>
+
+                                    <div className="icone">
+                                        <img src={iconsim} alt="" className="icone-sim" /> <h4>Acesso a um email com cursos da alura</h4><br />
+                                    </div>
                                 </div>
 
-                                <div className="icone">
-                                    <img src={iconnao} alt="" className="icone-nao" /> <h4>Prioridade na indicação para empresas / microempreendedores</h4> <br />
-                                </div>
 
-                                <div className="icone">
-                                    <img src={iconnao} alt="" className="icone-nao" /> <h4>Acesso a um email com cursos da alura</h4> <br />
+                                {/* QUADRADOS */}
+                                <div className="quadrado-grupo4">
+                                    <div className="quadrado4 quadrado4-quatro"></div>
+                                    <div className="quadrado4 quadrado3-quatro"></div>
+                                    <div className="quadrado4 quadrado1-quatro"></div>
+                                    <div className="quadrado4 quadrado2-quatro"></div>
                                 </div>
-                            </div>
-
-                            <div className="card">
-                                <h2>Ultra</h2>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>Acesso ao Workspace, Services e Pay </h4><br />
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>2 Avaliações mensais de portifólio</h4><br />
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>Avaliação mais rápida de portifólio</h4><br />
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>Prioridade na indicação para empresas / microempreendedores</h4><br />
-                                </div>
-
-                                <div className="icone">
-                                    <img src={iconsim} alt="" className="icone-sim" /> <h4>Acesso a um email com cursos da alura</h4><br />
-                                </div>
-                            </div>
+                           
 
                         </div>
 
