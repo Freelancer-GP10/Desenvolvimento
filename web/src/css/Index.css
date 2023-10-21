@@ -13,12 +13,12 @@
 @keyframes glow {
     0% {
         opacity: 0.9;
-        /* Define a opacidade inicial (pode ajustar conforme desejado) */
+        /* Define a opacidade inicial */
     }
 
     100% {
         opacity: 1;
-        /* Define a opacidade máxima (pode ajustar conforme desejado) */
+        /* Define a opacidade máxima */
     }
 }
 
@@ -135,7 +135,6 @@ h2 {
 
 .section-dois {
     min-height: 100vh;
-    /* Defina uma altura mínima para a seção */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,14 +170,11 @@ h2 {
 .texto-direita {
     flex: 1;
     text-align: center;
-    /* align-items: center; */
 }
 
 .texto-direita h3 {
     font-size: 20px;
-    /* Ajuste o tamanho da fonte */
     line-height: 1.4;
-    /* Ajuste o espaçamento entre linhas */
 }
 
 
@@ -197,9 +193,7 @@ h2 {
     height: 340px;
     border: 4px solid;
     position: absolute;
-
     transform: rotate(-70deg);
-    /* Adicione a rotação para incliná-los */
 }
 
 .quadrado1-dois {
@@ -214,7 +208,6 @@ h2 {
     bottom: -10px;
     right: 250px;
     border: 4px solid #b5e6e9;
-    /* transform: rotate(-75deg); */
 }
 
 .quadrado3-dois {
@@ -245,7 +238,7 @@ h2 {
     align-items: center;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Adicione position: relative; */
+    position: relative;
     z-index: 2;
 
 }
@@ -256,8 +249,8 @@ h2 {
     width: 980px;
     display: flex;
     align-items: center;
-    position: relative; /* Adicione position: relative; */
-    z-index: 2; /* Defina um z-index maior */
+    position: relative;
+    z-index: 2;
 
 }
 
@@ -270,7 +263,7 @@ h2 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    position: absolute; /* Adicione position: absolute; */
+    position: absolute;
     z-index: 1;
 }
 
@@ -279,9 +272,7 @@ h2 {
     height: 340px;
     border: 4px solid;
     position: absolute;
-
     transform: rotate(-70deg);
-    /* Adicione a rotação para incliná-los */
 }
 
 .quadrado1-tres {
@@ -296,12 +287,12 @@ h2 {
     bottom: -80px;
     right: 130px;
     border: 4px solid #b5e6e9;
-    /* transform: rotate(-75deg); */
+
 }
 
 .quadrado3-tres {
     margin-bottom: 30px;
-    bottom: -100px;
+    bottom: -20px;
     right: 150px;
     border: 4px solid #204A7B;
 }
@@ -316,25 +307,25 @@ h2 {
 /* SESSÃO QUATRO*/
 
 .section-quatro {
-    height: 1000px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
+
 }
 
 .section-pagina {
     display: flex;
     flex-direction: column;
-    /* Alinhe os elementos verticalmente */
     align-items: center;
     text-align: center;
-    /* Alinhe o texto centralmente */
     height: 615px;
 }
 
 .titulo-planos {
     margin-bottom: -30px;
-    /* Adicione espaço entre o título e os cards */
+
 }
 
 h5 {
@@ -350,17 +341,20 @@ h5 {
     justify-content: space-between;
     padding: 50px;
     gap: 57px;
-    /* Adicione um espaçamento horizontal de 20px entre os cards */
-    
+
 }
 
 .card {
     border-radius: 8px;
     background: #024F60;
     box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.40);
-    width: 295px;
-    height: 450px;
+    width: 280px;
+    height: 440px;
     padding: 20px;
+    transition: transform 0.3s; 
+}
+.card:hover {
+    transform: scale(1.1); 
 }
 
 .icone {
@@ -397,7 +391,8 @@ h5 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-   
+    z-index: -1;
+
 }
 
 .quadrado4 {
@@ -437,7 +432,8 @@ h5 {
     left: -300px;
     border: 4px solid #b5e6e9;
 }
-.card{
+
+.card {
     z-index: 2;
 }
 
@@ -450,13 +446,26 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    height: 210px;
+    height: 187px;
+}
+
+footer h2 {
+    font-weight: 700;
+}
+
+a {
+    transition: transform 0.2s ease;
+}
+
+a:hover {
+    transform: scale(1.1);
+
 }
 
 .logofooter {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 25px;
 }
 
 .coluna-logo {
@@ -468,8 +477,8 @@ footer {
 }
 
 .coluna-logo img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 
 }
 
@@ -480,7 +489,7 @@ footer {
     align-items: flex-start;
     gap: 20px;
     margin-bottom: 100px;
-    padding-top: 50px;
+    padding-top: 40px;
     width: 850px;
 }
 

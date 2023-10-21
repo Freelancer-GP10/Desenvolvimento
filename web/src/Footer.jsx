@@ -34,14 +34,14 @@ function Footer() {
                 <div className="colunas">
 
                     <div className="coluna-um">
-                        <h2><b>Comece agora mesmo!</b></h2>
+                        <h2>Comece agora mesmo!</h2>
                         <a href="#">Cadastre-se</a>
                         <a href="#">Freelancer</a>
                         <a href="#">Microempreendedor</a>
                     </div>
 
                     <div className="coluna-dois">
-                        <h2><b>Atendimento 24h</b></h2>
+                        <h2>Atendimento 24h</h2>
                         <a href="#">
                             <img src={iconfone} alt="" /> Central de ajuda
                         </a>
@@ -51,7 +51,7 @@ function Footer() {
                     </div>
 
                     <div className="coluna-tres">
-                        <h2><b>Nossas redes</b></h2>
+                        <h2>Nossas redes</h2>
                         <a href="#"> <img src={iconinsta} alt="" className="icone-instagram" /></a>
                         <a href="#"> <img src={icontwitter} alt="" className="icone-twitter" /> </a>
                         <a href="#"> <img src={iconface} alt="" className="icone-facebook" /></a>
