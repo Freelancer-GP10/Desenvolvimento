@@ -3,11 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-  
-    /* font-family: 'Oxanium', cursive; */
- 
 }
-
 
 
 html,
@@ -15,6 +11,7 @@ body,
 #root {
     height: 100%;
     width: 100%;
+    font-family: 'Oxanium';
 }
 
 body {
@@ -69,57 +66,31 @@ span {
 }
 
 .caixa_botao {
-    
+
     display: flex;
     /* flex-direction: row; */
-    justify-content:space-around;
-/* width: 40%;     */
-        /* margin-left: -62%; */
-
-        /* margin-inline: 10%; */
-        /* background-color: blue; */
-
+    justify-content: space-around;
 }
 
-/* .button1 {
-    padding: 8% 40%;
-  background-color: transparent; 
-  border: 2px solid #215683; 
-  color: black; 
-  font-size: 30%;
-  border-radius: 7px;
-}
-.button2 {
-    padding: 8% 40%; 
-    background-color: transparent; 
-    border: 2px solid #215683; 
-    color: black; 
-    font-size: 30%;
-    border-radius: 6px;
-} */
-button{
-    padding: 18px 0px; 
+button {
+    padding: 18px 0px;
     width: 300px;
-    background-color: transparent; 
-    border: 2px solid #215683; 
-    color: black; 
+    background-color: transparent;
+    border: 2px solid #215683;
+    color: black;
     font-size: 30%;
     border-radius: 6px;
     margin: 50px;
+    cursor: pointer;
 }
 
-
-.button1:hover {
-    background-color: #215683;
-    color: white;
-   
-  }
-  
+.button1:hover,
 .button2:hover {
     background-color: #215683;
     color: white;
-   
-  }
+
+
+}
 
 .quadrado1 {
     width: 23%;

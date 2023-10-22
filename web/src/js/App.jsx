@@ -13,8 +13,8 @@
 
 // import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-//  import TelaEscolha from "../TelaEscolha";
-import Contato from "../Contato";
+ import TelaEscolha from "../Tela_Escolha";
+// import Contato from "../Contato";
 // import Footer from "../Footer";
 // import Index from "../Index";
 
@@ -27,9 +27,9 @@ function App (){
 
             {/* <Login/> */}
             
-            {/* <TelaEscolha/> */}
+            <TelaEscolha/>
 
-            <Contato/>
+            {/* <Contato/> */}
 
             {/* <Index/> */}
 
