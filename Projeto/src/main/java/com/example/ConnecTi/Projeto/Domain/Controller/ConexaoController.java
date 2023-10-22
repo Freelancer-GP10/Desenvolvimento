@@ -12,10 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/conexao")
@@ -24,7 +35,8 @@ public class ConexaoController {
     private RepositoryServico servico;
     @Autowired
     private RepositoryFreelancer repositoryFreelancer;
-    private final ConexaoService conexaoService;
+    @Autowired
+    private ConexaoService conexaoService;
     public ConexaoController(ConexaoService conexaoService) {
         this.conexaoService = conexaoService;
     }
@@ -82,6 +94,55 @@ public class ConexaoController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/list-csv-files")
+    public ResponseEntity<List<String>> listCsvFiles() {
+        try {
+            File folder = new File("C:\\Users\\thiag\\Downloads\\");
+            File[] listOfFiles = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".csv"));
+
+            List<String> fileNames = Arrays.stream(listOfFiles)
+                    .map(File::getName)
+                    .collect(Collectors.toList());
+
+            return new ResponseEntity<>(fileNames, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/download-csv/{fileName}")
+    public ResponseEntity<Resource> downloadCsvFile(@PathVariable String fileName) {
+        try {
+            Path path = Paths.get("C:\\Users\\thiag\\Downloads\\" + fileName);
+            Resource resource = new InputStreamResource(Files.newInputStream(path));
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType("application/csv"))
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                    .body(resource);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+//    public String getDownloadsPath() {
+//        String userHome = System.getProperty("user.home");
+//        String os = System.getProperty("os.name").toLowerCase();
+//
+//        if (os.contains("win")) {
+//            return userHome + "\\Downloads\\";
+//        } else if (os.contains("mac")) {
+//            return userHome + "/Downloads/";
+//        } else if (os.contains("nix") || os.contains("nux")) {
+//            return userHome + "/Downloads/";  // geralmente, mas pode variar dependendo da distribuição
+//        } else {
+//            throw new UnsupportedOperationException("Sistema operacional não reconhecido");
+//        }
+//    }
+
+
+
+
+
 
 
 

@@ -34,7 +34,7 @@ public class EmpresaController {
     public ResponseEntity<Empresa> cadastrarEmpresa(@RequestBody CadastrarEmpresaDto dto) {
         Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
         // Verifica se o papel do usuário é "Empresa"
-     //   autenticacaoService.verificarPapelEmpresa(usuarioLogado);
+      //  autenticacaoService.verificarPapelEmpresa(usuarioLogado);
         Empresa empresa = repositoryEmpresa.findByEmail(usuarioLogado.getEmail());
         empresa.setNome(dto.nome());
         empresa.setEmail(usuarioLogado.getEmail());
@@ -48,6 +48,8 @@ public class EmpresaController {
     }
     @GetMapping
     public ResponseEntity<List<ListarEmpresaDto>> listarEmpresa(){
+        Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
+        autenticacaoService.verificarPapelEmpresa(usuarioLogado);
         List<Empresa> empresas = repositoryEmpresa.findAll();
         List<ListarEmpresaDto> listarEmpresaDtos = empresas.stream().map(empresa -> new ListarEmpresaDto(empresa.getIdEmpresa(),empresa.getNome(),empresa.getEmail())).collect(Collectors.toList());
         System.out.println(listarEmpresaDtos);

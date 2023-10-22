@@ -2,6 +2,7 @@ package com.example.ConnecTi.Projeto.Domain.Controller;
 
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryFreelancer;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryPortifolio;
+import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Model.Freelancer;
 import com.example.ConnecTi.Projeto.Model.Portifolio;
 import jakarta.persistence.EntityNotFoundException;
@@ -36,8 +37,10 @@ public class PortifolioController {
     private RepositoryPortifolio repository;
     @Autowired
     private RepositoryFreelancer repositoryFreelancer;
-
+    @Autowired
+    private AutenticacaoService autenticacaoService;
     // Define o caminho base para onde os arquivos serão salvos
+
     private static final String BASE_PATH = "C:\\Users\\thiag\\Desktop\\Teste";
 
     @PostMapping("/upload")
@@ -49,15 +52,15 @@ public class PortifolioController {
 
         // Gerar nome único para o arquivo
         String uniqueFilename = UUID.randomUUID() + "_" + multipartFile.getOriginalFilename();
-
+        Long userLogado = autenticacaoService.getUsuarioFromUsuarioDetails().getId();
         try {
             // Salvar o arquivo no caminho especificado
             Path path = Paths.get(BASE_PATH, uniqueFilename);
             Files.createDirectories(path.getParent()); // Garante que os diretórios existam
             Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             // COLOCAR AQUI O ID DO JWT DO FREELANCER OU SEJA LOGADO DA VEZ
-            Freelancer freelancer = repositoryFreelancer.findById(1L)
-                    .orElseThrow(() -> new EntityNotFoundException("Freelancer não encontrado com o ID: " + 1));
+            Freelancer freelancer = repositoryFreelancer.findById(userLogado)
+                    .orElseThrow(() -> new EntityNotFoundException("Freelancer não encontrado com o ID: " + userLogado));
 
             Portifolio portifolio = new Portifolio();
             portifolio.setArquivo(new File(path.toString()));
@@ -75,8 +78,9 @@ public class PortifolioController {
 
     @GetMapping("/download/{id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable Long id) {
+        Long userlogado = autenticacaoService.getUsuarioFromUsuarioDetails().getId();
         // Busque o objeto Portifolio no banco de dados pelo ID
-        Portifolio portifolio = repository.findById(id).orElseThrow(() -> new RuntimeException("Portifolio não encontrado com o ID: " + id));
+        Portifolio portifolio = repository.getPortifolioByFreelancer(userlogado);
 
         // Pegue o caminho do arquivo
         Path path = Paths.get(portifolio.getArquivo().toURI());

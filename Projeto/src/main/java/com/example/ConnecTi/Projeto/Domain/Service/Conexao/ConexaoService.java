@@ -13,7 +13,12 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -94,8 +99,22 @@ public class ConexaoService {
         novaConexao.setDataInsercao(LocalDateTime.now());
         novaConexao.setAceito(true);  // Como o freelancer está aceitando o serviço, definimos aceito como true
 
+
+        String currentDateTime = getFormattedCurrentDateTime();
+        String filename = "conexao_" + currentDateTime + ".csv";
+        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Downloads\\" + filename);
+        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Desktop\\Desenvolvimento\\Projeto\\" + filename);
+
+
+
         // Salva a conexão no banco de dados
+
         return conexaoRepository.save(novaConexao);
+    }
+    private String getFormattedCurrentDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        LocalDateTime now = LocalDateTime.now();
+        return now.format(formatter);
     }
     public List<ConexaoInfoDTO> listarInfoConexoes() {
         return conexaoRepository.findAll().stream()
@@ -112,6 +131,62 @@ public class ConexaoService {
                 })
                 .collect(Collectors.toList());
     }
+
+
+
+    public void exportConexaoespecifica(Conexao conexao, String path) {
+        try (FileWriter writer = new FileWriter(path, StandardCharsets.UTF_8, true)) {
+            // Escrever cabeçalho apenas se o arquivo estiver vazio
+            File file = new File(path);
+            if (!file.exists() || file.length() == 0) {
+                writer.append("\"ID_Freelancer\",\"Nome_Freelancer\",\"Sobrenome_Freelancer\",\"Email_Freelancer\",\"ID_Servico\",\"Nome_Servico\",\"Descricao_Servico\",\"Valor_Servico\",\"ID_Empresa\",\"Nome_Empresa\"\n");
+            }
+
+            Freelancer freelancer = conexao.getFreelancer();
+            Servico servico = conexao.getServico();
+            Empresa empresa = servico.getEmpresa();
+
+            writer.append(quote(freelancer.getIdFreelancer().toString()));
+            writer.append(",");
+            writer.append(quote(freelancer.getNome()));
+            writer.append(",");
+            writer.append(quote(freelancer.getSobrenome()));
+            writer.append(",");
+            writer.append(quote(freelancer.getEmail()));
+            writer.append(",");
+            writer.append(quote(servico.getIdServico().toString()));
+            writer.append(",");
+            writer.append(quote(servico.getNome()));
+            writer.append(",");
+            writer.append(quote(cleanString(servico.getDescricao())));
+            writer.append(",");
+            writer.append(quote(servico.getValor().toString()));
+            writer.append(",");
+            writer.append(quote(empresa.getIdEmpresa().toString()));
+            writer.append(",");
+            writer.append(quote(empresa.getNome()));
+            writer.append("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String quote(String value) {
+        if (value == null) {
+            return "\"\"";
+        }
+        return "\"" + value.replace("\"", "\"\"") + "\"";  // Escapa aspas duplas e envolve em aspas duplas
+    }
+
+    private String cleanString(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.replace("\n", " ").replace("\r", " ");  // Remove quebras de linha
+    }
+
+
+
 
 
 }
