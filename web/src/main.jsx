@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import{ createBrowserRouter,RouterProvider} from 'react-router-dom'
-import Index from "./Index";
+// import Index from "./Index";
 import Login from "./Login";
 import { CadastroFree, CadastroFree2, CadastroMicro, CadastroMicro2 } from './Cadastro';
+import Test from './teste';
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Index />
+        path: "/teste",
+        element: <Test />,
     },
     {
         path: "/Login",
