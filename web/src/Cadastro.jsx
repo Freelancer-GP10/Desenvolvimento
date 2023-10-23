@@ -2,6 +2,7 @@ import "./css/global.css";
 import "./css/img.css";
 import "./css/cadastro.css";
 import imgLogo from "./img/logo.png"
+import { cadastroFree, cadastroFree2, cadastroMicro, cadastroMicro2 } from "./js/cadastro";
 
 
 export function CadastroMicro(){
@@ -20,13 +21,12 @@ export function CadastroMicro(){
                         <p className="p-question">Já possui Cadastro? <a className="a-question" href="./">Login</a></p>
 
                         <form action="">
-                            <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa" />
-                            <input type="text" id="email" placeholder="E-mail" />
-                            <input type="password" id="senha" placeholder="Crie uma senha" />
-                            <input type="password" id="senha" placeholder="Confirmar Senha" />
+                            <input type="text" id="emailMicro" placeholder="E-mail" />
+                            <input type="password" id="senhaMicro" placeholder="Crie uma senha" />
+                            <input type="password" id="senhaMicro2" placeholder="Confirmar Senha" />
                         </form>
 
-                        <button className="button" id="button">Prosseguir</button>
+                        <button className="button" id="button" onClick={cadastroMicro}>Prosseguir</button>
                     </div>
                 </div>
                 <div className="cont"></div>
@@ -59,12 +59,13 @@ export function CadastroMicro2(){
                     </a>
 
                         <form className="formMicro2" action="">
-                            <input className="inputInfoMicro" type="number" id="nomeEmpresa" placeholder="CNPJ" />
-                            <input className="inputInfoMicro" type="text" id="email" placeholder="Ramo" />
-                            <input className="inputInfoMicro" type="number" id="senha" placeholder="Telefone" />
+                            <input className="inputInfoMicro" type="number" id="nomeEmpresa" placeholder="Nome da Empresa" />
+                            <input className="inputInfoMicro" type="number" id="cnpj" placeholder="CNPJ" />
+                            <input className="inputInfoMicro" type="text" id="ramo" placeholder="Ramo" />
+                            <input className="inputInfoMicro" type="number" id="telefone" placeholder="Telefone" />
                         </form>
 
-                        <button className="button" id="button">Cadastrar</button>
+                        <button className="button" id="button" onClick={cadastroMicro2}>Cadastrar</button>
                     </div>
                 </div>
             </section>
@@ -87,14 +88,12 @@ export function CadastroFree(){
                        <p className="p-question">Já possui Cadastro? <a className="a-question" href="./Login">Login</a></p>
     
                        <form className="formFre2" action="">
-                           <input className="inputNome" type="text" id="nomeEmpresa" placeholder="Nome" />
-                           <input className="inputNome" type="text" id="nomeEmpresa" placeholder="Sobrenome" />
-                           <input type="text" id="email" placeholder="E-mail" />
-                           <input type="password" id="senha" placeholder="Crie uma senha" />
-                           <input type="password" id="senha" placeholder="Confirmar Senha" />
+                           <input type="text" id="emailFree" placeholder="E-mail" />
+                           <input type="password" id="senhaFree" placeholder="Crie uma senha" />
+                           <input type="password" id="senhaFree2" placeholder="Confirmar Senha" />
                        </form>
     
-                       <button className="button" id="button">Prosseguir</button>
+                       <button className="button" id="button" onClick={cadastroFree}>Prosseguir</button>
                    </div>
             </div>
     
@@ -125,14 +124,16 @@ export function CadastroFree2(){
                     </a>
 
                         <form className="formFre2" action="">
-                            <input className="inputInfo2" type="number" id="nomeEmpresa" placeholder="CPF" />
-                            <input className="inputInfo2" type="number" id="senha" placeholder="Telefone" />
-                            <input type="select" id="senha" placeholder="Area de Atuação" />
-                            <input type="select" id="senha" placeholder="Linguagens de Dominio" />
-                            <input type="select" id="senha" placeholder="Formação" />
+                        <input className="inputNome" type="text" id="nome" placeholder="Nome" />
+                           <input className="inputNome" type="text" id="sobrenome" placeholder="Sobrenome" />
+                            <input className="inputInfo2" type="text" id="cpf" placeholder="CPF" />
+                            <input className="inputInfo2" type="text" id="telefoneFree" placeholder="Telefone" />
+                            <input type="select" id="areaAtuacao" placeholder="Area de Atuação" />
+                            <input type="select" id="linguagemDominio" placeholder="Linguagens de Dominio" />
+                            <input type="select" id="formacao" placeholder="Formação" />
                         </form>
 
-                        <button className="button" id="button">Cadastrar</button>
+                        <button className="button" id="button" onClick={cadastroFree2}>Cadastrar</button>
                     </div>
                 </div>
 

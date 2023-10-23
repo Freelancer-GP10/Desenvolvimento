@@ -1,42 +1,39 @@
+import{ createBrowserRouter,RouterProvider} from 'react-router-dom'
+import Index from "../Index";
+import Login from "../Login";
+import { CadastroFree, CadastroFree2, CadastroMicro, CadastroMicro2 } from '../Cadastro';
 
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// import { CadastroFree } from "../Cadastro_Freelancer";
-// import { CadastroMicroempreendedor } from "../Cadastro_Microempreendedor";
-// import CadastroMicro from "../Cadastro_Microempreendedor";
-import { CadastroMicro2 } from "../Cadastro";
-
-// import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Login from "../Login";
-
-// import CadastroMicroempreendedor2 from "../Cadastro_Microempreendedor";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Tela_Escolha from "../Tela_Escolha";
-
-
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Index />
+    },
+    {
+        path: "Login",
+        element: <Login />
+    },
+    {
+        path: "Cadastro-Previo-Freelancer",
+        element: <CadastroFree />
+    },
+    {
+        path: "Cadastro-Freelancer",
+        element: <CadastroFree2 />
+    },
+    {
+        path: "Cadastro-Previo-Microempreendedor",
+        element: <CadastroMicro />
+    },
+    {
+        path: "Cadastro-Microempreendedor",
+        element: <CadastroMicro2 />
+    }
+])
 
 function App (){
     return(
         <>
-            {/* <CadastroFree/> */}
-
-            <CadastroMicro2 />
-
-            {/* <Login/> */}
-
-            {/* <Tela_Escolha/> */}
-
-            {/* <Index/> */}
-
-            {/*<BrowserRouter>
-                <Routes>
-                    <Route path="/Cadastro-Freelancer" element={<CadastroFree />}></Route>
-                   <Route path="/Cadastro/Microempreendedor" element={<CadastroMicroempreendedor />}/> 
-                </Routes>
-            </BrowserRouter>*/}
-
+            <RouterProvider router={router}/>
         </>
     );
 }

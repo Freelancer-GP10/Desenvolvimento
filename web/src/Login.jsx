@@ -1,11 +1,13 @@
-import React from "react";
 import "./css/Login.css";
 import "./css/global.css";
 import "./css/img.css";
 import fundologin from "./img/background-login.png";
 import logopreta from "./img/logo.png";
+import LoginJS from "./js/login";
 
-function Login() {
+
+
+export function Login(){
   return (
     <>
       <section>
@@ -29,13 +31,11 @@ function Login() {
             </form>
 
             <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox" /></h2>
-            <button className="button" id="button">Login</button>
+            <button className="button" id="button" onClick={LoginJS}>Login</button>
           
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }
-
-export default Login;
