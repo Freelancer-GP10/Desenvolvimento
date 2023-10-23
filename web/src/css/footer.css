@@ -6,27 +6,6 @@
     font-family: 'Oxanium', cursive;
 }
 
-.background-index {
-    animation: glow 4s linear infinite alternate;
-}
-
-@keyframes glow {
-    0% {
-        opacity: 0.9;
-        /* Define a opacidade inicial */
-    }
-
-    100% {
-        opacity: 1;
-        /* Define a opacidade máxima */
-    }
-}
-
-.section-principal {
-    width: auto;
-    height: auto;
-}
-
 header {
     display: flex;
     flex-direction: row;
@@ -53,7 +32,6 @@ li {
 li:hover {
     color: #FFF;
     transition: 1s;
-    transform: scale(1.2);
 }
 
 a {
@@ -62,20 +40,16 @@ a {
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    transition: transform 0.2s ease;
-}
-
-a:hover {
-    transform: scale(1.1);
 }
 
 button {
     color: #BAD6ED;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
     background: transparent;
+
     display: flex;
     padding: 10px 20px;
     justify-content: center;
@@ -83,9 +57,6 @@ button {
     gap: 10px;
     cursor: pointer;
     border-radius: 8px;
-    border: 3px solid #204A7B;
-    width: 100px;
-    height: 55px;
 }
 
 button:hover {
@@ -95,15 +66,11 @@ button:hover {
 
 }
 
-.section-slogan {
+section {
     z-index: 2;
     position: relative;
     height: 400px;
 
-}
-
-.section-slogan h1 {
-    margin-top: 140px;
 }
 
 h1 {
@@ -134,11 +101,12 @@ h2 {
 /* SESSÃO DOIS */
 
 .section-dois {
-    min-height: 100vh;
+    height: 615px;
     display: flex;
     justify-content: center;
     align-items: center;
-    max-height: 600px;
+
+
 }
 
 .conteudo-central {
@@ -150,12 +118,10 @@ h2 {
 }
 
 .caixa-central {
-    display: grid;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
 
 }
 
@@ -163,70 +129,20 @@ h2 {
     width: 344px;
     height: 277px;
     display: flex;
-    /* justify-content: flex-end; */
+    justify-content: flex-end;
     margin: 100px;
 }
 
 .texto-direita {
     flex: 1;
-    text-align: center;
-}
-
-.texto-direita h3 {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-
-/* QUADRADOS */
-.quadrado-grupo {
-    position: relative;
-    width: 100%;
-    height: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.quadrado {
-    width: 340px;
-    height: 340px;
-    border: 4px solid;
-    position: absolute;
-    transform: rotate(-70deg);
-}
-
-.quadrado1-dois {
-    margin-bottom: -73px;
-    bottom: 55px;
-    right: 290px;
-    border: 4px solid #204A7B;
-}
-
-.quadrado2-dois {
-    margin-bottom: -70px;
-    bottom: -10px;
-    right: 250px;
-    border: 4px solid #b5e6e9;
-}
-
-.quadrado3-dois {
-    margin-bottom: -130px;
-    bottom: -90px;
-    right: 100px;
-    border: 4px solid #204A7B;
-}
-
-.quadrado4-dois {
-    bottom: -250px;
-    right: 150px;
-    border: 4px solid #b5e6e9;
+    justify-content: center;
+    text-align: center;
 }
 
 
 /* SESSÃO TRÊS*/
 .section-tres {
-    margin-top: 110px;
     height: 615px;
     display: flex;
     justify-content: center;
@@ -234,98 +150,34 @@ h2 {
 }
 
 .img-servicos {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-
-}
-
-.img-servicos img {
     margin-top: 20px;
-    height: 500px;
-    width: 980px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 2;
+    width: 10px;
+    height: 400px;
 
 }
-
-/* QUADRADOS SESSÃO TRÊS */
-
-.quadrado-grupo3 {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    position: absolute;
-    z-index: 1;
-}
-
-.quadrado3 {
-    width: 340px;
-    height: 340px;
-    border: 4px solid;
-    position: absolute;
-    transform: rotate(-70deg);
-}
-
-.quadrado1-tres {
-    margin-bottom: 40px;
-    bottom: 55px;
-    right: 50px;
-    border: 4px solid #204A7B;
-}
-
-.quadrado2-tres {
-    margin-bottom: 150px;
-    bottom: -80px;
-    right: 130px;
-    border: 4px solid #b5e6e9;
-
-}
-
-.quadrado3-tres {
-    margin-bottom: 30px;
-    bottom: -20px;
-    right: 150px;
-    border: 4px solid #204A7B;
-}
-
-.quadrado4-tres {
-    bottom: 10px;
-    right: 190px;
-    border: 4px solid #b5e6e9;
-}
-
 
 /* SESSÃO QUATRO*/
 
 .section-quatro {
-    height: 100vh;
+    height: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-
 }
 
 .section-pagina {
     display: flex;
     flex-direction: column;
+    /* Alinhe os elementos verticalmente */
     align-items: center;
     text-align: center;
+    /* Alinhe o texto centralmente */
     height: 615px;
 }
 
 .titulo-planos {
-    margin-bottom: -30px;
-
+    margin-bottom: 20px;
+    /* Adicione espaço entre o título e os cards */
 }
 
 h5 {
@@ -341,20 +193,16 @@ h5 {
     justify-content: space-between;
     padding: 50px;
     gap: 57px;
-
+    /* Adicione um espaçamento horizontal de 20px entre os cards */
 }
 
 .card {
     border-radius: 8px;
     background: #024F60;
     box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.40);
-    width: 280px;
-    height: 440px;
-    padding: 20px;
-    transition: transform 0.3s; 
-}
-.card:hover {
-    transform: scale(1.1); 
+    width: 300px;
+    height: 490px;
+    padding: 40px;
 }
 
 .icone {
@@ -365,14 +213,14 @@ h5 {
 }
 
 .card h2 {
-    font-size: 22px;
+    font-size: 20px;
     padding-bottom: 20px;
 
 }
 
 .card h4 {
     color: #FFF;
-    font-size: 15px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -382,60 +230,6 @@ h5 {
 }
 
 
-/* QUADRADOS SESSÃO QUATRO */
-
-.quadrado-grupo4 {
-    position: absolute;
-    width: auto;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    z-index: -1;
-
-}
-
-.quadrado4 {
-    width: 340px;
-    height: 340px;
-    border: 4px solid;
-    position: absolute;
-    transform: rotate(-70deg);
-    z-index: 1;
-}
-
-.quadrado1-quatro {
-    margin-bottom: 140px;
-    bottom: 55px;
-    left: -60px;
-    border: 4px solid #204A7B;
-}
-
-.quadrado2-quatro {
-    margin-bottom: 120px;
-    bottom: 45px;
-    left: -100px;
-    border: 4px solid #b5e6e9;
-    /* transform: rotate(-75deg); */
-}
-
-.quadrado3-quatro {
-    margin-bottom: 130px;
-    bottom: -140px;
-    left: -360px;
-    border: 4px solid #204A7B;
-}
-
-.quadrado4-quatro {
-    margin-bottom: 100px;
-    bottom: -60px;
-    left: -300px;
-    border: 4px solid #b5e6e9;
-}
-
-.card {
-    z-index: 2;
-}
 
 /* FOOTER */
 footer {

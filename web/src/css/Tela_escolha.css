@@ -3,33 +3,28 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-  
-    /* font-family: 'Oxanium', cursive; */
- 
 }
 
-body {
-    margin: 0;
-    padding: 0;
-}
 
 html,
 body,
 #root {
     height: 100%;
     width: 100%;
+    font-family: 'Oxanium';
 }
 
-.body {
+body {
     background: linear-gradient(90deg, #50FAAB 10%, white 80%);
-    width: 100%;
+    /* width: 100%;
     height: 100%;
-    padding: 10%;
+    padding: 10%; */
+    height: 10vh;
 }
 
 .img-logo {
-    margin-left: -5%;
-    margin-top: -80%;
+    margin-left: 2%;
+    margin-top: 0%;
     height: auto;
     /* background-color: red; */
 }
@@ -45,67 +40,57 @@ body,
 }
 
 .texto_cadastro {
-    padding: 20% 0;
-    height: 10%;
-    margin-top: -9.5%;
+    /* padding: 20% 0; */
+    width: 65%;
+    height: 50vh;
+    margin-left: 18%;
+    /* margin-tl/op: -10%; */
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
     font-size: 350%;
     /* font-weight: 280; */
     color: #20497A;
     /* font-family: 'Oxanium', cursive; */
-    /* margin-top: -12%; */
+    margin-top: 3%;
 }
 
 span {
-    margin-top: 15%;
+    /* margin-top: 15%; */
     font-size: 110%;
     /* font-family: 'Oxanium'; */
-    margin-bottom: 4%;
+    margin-top: 0%;
 }
 
 .caixa_botao {
+
     display: flex;
-    justify-content: space-between;
-        /* margin-left: -62%; */
-
+    /* flex-direction: row; */
+    justify-content: space-around;
 }
 
-.button1 {
-    padding: 8% 50%;
-  /* margin: 18%; */
-  background-color: transparent; /* Tornar o fundo transparente */
-  border: 2px solid #215683; /* Adicionar uma borda preta */
-  color: black; 
-  font-size: 30%;
-  border-radius: 7px;
-}
-.button2 {
-    padding: 8% 35%;
-    margin-left: -300%;
-    background-color: transparent; /* Tornar o fundo transparente */
-    border: 2px solid #215683; /* Adicionar uma borda preta */
-    color: black; 
+button {
+    padding: 18px 0px;
+    width: 300px;
+    background-color: transparent;
+    border: 2px solid #215683;
+    color: black;
     font-size: 30%;
     border-radius: 6px;
+    margin: 50px;
+    cursor: pointer;
 }
 
-
-
-.button1:hover {
-    background-color: #215683;
-    color: white;
-   
-  }
-  
+.button1:hover,
 .button2:hover {
     background-color: #215683;
     color: white;
-   
-  }
+
+
+}
 
 .quadrado1 {
     width: 23%;
@@ -113,8 +98,8 @@ span {
     border: 3px solid #215683;
     position: fixed;
     transform: rotate(16deg);
-    margin-left: 71%;
-    margin-top: 0%;
+    margin-left: 90%;
+    margin-top: -13%;
 }
 
 .quadrado2 {
@@ -124,17 +109,17 @@ span {
     position: fixed;
     transform: rotate(16deg);
     margin-left: 80%;
-    margin-top: -13%;
+    margin-top: 0%;
 }
 
 .quadrado3 {
     width: 25%;
-    height: 42vh;
+    height: 44vh;
     border: 3px solid #bdeff1;
     position: fixed;
     transform: rotate(16deg);
-    margin-left: 68%;
-    margin-top: 2%;
+    margin-left: 77%;
+    margin-top: -3%;
 }
 
 .quadrado4 {
@@ -143,6 +128,6 @@ span {
     border: 3px solid #bdeff1;
     position: fixed;
     transform: rotate(16deg);
-    margin-left: 78%;
-    margin-top: -11.5%;
+    margin-left: 87%;
+    margin-top: -10.5%;
 }

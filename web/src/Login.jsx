@@ -10,6 +10,7 @@ import LoginJS from "./js/login";
 export function Login(){
   return (
     <>
+     <div className="backGradient"></div>
       <section>
         {/* Imagem */}
         <img className="fundologin" src={fundologin} alt="ConecTI" />
@@ -32,6 +33,9 @@ export function Login(){
 
             <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox" /></h2>
             <button className="button" id="button" onClick={LoginJS}>Login</button>
+
+            <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox-login" /></h2>
+            <button className="button" id="button">Login</button>
           
           </div>
         </div>
