@@ -10,6 +10,10 @@ section{
 }
 
 
+p{
+    margin-top: 2%;
+}
+
 .container{
     align-items: center;
 }
@@ -17,7 +21,7 @@ section{
 .form{
     margin-left: 17%;
     width: 80%;
-    margin-top: -2%;
+    margin-top: 5%;
 }
 
 .form2{
@@ -26,17 +30,46 @@ section{
     width: 80%;
 }
 
-.formFre2{
-    margin-top: 5%;
+.formMicro{
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+.formMicro input{
+    margin-top: -4%;
+}
+
+.formMicro2{
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+.formMicro2 input{
+    margin-top: -3%;
+    width: 80%;
+}
+
+.formFre{
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+.formFre input{
+    margin-top: -4%;
 }
 
 .form2Micro{
     width: 90%;
-    margin-top: 15%;
+    margin-left: 10%;
+    margin-top: 8%;
 }
 
-.formMicro2{
-    margin-top: 5%;
+.form2free{
+    margin-left: 40%;
+    background-color: #204A7B;
+    width: 50%;
+}
+.formFre2 input{
+    margin-top: -2%;
+    width: 50%;
+    height: 6vh;
 }
 
 form{
@@ -51,10 +84,10 @@ form{
 form input{
     display: flex;
     width: 80%;
-    height: 4vh;
+    height: 6vh;
     padding: 10px 12px;
     align-items: center;
-    gap: 10px;
+    /* gap: 10px; */
     flex-shrink: 0;
 
     font-family: Oxanium;
@@ -65,8 +98,7 @@ form input{
 
 .inputNome{
     display: flex;
-    width: 36.7%;
-    height: 4vh;
+    height: 6vh;
     padding: 10px 12px;
     align-items: center;
     gap: 10px;

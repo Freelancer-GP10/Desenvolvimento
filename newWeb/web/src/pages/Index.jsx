@@ -14,18 +14,15 @@ import iconface from "../assets/icon-face.png";
 
 import iconsim from "../assets/icon-sim.png";
 import iconnao from "../assets/icon-nao.png";
+import { Quadrados, Quadrados1, Quadrados2 } from "../componentes/quadrados";
 
 function Index() {
     return (
         <>
-            {/* QUADRADOS */}
-            <div className="grupo">
-                <div className="quadrado qua1"></div>
-                <div className="quadrado qua2"></div>
-                <div className="quadrado qua3"></div>
-                <div className="quadrado qua4"></div>
-            </div>
 
+            <Quadrados />
+            <Quadrados1 />
+            <Quadrados2 />
             <section className="section-principal">
                 <div className="background-index">
                     <header>

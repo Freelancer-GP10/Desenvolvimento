@@ -6,6 +6,10 @@
     font-family: 'Oxanium', cursive;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 .background-index {
     animation: glow 4s linear infinite alternate;
 }
@@ -101,6 +105,7 @@ button:hover {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    margin-left: 5%;
 }
 
 
@@ -254,7 +259,7 @@ footer {
     align-items: flex-start;
     /* height: 187px; */
     position: relative;
-    top: 450vh;
+    top: 470vh;
     /* bottom: 0; */
 }
 
@@ -321,38 +326,3 @@ a:hover {
     width: 25px;
     height: 25px;
 }
-
-/* Quadrados */
-
-.grupo {
-    top: 40vh;
-    z-index: -2;
-    position:absolute;
-}
-
-.quadrado {
-    width: 340px;
-    height: 340px;
-    transform: rotate(-60deg);
-}
-
-.qua1 {
-    margin-top: 120%;
-    margin-left: -30%;
-    border: 4px solid #204A7B;
-}
-.qua2 {
-    margin-top: -85%;
-    margin-left: -20%;
-    border: 4px solid #b5e6e9;
-}
-.qua3 {
-    margin-top: -45%;
-    margin-left: -5%;
-    border: 4px solid #204A7B;
-}
-
-.qua4 {
-    margin-top: -85%;
-    border: 4px solid #b5e6e9;
-} 

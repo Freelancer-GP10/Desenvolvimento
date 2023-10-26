@@ -21,6 +21,7 @@ function LoginJS(){
 
         alert("AAAAAAAAAA")
         // FAZER QUALQUER ACAO REDIRECIONAR BUSCAR DADO ETC
+        window.location("/cadastro-freelancer")
     })
     .catch((error)=>{
         console.log("Deu erro");

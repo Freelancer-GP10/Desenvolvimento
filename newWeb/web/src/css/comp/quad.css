@@ -1,0 +1,50 @@
+/* Quadrados */
+
+.grupo {
+    top: 30vh;
+    z-index: -2;
+    position:absolute;
+}
+
+.quadrado {
+    width: 340px;
+    height: 340px;
+    transform: rotate(-60deg);
+}
+
+.qua1 {
+    margin-top: 120%;
+    margin-left: -30%;
+    border: 4px solid #204A7B;
+}
+.qua2 {
+    margin-top: -85%;
+    margin-left: -20%;
+    border: 4px solid #b5e6e9;
+}
+.qua3 {
+    margin-top: -45%;
+    margin-left: -5%;
+    border: 4px solid #204A7B;
+}
+
+.qua4 {
+    margin-top: -85%;
+    border: 4px solid #b5e6e9;
+} 
+
+
+/* Posições dos quadrados */
+.grupo2{
+    z-index: -2;
+    position:absolute;
+    margin-top: 60%;
+    margin-left: 80%;
+
+}
+
+.grupo3{
+    z-index: -2;
+    position:absolute;
+    margin-top: 140%;
+}

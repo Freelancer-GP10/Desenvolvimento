@@ -39,7 +39,7 @@ body{
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: -3%;
+    margin-top: 1%;
 }
 
 .a-question{
@@ -82,7 +82,7 @@ body{
     color: #ffffff;
 }
 
-.backGradient{
+/* .backGradient{
     position: absolute;
     width: 70%;
     height: 62vh;
@@ -110,4 +110,4 @@ body{
     background: rgba(42, 160, 185, 0.40);
 
     filter: blur(120px);
-}
+} */

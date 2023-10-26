@@ -14,9 +14,10 @@ export function cadastroFree(){
     {
         senha:senhainput,
         email:emailinput,
-        papel:"freelancer"
+        papel:"Freelancer"
     }
    
+    console.log(dados.papel);
     instace.post("/usuarios",dados)
     .then((response)=>{
         console.log("Login deu certo");
@@ -25,7 +26,7 @@ export function cadastroFree(){
         console.log(response.data.token);
         sessionStorage.setItem("token",response.data.token);
 
-        alert("AAAAAAAAAA")
+        alert("Login realizado com sucesso!")
         // FAZER QUALQUER ACAO REDIRECIONAR BUSCAR DADO ETC
     })
     .catch((error)=>{

@@ -18,9 +18,9 @@ export function CadastroMicro(){
                     <div className="form">
                         <h2 className="h2-title">Faça <br></br>seu registro!</h2>
 
-                        <p className="p-question">Já possui Cadastro? <a className="a-question" href="./">Login</a></p>
+                        <p className="p-question">Já possui Cadastro? <a className="a-question" href="/login">Login</a></p>
 
-                        <form action="">
+                        <form className="formMicro">
                             <input type="text" id="emailMicro" placeholder="E-mail" />
                             <input type="password" id="senhaMicro" placeholder="Crie uma senha" />
                             <input type="password" id="senhaMicro2" placeholder="Confirmar Senha" />
@@ -87,7 +87,7 @@ export function CadastroFree(){
     
                        <p className="p-question">Já possui Cadastro? <a className="a-question" href="./Login">Login</a></p>
     
-                       <form className="formFre2" action="">
+                       <form className="formFre" action="">
                            <input type="text" id="emailFree" placeholder="E-mail" />
                            <input type="password" id="senhaFree" placeholder="Crie uma senha" />
                            <input type="password" id="senhaFree2" placeholder="Confirmar Senha" />
@@ -115,7 +115,7 @@ export function CadastroFree2(){
 
                     <a href="./main"><img className="imgLogo" src={imgLogo} alt="ConecTI" /></a>
 
-                    <div className="form2">
+                    <div className="form2Free">
 
                     <a href="/cadastro-previo-freelancer" className="a2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="#204A7B" fill="currentColor" viewBox="0 0 16 16">

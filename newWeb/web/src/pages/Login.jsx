@@ -26,14 +26,16 @@ function Login(){
             <h1>Faça seu <br /> Login! <br /></h1>
             <h2>Não possui cadastro? <a href="/cadastro">Cadastre-se</a></h2>
 
-            <form action="">
-              <input type="text" id="nomeEmail" placeholder="Email" />
-              <input type="password" id="senha" placeholder="Senha" />
-            </form>
+            <div className="infor">
+                <form className="informations">
+                  <input type="text" id="nomeEmail" placeholder="Email" />
+                  <input type="password" id="senha" placeholder="Senha" />
+                </form>
 
-            <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox" /></h2>
-            <button className="button" id="button" onClick={LoginJS}>Login</button>
-          
+                <h2>Deseja manter logado? <input type="checkbox" id="myCheckbox" className="checkbox" /></h2>
+                <button className="button" id="button" onClick={LoginJS}>Login</button>
+            </div>
+            
           </div>
         </div>
       </section>
