@@ -37,7 +37,8 @@ public class AutenticacaoService implements UserDetailsService {
             return null;
         UsuarioDetalhesDto usuarioDetailsDto =  (UsuarioDetalhesDto) authentication.getPrincipal();
 
-        Optional<Usuario> usuario = usuarioRepository.findById(usuarioDetailsDto.getId());return usuario.get();
+        Optional<Usuario> usuario = usuarioRepository.findById(usuarioDetailsDto.getId());
+        return usuario.orElse(null);
     }
     public void verificarPapelFreelancer(Usuario usuario) {
         if (!"Freelancer".equalsIgnoreCase(usuario.getPapel())) {

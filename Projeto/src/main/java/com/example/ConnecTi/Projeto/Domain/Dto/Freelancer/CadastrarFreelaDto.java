@@ -7,6 +7,6 @@ public record CadastrarFreelaDto(
         String linguagemDominio,
         String formacao,
         String cpf,
-        String telefone,
-        boolean isAtivo) {
+        String telefone
+        ) {
 }

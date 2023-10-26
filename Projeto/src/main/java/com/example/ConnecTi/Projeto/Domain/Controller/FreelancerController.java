@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelancer")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://10.18.33.239:5173", allowedHeaders = "*")
 public class FreelancerController {
     @Autowired
     private RepositoryFreelancer repository;
@@ -33,12 +33,21 @@ public class FreelancerController {
     @Autowired
     private RepositoryStatuServico statusServico;
 
+
     @PostMapping
     public ResponseEntity<Freelancer> cadastrarFreelancer(@RequestBody CadastrarFreelaDto dto) {
         Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
+        System.out.println(dto.nome());
+        System.out.println(dto.cpf());
+        System.out.println(dto.sobrenome());
+        System.out.println(dto.formacao());
+        System.out.println(dto.areaAtuacao());
+        System.out.println(dto.linguagemDominio());
+        System.out.println(dto.telefone());
+
 
         // Verifica se o papel do usuário é "Freelancer"
-        autenticacaoService.verificarPapelFreelancer(usuariologado);
+      //  autenticacaoService.verificarPapelFreelancer(usuariologado);
 
         Freelancer freelancer = repository.findByEmail(usuariologado.getEmail());
         freelancer.setNome(dto.nome());
