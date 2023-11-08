@@ -2,9 +2,11 @@ package com.example.ConnecTi.Projeto.Domain.Controller;
 
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryFreelancer;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryPortifolio;
+import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryUsuario;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Model.Freelancer;
 import com.example.ConnecTi.Projeto.Model.Portifolio;
+import com.example.ConnecTi.Projeto.Model.Usuario;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,9 @@ public class PortifolioController {
     private RepositoryFreelancer repositoryFreelancer;
     @Autowired
     private AutenticacaoService autenticacaoService;
+
+    @Autowired
+    private RepositoryUsuario usuarioRepository;
     // Define o caminho base para onde os arquivos serão salvos
 
     private static final String BASE_PATH = "C:\\Users\\thiag\\Desktop\\Teste";
@@ -59,13 +64,13 @@ public class PortifolioController {
             Files.createDirectories(path.getParent()); // Garante que os diretórios existam
             Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             // COLOCAR AQUI O ID DO JWT DO FREELANCER OU SEJA LOGADO DA VEZ
-            Freelancer freelancer = repositoryFreelancer.findById(userLogado)
+            Usuario freelancer = usuarioRepository.findById(userLogado)
                     .orElseThrow(() -> new EntityNotFoundException("Freelancer não encontrado com o ID: " + userLogado));
 
             Portifolio portifolio = new Portifolio();
             portifolio.setArquivo(new File(path.toString()));
             portifolio.setLinkRepositorio(git);
-            portifolio.setFreelancer(freelancer); // Associe o Portifolio ao Freelancer
+            portifolio.setFreelancer(freelancer.getFreelancer()); // Associe o Portifolio ao Freelancer
 
             repository.save(portifolio);
 
