@@ -8,6 +8,7 @@ import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryServico;
 import com.example.ConnecTi.Projeto.Domain.Service.Conexao.ConexaoService;
 import com.example.ConnecTi.Projeto.Domain.Service.ListObj;
 import com.example.ConnecTi.Projeto.Model.Conexao;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,7 @@ public class ConexaoController {
 
 
     @PostMapping("/aceitar-servico")
-    public ResponseEntity<Conexao> aceitarServico(@RequestBody AceitarServicoDTO aceitarServicoDto) throws Exception {
+    public ResponseEntity<Conexao> aceitarServico(@RequestBody @Valid AceitarServicoDTO aceitarServicoDto) throws Exception {
             // Lógica para aceitar o serviço e criar uma conexão
             Conexao novaConexao = conexaoService.aceitarServicoECreateConexao(aceitarServicoDto);
 
@@ -52,11 +53,10 @@ public class ConexaoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<ListObj<Conexao>> listarConexoes(){
+    public ResponseEntity<List<Conexao>> listarConexoes(){
         try {
             List<Conexao> conexoes = conexaoService.listarTodasConexoesOrdenadasPorIdDesc();
-            ListObj<Conexao> listObj = new ListObj<>(conexoes.toArray().length);
-            return new ResponseEntity<>(listObj, HttpStatus.OK);
+            return new ResponseEntity<>(conexoes, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
