@@ -4,6 +4,7 @@ import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryApiEndereco;
 import com.example.ConnecTi.Projeto.Model.ApiEndereco;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @RequestMapping("/endereco")
 public class ApiEnderecoController {
     private RepositoryApiEndereco repository;
+    private final RestTemplate restTemplate = new RestTemplate();
     @PostMapping
     public ResponseEntity<ApiEndereco> cadastrar(@RequestBody ApiEndereco apiEndereco) {
         ApiEndereco apiEnderecoSalvo = this.repository.save(apiEndereco);
@@ -55,5 +57,11 @@ public class ApiEnderecoController {
                 return ResponseEntity.ok().build();
             }
             return ResponseEntity.noContent().build();
-        }
+    }
+    @GetMapping("/cep")
+    public ResponseEntity<String> getCepInfo(@RequestParam String cep) {
+        String uri = String.format("https://viacep.com.br/ws/%s/json/", cep);
+        String result = restTemplate.getForObject(uri, String.class);
+        return ResponseEntity.ok(result);
+    }
 }
