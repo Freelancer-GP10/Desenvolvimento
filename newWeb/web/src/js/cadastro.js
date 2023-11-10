@@ -1,12 +1,13 @@
-import instace from "./Instance";
+import { useNavigate } from "react-router-dom";
+import instace from "./instance";
 
 export function cadastroFree(){
+    sessionStorage.removeItem("token")
     const emailinput = document.getElementById('emailFree').value;
     const senhainput = document.getElementById('senhaFree').value;
     const senhainput2 = document.getElementById('senhaFree2').value;
-    console.log(emailinput);
-    console.log(senhainput);
-    console.log(senhainput2);
+ 
+    
 
     if(senhainput == senhainput2){
         
@@ -40,6 +41,7 @@ export function cadastroFree(){
 }
 
 export function cadastroFree2(){
+ 
     const nomeFre = document.getElementById('nome').value;
     const sobrenomeFre = document.getElementById('sobrenome').value;
     const cpfFre = document.getElementById('cpf').value;
@@ -88,9 +90,11 @@ export function cadastroFree2(){
 }
 
 export function cadastroMicro(){
+    sessionStorage.removeItem("token")
     const emailinput = document.getElementById("emailMrico").value;
     const senhainput = document.getElementById("senhaMicro").value;
     const senhainput2 = document.getElementById("senhaMicro2").value;
+    
 
     console.log(emailinput);
     console.log(senhainput);
@@ -125,6 +129,7 @@ export function cadastroMicro(){
 }
 
 export function cadastroMicro2(){
+
     const nomeMicro = document.getElementById('nomeEmpresa').value;
     const cnpjMicro = document.getElementById('cnpj').value;
     const telefoneMicro = document.getElementById('telefone').value;

@@ -1,4 +1,4 @@
-import "../css/Login.css";
+import "../css/login.css";
 import "../css/global.css";
 import "../css/img.css";
 import fundologin from "../assets/background-login.png";

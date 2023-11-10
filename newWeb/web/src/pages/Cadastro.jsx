@@ -26,7 +26,7 @@ export function CadastroMicro(){
                             <input type="password" id="senhaMicro2" placeholder="Confirmar Senha" />
                         </form>
 
-                        <a href="http://localhost:5175/cadastro-cmpresa"><button className="button" id="button" onClick={"./"}>Prosseguir</button></a>
+                    <button className="button" id="button" type="" onClick={"./"}>Prosseguir</button>
                     </div>
                 </div>
                 <div className="cont"></div>
@@ -65,7 +65,7 @@ export function CadastroMicro2(){
                             <input className="inputInfoMicro" type="number" id="telefone" placeholder="Telefone" />
                         </form>
 
-                        <button className="button" id="button" onClick={"./"}>Cadastrar</button>
+                        <button className="button" id="button" type="button" onClick={"./"}>Cadastrar</button>
                     </div>
                 </div>
             </section>
