@@ -128,9 +128,9 @@ export function CadastroFree2(){
                            <input className="inputNome" type="text" id="sobrenome" placeholder="Sobrenome" />
                             <input className="inputInfo2" type="text" id="cpf" placeholder="CPF" />
                             <input className="inputInfo2" type="text" id="telefoneFree" placeholder="Telefone" />
-                            <input type="select" id="areaAtuacao" placeholder="Area de Atuação" />
-                            <input type="select" id="linguagemDominio" placeholder="Linguagens de Dominio" />
-                            <input type="select" id="formacao" placeholder="Formação" />
+                            <input type="stext" id="areaAtuacao" placeholder="Area de Atuação" />
+                            <input type="text" id="linguagemDominio" placeholder="Linguagens de Dominio" />
+                            <input type="text" id="formacao" placeholder="Formação" />
                         </form>
 
                         <button className="button" id="button" onClick={cadastroFree2}>Cadastrar</button>

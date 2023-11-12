@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const instace = axios.create({
-     baseURL: 'http://26.98.14.153:8080',
+     baseURL: 'http://10.18.33.24:8080',
      headers: {
           'Authorization': `${sessionStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
      }
 })
 

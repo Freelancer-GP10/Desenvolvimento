@@ -3,6 +3,7 @@ import { CadastroFree, CadastroFree2, CadastroMicro, CadastroMicro2 } from './pa
 import TelaEscolha from './pages/Escolha.jsx';
 import Index from './pages/Index';
 import Login from './pages/Login';
+import { MenuLateral } from './componentes/menu-lateral.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
 {
   path: "/login",
   element: <Login />,
+},
+{
+  path: "/menu",
+  element: <MenuLateral />,
 },
 ]);
 

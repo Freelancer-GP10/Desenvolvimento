@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import{ createBrowserRouter,RouterProvider} from 'react-router-dom'
 // import Index from "./Index";
-import Login from "./Login";
+import Login from "./Login,jsx";
 import { CadastroFree, CadastroFree2, CadastroMicro, CadastroMicro2 } from './Cadastro';
 import Test from './teste';
 

@@ -44,14 +44,16 @@ function Index() {
                     {/* SESSÃO DOIS */}
                     <div className="backGradient"></div>
                     <section className="section-dois">
-                        <div className="conteudo-central">
-                            {/* QUADRADOS */}
+
+                        {/* QUADRADOS */}
                             <div className="quadrado-grupo">
                                 <div className="quadrado quadrado4-dois"></div>
                                 <div className="quadrado quadrado3-dois"></div>
                                 <div className="quadrado quadrado1-dois"></div>
                                 <div className="quadrado quadrado2-dois"></div>
                             </div>
+
+                        <div className="conteudo-central">
                             <div className="caixa-central">
                                 <div className="logo-grande">
                                     <img src={logogrande} alt="" />

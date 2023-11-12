@@ -66,6 +66,13 @@ export function cadastroFree2(){
         linguagemDominio: linguagemDominioFre,
         formacao: formacaoFre
     }
+    console.log(dados.nome);
+    console.log(dados.sobrenome);
+    console.log(dados.cpf);
+    console.log(dados.telefone);
+    console.log(dados.areaAtuacao);
+    console.log(dados.linguagemDominio);
+    console.log(dados.formacao);
    
     instace.post("/freelancer",dados)
     .then((response)=>{
