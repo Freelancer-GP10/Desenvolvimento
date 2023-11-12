@@ -8,8 +8,10 @@ export function MenuLateral(){
     return(
         <>
             <div className="menu-lateral">
-                {/* <div className="background"></div>
-                <div className="background backgorund2"></div> */}
+                <div className="background"></div>
+                <div className="background back"></div>
+
+            <div className="position">
 
                 <img src={imgLogo} className="logo-branca" alt="ConcecTI" />
 
@@ -144,6 +146,7 @@ export function MenuLateral(){
                 </svg>
 
                 <p>Sair</p>
+                </div>
                 </div>
                 </div>
             </div>

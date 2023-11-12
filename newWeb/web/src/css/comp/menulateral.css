@@ -1,3 +1,15 @@
+.background{
+    border-radius: 50%;
+    height: 30%;
+    position: static;
+    filter: blur(100px);
+    mix-blend-mode: color-dodge;
+}
+
+.back{
+    margin-top: 90%;
+}
+
 .menu-lateral{
 width: 15%;
 height: 100vh;
@@ -10,9 +22,13 @@ color: white;
 .logo-branca{
     margin: 10%;
 }
-
+.position{
+    position: absolute;
+    margin-top: -44%;
+}
 .container{
     margin: 10%;
+    margin-top: 18%;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,7 +72,7 @@ color: white;
     gap: 20px
 }
 .logOff{
-    margin-top: 90%;
+    margin-top: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
