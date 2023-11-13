@@ -4,6 +4,8 @@ import TelaEscolha from './pages/Escolha.jsx';
 import Index from './pages/Index';
 import Login from './pages/Login';
 import { MenuLateral } from './componentes/menu-lateral.jsx';
+// import PerfilFreelancer from './pages/PerfilFreelancer';
+import PerfilFreelancer from './pages/PerfilFreelancer.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,15 @@ const router = createBrowserRouter([
   path: "/menu",
   element: <MenuLateral />,
 },
+
+{
+  path: "/perfil",
+  element: <PerfilFreelancer />,
+},
+// {
+//   path: "/perfil-freelancer",
+//   element: <PerfilFreelancer />,
+// },
 ]);
 
 function App() {
