@@ -5,7 +5,6 @@ import Index from './pages/Index';
 import Login from './pages/Login';
 import { MenuLateral } from './componentes/menu-lateral.jsx';
 import { Perfil } from './pages/Perfil.jsx';
-// import Perfil from './pages/PerfilFreelancer.jsx'
 
 
 const router = createBrowserRouter([
