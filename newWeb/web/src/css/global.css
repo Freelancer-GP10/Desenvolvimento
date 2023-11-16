@@ -39,6 +39,10 @@ body{
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    position: absolute;
+
+    margin-top: 4%;
+    margin-left: 18%;
 }
 .p-question{
     color: #000;

@@ -10,7 +10,7 @@ export function Service(){
         <>
         <MenuLateral />
 
-        <h2 className="h2-title2 title">Services</h2>
+        <h2 className="h2-title2">Services</h2>
 
         <PerfilComponente />
         <Pesquisa />
