@@ -1,0 +1,19 @@
+.display{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width:100%;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.perfil{
+    margin-left: 76%;
+    width: 20%;
+    position: absolute;
+    display: flex;
+    margin-top: 5%;
+}
+p{
+    margin-top: -1%;
+}

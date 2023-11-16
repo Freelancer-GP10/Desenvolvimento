@@ -2,9 +2,9 @@ import { MenuLateral } from "../componentes/menu-lateral"
 import { PerfilComponente } from "../componentes/perfilComp"
 import "../css/service.css";
 import "../css/global.css";
-import { ServiceComponente } from "../componentes/serviceComponente";
+import { ServiceComponente2 } from "../componentes/serviceComponente";
 
-export function Service(){
+export function Workspace(){
     return(
         <>
         <MenuLateral />
@@ -14,7 +14,7 @@ export function Service(){
         <PerfilComponente />
 
         <div className="conteudo">
-            <ServiceComponente />
+            <ServiceComponente2 />
         </div>
         </>
     )

@@ -32,6 +32,14 @@ body{
     font-weight: 400;
     line-height: normal;
 }
+.h2-title2{
+    color: #2B9DB8;
+    font-family: Oxanium;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 .p-question{
     color: #000;
     font-family: Oxanium;

@@ -5,6 +5,8 @@ import Index from './pages/Index';
 import Login from './pages/Login';
 import { MenuLateral } from './componentes/menu-lateral.jsx';
 import { Perfil } from './pages/Perfil.jsx';
+import { Service } from './pages/service.jsx';
+import { Workspace } from './pages/Workspace.jsx';
 
 
 const router = createBrowserRouter([
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
 {
   path: "/perfil",
   element: <Perfil />
+},
+{
+  path: "/service",
+  element: <Service />
+},
+{
+  path: "/workspace",
+  element: <Workspace />
 }
 ]);
 

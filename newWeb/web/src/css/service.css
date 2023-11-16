@@ -1,0 +1,14 @@
+h2{
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.conteudo{
+    /* display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start; */
+    /* display: flex; */
+    /* margin-left: -13%; */
+    gap: 20px;
+}
