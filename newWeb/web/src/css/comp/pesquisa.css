@@ -1,0 +1,31 @@
+.pesquisa{
+    width: 16%;
+    height: 33px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+
+    margin-top: 8%;
+    margin-left: 63%;
+}
+.campoBusca{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    display: inline-flex;
+    gap: 10px;
+}
+.campo{
+    width: 80%;
+    height: 4vh;
+
+    border-radius: 10px;
+    border: 1px solid #2B9DB8;
+    background: rgba(217, 217, 217, 0.09);
+}
+.pes{
+    margin-top: -17%;
+    margin-left: 65%;
+}
