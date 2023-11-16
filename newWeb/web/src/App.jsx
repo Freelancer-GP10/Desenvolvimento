@@ -7,6 +7,7 @@ import { MenuLateral } from './componentes/menu-lateral.jsx';
 import { Perfil } from './pages/Perfil.jsx';
 import { Service } from './pages/service.jsx';
 import { Workspace } from './pages/Workspace.jsx';
+import { Pay } from './pages/Pay.jsx';
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
 {
   path: "/workspace",
   element: <Workspace />
+},
+{
+  path: "/pay",
+  element: <Pay />
 }
 ]);
 
