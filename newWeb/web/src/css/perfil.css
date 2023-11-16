@@ -1,9 +1,196 @@
-.main {
-  width: 85%;
-  display: flex;
-  background-color: black;
-  justify-content: center;
-  /* Ajusta o espaçamento entre os elementos */
-  margin-bottom: 200px;
+.texto-voltar {
+  top: 100px;
+  left: 344px;
+  color: rgba(43, 157, 184, 1);
+  height: auto;
+  position: absolute;
+  font-size: 22px;
+  font-weight: 400;
+}
 
+a {
+  text-decoration: none;
+  color: #2B9DB8;
+  font-size: 22px;
+}
+
+/* LADO ESQUERDO */
+/* CARD AZUL DO PERFIL */
+.card-perfil {
+  gap: 227px;
+  top: 195px;
+  left: 356px;
+  width: 513px;
+  height: 198px;
+  display: flex;
+  padding: 10px 5px;
+  position: absolute;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: rgba(21, 95, 115, 1);
+}
+
+.perfil-cima {
+  gap: 7px;
+  display: flex;
+  /* align-items: flex-start; */
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-style: Light;
+  text-align: left;
+  font-family: Oxanium;
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+h3 {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-style: Light;
+  text-align: left;
+  font-family: Oxanium;
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+
+}
+
+.perfil-embaixo {
+  /* gap: 7px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column; */
+  margin-top: -326px;
+}
+
+.div-embaixo-left {
+  margin-right: 300px;
+  margin-top: 120px;
+}
+
+
+.button-editar {
+  display: flex;
+  padding: 5px 10px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  background-color: #289;
+  background: #2B9DB8;
+}
+
+
+/* GUARDA PORTFÓLIO */
+.caixa-portfolio {
+  gap: 34px;
+  top: 439px;
+  left: 356px;
+  width: 513px;
+  height: 282px;
+  display: flex;
+  padding: 10px;
+  position: absolute;
+  box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+}
+
+.btns {
+  color: #FFFFFF;
+}
+
+.btn-att-salvar {
+  background-color: #155F73;
+  border-radius: 6px;
+  margin: 10px;
+}
+
+.btn-att-salvar :hover {
+  background-color: #2B9DB8;
+  transition: 1s;
+}
+
+/* DADOS PESSOAIS */
+.div-dados {
+  width: 600px;
+  height: 600px;
+  gap: 33px;
+  top: 100px;
+  left: 958px;
+  display: flex;
+  padding: 30px 50px;
+  position: absolute;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  align-items: flex-start;
+  border-color: rgba(0, 0, 0, 0.20000000298023224);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.form {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Light;
+  text-align: left;
+  font-family: Oxanium;
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.inputs {
+  gap: 7px;
+  width: 467px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+/* Estilo para cada input */
+.inputs input {
+  gap: 10px;
+  height: 44px;
+  padding: 10px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(32, 74, 123, 1);
+  border-radius: 8px;
+  background-color: rgba(230, 244, 246, 0.6);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: Regular;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+
+
+/* Estilo para o botão "Salvar" */
+.inputs button {
+  background-color: rgba(21, 95, 115, 1);
+  color: rgba(255, 255, 255, 1);
 }
