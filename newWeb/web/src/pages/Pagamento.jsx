@@ -1,5 +1,6 @@
 import React from 'react'
-import "/home/isaiasrlc/Documentos/Projetos/Desenvolvimento/newWeb/web/src/css/pagamento.css";
+// import "/home/isaiasrlc/Documentos/Projetos/Desenvolvimento/newWeb/web/src/css/pagamento.css";
+
 import "../css/pagamento.css"
 import { MenuLateral } from '../componentes/menu-lateral'
 

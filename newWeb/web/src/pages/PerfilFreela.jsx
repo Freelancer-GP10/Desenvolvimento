@@ -4,7 +4,7 @@ import { MenuLateral } from '../componentes/menu-lateral'
 import editicon from '../assets/edit.png'
 
 
-export default function Perfil() {
+export default function PerfilFreela() {
 
   const patterns = {
     CPF_9: /^(\d{3})(\d{3})(\d{3})(\d{0,2})/,
@@ -94,7 +94,7 @@ export default function Perfil() {
           <div className="perfil-esquerda__infos">
             <div className="info email">
               <p>Yago Pires</p>
-              <span>yagoPires@gmail.com</span>
+              <span>yagoPires@exemplo.com</span>
             </div>
             <div className="info photo">
               <div src="" alt="" className="photo" />
@@ -110,8 +110,8 @@ export default function Perfil() {
           <div className="perfil-esquerda__dialog">
             <div className='dialog__texts'>
               <p>Olá Freelancer, Seu Portifólio?</p>
-              <p>Guardamos seu portifólio para que possamos fazer
-                análises e indicar onde deve estar melhorando!</p>
+              <p>Guardamos seu portifólio para que possamos realizar
+                análises e indicar onde deve ser melhorado!</p>
               <p>Você pode realizar a atualização dele ou até mesmo
                 baixar o seu portifólio que temos guardado! </p>
             </div>
