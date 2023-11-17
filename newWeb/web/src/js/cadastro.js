@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import instace from "./instance";
 
 export function cadastroFree(){
@@ -89,9 +88,9 @@ export function cadastroFree2(){
 }
 }
 
-export function cadastroMicro(){
+export function cadastroMicro1(){
     sessionStorage.removeItem("token")
-    const emailinput = document.getElementById("emailMrico").value;
+    const emailinput = document.getElementById("emailMicro").value;
     const senhainput = document.getElementById("senhaMicro").value;
     const senhainput2 = document.getElementById("senhaMicro2").value;
     
@@ -105,10 +104,10 @@ export function cadastroMicro(){
         {
             senha:senhainput,
             email:emailinput,
-            papel:"empresa"
+            papel:"Empresa"
         }
        
-        instace.post("/empresa",dados)
+        instace.post("/usuarios",dados)
         .then((response)=>{
             console.log("Login deu certo");
             console.log(response.data);
@@ -127,29 +126,42 @@ export function cadastroMicro(){
         alert("Dados invalidos, preencha as informações corretamente para prosseguir!")
     }
 }
+export function buscarCep(){
+    const cepMicro = document.getElementById('cep').value
 
-export function cadastroMicro2(){
+    console.log(cepMicro);
+
+    // instace.get(`/endereco/cep?cep=${cepMicro}`)
+    // .then((response)=>{
+    //     // var logradouro = response.data.logradouro;
+    //     // FAZER QUALQUER ACAO REDIRECIONAR BUSCAR DADO ETC
+    // })
+}
+
+export function cadastroMicroFinal(){
 
     const nomeMicro = document.getElementById('nomeEmpresa').value;
     const cnpjMicro = document.getElementById('cnpj').value;
     const telefoneMicro = document.getElementById('telefone').value;
     const ramoMicro = document.getElementById('ramo').value;
+    
 
     console.log(nomeMicro);
     console.log(cnpjMicro);
     console.log(telefoneMicro);
     console.log(ramoMicro);
+    
 
     if(nomeMicro != "" && cnpjMicro != "" && telefoneMicro != "" && ramoMicro != ""){
         
     var dados =
     {
         nome:nomeMicro,
-        sobrenome:cnpjMicro,
-        cpf:telefoneMicro,
-        telefone: ramoMicro
+        cnpj:cnpjMicro,
+        ramo:ramoMicro,
+        telefone: telefoneMicro
     }
-   
+    console.log("dentro do json"+dados.nome);
     instace.post("/empresa",dados)
     .then((response)=>{
         console.log("Cadastro efetuado com sucesso");

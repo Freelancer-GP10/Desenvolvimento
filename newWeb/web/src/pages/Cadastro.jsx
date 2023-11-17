@@ -2,7 +2,7 @@ import "../css/global.css";
 import "../css/img.css";
 import "../css/cadastro.css";
 import imgLogo from "../assets/logo.png"
-import { cadastroFree, cadastroFree2} from "../js/cadastro";
+import { cadastroFree, cadastroFree2, cadastroMicro1, cadastroMicroFinal} from "../js/cadastro";
 
 
 export function CadastroMicro(){
@@ -26,7 +26,7 @@ export function CadastroMicro(){
                             <input type="password" id="senhaMicro2" placeholder="Confirmar Senha" />
                         </form>
 
-                    <button className="button" id="button" type="" onClick={"./"}>Prosseguir</button>
+                    <button className="button" id="button" type="" onClick={cadastroMicro1}>Prosseguir</button>
                     </div>
                 </div>
                 <div className="cont"></div>
@@ -59,13 +59,14 @@ export function CadastroMicro2(){
                     </a>
 
                         <form className="formMicro2" action="">
-                            <input className="inputInfoMicro" type="number" id="nomeEmpresa" placeholder="Nome da Empresa" />
-                            <input className="inputInfoMicro" type="number" id="cnpj" placeholder="CNPJ" />
+                            <input className="inputInfoMicro" type="text" id="nomeEmpresa" placeholder="Nome da Empresa" />
+                            <input className="inputInfoMicro" type="text" id="cnpj" placeholder="CNPJ" />
                             <input className="inputInfoMicro" type="text" id="ramo" placeholder="Ramo" />
-                            <input className="inputInfoMicro" type="number" id="telefone" placeholder="Telefone" />
+                            <input className="inputInfoMicro" type="text" id="cep" placeholder="CEP" />
+                            <input className="inputInfoMicro" type="text" id="telefone" placeholder="Telefone" />
                         </form>
 
-                        <button className="button" id="button" type="button" onClick={"./"}>Cadastrar</button>
+                        <button className="button" id="button" type="button" onClick={cadastroMicroFinal}>Cadastrar</button>
                     </div>
                 </div>
             </section>
