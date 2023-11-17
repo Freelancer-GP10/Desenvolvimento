@@ -4,10 +4,10 @@ import TelaEscolha from './pages/Escolha.jsx';
 import Index from './pages/Index';
 import Login from './pages/Login';
 import { MenuLateral } from './componentes/menu-lateral.jsx';
-import { Perfil } from './pages/Perfil.jsx';
 import { Service } from './pages/service.jsx';
 import { Workspace } from './pages/Workspace.jsx';
 import { Pay } from './pages/Pay.jsx';
+import Perfil from './pages/Perfil.jsx';
 
 
 const router = createBrowserRouter([
