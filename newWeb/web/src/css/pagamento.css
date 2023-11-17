@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.caixa {
+    display: flex;
+}
+
+
+.telaRevisao {
+    width: 50%;
+    height: 100vh;
+    /* background-color: red; */
+}
+.caixa_servico {
+    /* background-color: blue; */
+    margin-top: 2%;
+    height: 65vh;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15%;    
+}
+
+    /* Estilos básicos para os breadcrumbs */
+    .breadcrumbs {
+        list-style: none;
+        padding: 0;
+        margin-top: 9%;
+        /* background-color: red; */
+        z-index:1;
+        margin-left: 3%;
+    }
+  
+      .breadcrumbs li {
+        display: inline;
+        margin-right: 0px;
+      }
+  
+      .breadcrumbs li::after {
+        content: ">";
+        margin-left: -1px;
+        margin-right: -10px;
+        color: #999; /* Cor do separador */
+      }
+  
+      .breadcrumbs li:last-child::after {
+        content: none; /* Remove o separador do último item */
+      }
+  
+      /* Estilos adicionais para os links */
+      .breadcrumbs a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #2B9DB8; /* Cor do link */
+        
+      }
+  
+      .breadcrumbs a:hover {
+        text-decoration: underline;}
+
+#ipt_nome{
+width: 70%;
+}
+
+#ipt_tipo{
+    width: 55%;
+}
+
+#ipt_inicio{
+    width: 50%;
+}
+
+#ipt_prazo{
+    width: 45%;
+}
+
+#ipt_valor{
+    width: 40%;
+}
+
+.realizar_pag{
+    color: #02495A;
+    font-weight: 400;
+    font-size: 15px;
+    width: 27.7%;
+    height: 7vh;
+    border: 1px solid #02495A;
+    margin-top: 7%;
+    margin-left: 8%;
+}
+
+#descricao{
+    width: 83%;
+    height: 10vh;
+    border: 1px solid #02495A  ;
+    border-radius: 7px;
+    margin: 3px;
+    /* margin-left: 15%; */
+    color: black;
+    padding: 10px 20px;
+
+}
+
+#titulo_revisao {
+    font-size: 23px;
+margin-bottom: 4%;
+margin-left: 0%;
+}
+.caixa_servico input{
+    /* width: 80%; */
+    height: 7vh;
+    border: 1px solid #02495A  ;
+    border-radius: 7px;
+    margin: 5px;
+    /* margin-left: 15%; */
+    color: black;
+    padding: 10px 20px;
+}
+
+.tela_pag {
+    height: 100vh;
+    width: 38%;
+    display: flex;
+}
+
+.formulario {
+    width: 100%;
+    height: 70vh;
+    background-color: #02495A;
+    margin-left: 10%;
+    margin-top: -10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    z-index: 6;
+    box-shadow: -13px 20px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.sombraFormulario {
+    background-color: #2B9DB8;
+    width: 70%;
+    margin-top: 27%;
+    margin-left: -10%;
+    height: 70vh;
+    border-radius: 10px;
+    z-index: 5;
+}
+
+.formulario p {
+    margin-top: 1%;
+    color: white;
+    font-size: 20px;
+    margin-left: 6%;
+}
+
+.linhaSimples input {
+    margin-left: 6%;
+    width: 87%;
+    height: 7vh;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    padding: 10px 20px;
+    
+
+}
+
+.linhaDupla {
+    margin-left: 6%;
+    width: 87%;
+    height: 7vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.linhaDupla input{
+    padding: 10px 10px;
+}
+
+.botao_voltar {
+    border: 2px solid #02495A;
+    color: #02495A;
+    height: 43px;
+    width: 17%;
+    font-size: 18px;
+    margin-top: 6%;
+    margin-left: -4%;
+    font-weight: 400;
+}
+
+.formulario button {
+    border: 2px solid white;
+    margin-left: 6%;
+    height: 45px;
+    margin-bottom: 1%;
+    color: white;
+    font-weight: 400;
+}
+
+.formulario button:hover {
+    background-color: white;
+    color: #02495A;
+}
+
+.ipt_data {
+    width: 59%;
+    height: 7vh;
+    border: none;
+    border-radius: 5px;
+}
+
+.ipt_cvv {
+    width: 36%;
+    height: 7vh;
+    border: none;
+    border-radius: 5px;
+}
+
+.telaRevisao p {
+    margin-left: 7%;
+    margin-top: 7%;
+}
+
+.quadrado1 {
+    width: 24%;
+    height: 39vh;
+    border: 3px solid #215683;
+    position: fixed;
+    transform: rotate(12deg);
+    margin-left: 16%;
+    margin-top: 18%;
+}
+
+.quadrado2 {
+    width: 21%;
+    height: 40vh;
+    border: 3px solid #215683;
+    position: fixed;
+    transform: rotate(12deg);
+    margin-left: 10%;
+    margin-top: 30.8%;
+}
+
+.quadrado3 {
+    width: 23%;
+    height: 40vh;
+    border: 3px solid #bdeff1;
+    position: fixed;
+    transform: rotate(12deg);
+    margin-left: 6%;
+    margin-top: 27%;
+}
+
+.quadrado4 {
+    width: 27%;
+    height: 42vh;
+    border: 3px solid #bdeff1;
+    position: fixed;
+    transform: rotate(12deg);
+    margin-left: 13%;
+    margin-top: 22%;
+}

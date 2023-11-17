@@ -8,6 +8,7 @@ import { Service } from './pages/service.jsx';
 import { Workspace } from './pages/Workspace.jsx';
 import { Pay } from './pages/Pay.jsx';
 import Perfil from './pages/Perfil.jsx';
+import Pagamento from './pages/Pagamento.jsx';
 
 
 const router = createBrowserRouter([
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      < Pagamento/>
     </>
   )
 }
