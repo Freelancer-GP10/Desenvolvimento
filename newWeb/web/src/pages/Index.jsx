@@ -3,7 +3,7 @@ import "../css/img.css";
 import "../css/style.css";
 import logobranca from "../assets/logo-branca.png";
 import logogrande from "../assets/logo-grande.png";
-import imgservicos from "../assets/img-servicos.png";
+// import imgWorkspace from '../assets/img-workspace.png';
 
 import iconfone from "../assets/icon-foninho.png"
 import iconbalao from "../assets/icon-balaozinho.png"
@@ -15,6 +15,9 @@ import iconface from "../assets/icon-face.png";
 import iconsim from "../assets/icon-sim.png";
 import iconnao from "../assets/icon-nao.png";
 import { Quadrados, Quadrados1, Quadrados2 } from "../componentes/quadrados";
+
+import Cards from '../componentes/Cards';
+
 
 function Index() {
     return (
@@ -68,33 +71,9 @@ function Index() {
 
                 <section className="section-tres">
                     <div className="cards-imagem">
-
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
-                            <div style={{ background: '#024C5E', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
-                                <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Workplace</div>
-                                <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
-                                    O Workplace é o nosso ambiente de trabalho integrado onde você pode visualizar, organizar e saber o progresso dos seus serviços
-                                </div>
-                            </div>
-
-                            <div style={{ background: '#024B5C', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
-                                <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Service</div>
-                                <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
-                                    Em nossa página de Services, você cliente pode tanto cadastrar um serviço como aceitar um serviço
-                                </div>
-                            </div>
-
-                            <div style={{ background: '#02495A', borderRadius: '10px', padding: '20px', color: 'white', maxWidth: '300px', height: '140px', margin: '10px' }}>
-                                <div style={{ fontSize: '22px', fontFamily: 'Oxanium', fontWeight: '400' }}>Pay</div>
-                                <div style={{ fontSize: '14px', fontFamily: 'Oxanium', fontWeight: '400' }}>
-                                    Nossa página de pagamento, Pay, é onde garantimos a segurança dos nossos clientes na hora de pagar ou receber por um serviço realizado
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="img-servicos">
-                            <img src={imgservicos} alt="" />
-                        </div>
+                        
+                    <Cards/>
+                    {/* <img src={imgWorkspace} alt="aa"/> */}
 
                     </div>
                 </section>
@@ -105,7 +84,8 @@ function Index() {
                         <div className="titulo-planos">
                             <h5>Nossos planos</h5>
                         </div>
-                        {/* CARDS */}
+
+                        {/* CARDS PLANOS */}
                         <div className="grupo-cards">
                             <div className="card">
                                 <h2>Básico</h2>
@@ -164,11 +144,15 @@ function Index() {
                                 </div>
                             </div>
                         </div>
+
+                
+
                     </div>
                 </section>
             </section>
 
             {/* FOOTER */}
+        
             <footer>
                 <div className="logofooter">
                     <div className="coluna-logo">
@@ -196,9 +180,9 @@ function Index() {
                     </div>
                     <div className="coluna-tres">
                         <h2><b>Nossas redes</b></h2>
-                        <a href="#"> <img src={iconinsta} alt="" className="icone-instagram" /></a>
-                        <a href="#"> <img src={icontwitter} alt="" className="icone-twitter" /> </a>
-                        <a href="#"> <img src={iconface} alt="" className="icone-facebook" /></a>
+                        <a href="https://www.instagram.com/conecti.10/"> <img src={iconinsta} alt="" className="icone-instagram" /></a>
+                        <a href="https://twitter.com/conec_TI"> <img src={icontwitter} alt="" className="icone-twitter" /> </a>
+                        <a href="https://www.facebook.com/profile.php?id=61553641055822"> <img src={iconface} alt="" className="icone-facebook" /></a>
                         <i className="bi bi-headset"></i>
                     </div>
                 </div>
