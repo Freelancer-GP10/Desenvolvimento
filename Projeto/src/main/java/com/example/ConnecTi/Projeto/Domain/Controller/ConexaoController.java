@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/conexao")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class ConexaoController {
     @Autowired
     private RepositoryServico servico;

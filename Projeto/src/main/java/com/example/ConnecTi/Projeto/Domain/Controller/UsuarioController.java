@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "http://10.18.33.239:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class UsuarioController {
 
     @Autowired

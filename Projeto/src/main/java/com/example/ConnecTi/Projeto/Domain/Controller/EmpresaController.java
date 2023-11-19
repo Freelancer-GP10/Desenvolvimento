@@ -9,16 +9,20 @@ import com.example.ConnecTi.Projeto.Domain.Repository.RepostioryEmpresa;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Model.Empresa;
 import com.example.ConnecTi.Projeto.Model.Usuario;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/empresa")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class EmpresaController {
 
     @Autowired
@@ -31,17 +35,23 @@ public class EmpresaController {
     private RepositoryFreelancer repositoryFreelancer;
 
     @PostMapping
-    public ResponseEntity<Empresa> cadastrarEmpresa(@RequestBody CadastrarEmpresaDto dto) {
+    public ResponseEntity<Empresa> cadastrarEmpresa(@RequestBody @Valid CadastrarEmpresaDto dto) {
         Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
         // Verifica se o papel do usuário é "Empresa"
       //  autenticacaoService.verificarPapelEmpresa(usuarioLogado);
-        Empresa empresa = repositoryEmpresa.findByEmail(usuarioLogado.getEmail());
+
+        Empresa empresa = repositoryEmpresa.findByEmail(usuarioLogado.getEmail()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe uma empresa com esse email"));
+
+
+        System.out.println(dto.nome());
+        System.out.println("aaaaaaaaaaaa");
         empresa.setNome(dto.nome());
         empresa.setEmail(usuarioLogado.getEmail());
         empresa.setSenha(usuarioLogado.getSenha());
+        empresa.setCnpj(dto.cnpj());
+        System.out.println(dto.cnpj());
         empresa.setRamo(dto.ramo());
         empresa.setTelefone(dto.telefone());
-        System.out.println(empresa);
         repositoryEmpresa.save(empresa);
 
         return ResponseEntity.ok(empresa);
@@ -82,7 +92,6 @@ public class EmpresaController {
         return ResponseEntity.ok(empresa);
     }
     @DeleteMapping("/{id}")
-
     public ResponseEntity<Empresa> desativar(@PathVariable int id){
         Empresa empresa =repositoryEmpresa.findById((long) id).orElse(null);
         if(empresa == null){

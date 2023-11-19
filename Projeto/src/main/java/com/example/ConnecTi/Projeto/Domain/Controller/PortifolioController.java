@@ -25,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -33,6 +34,7 @@ import static java.util.UUID.*;
 
 @RestController
 @RequestMapping("/portifolio")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class PortifolioController {
 
     @Autowired
@@ -81,11 +83,15 @@ public class PortifolioController {
         }
     }
 
-    @GetMapping("/download/{id}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable Long id) {
-        Long userlogado = autenticacaoService.getUsuarioFromUsuarioDetails().getId();
+    @GetMapping("/download")
+    public ResponseEntity<Resource> downloadFile() {
+        Usuario userlogado = autenticacaoService.getUsuarioFromUsuarioDetails();
         // Busque o objeto Portifolio no banco de dados pelo ID
-        Portifolio portifolio = repository.getPortifolioByFreelancer(userlogado);
+        System.out.println(userlogado+"AAAAAAAAAAAAAAAAAAA");
+        Freelancer freelancer = repositoryFreelancer.findByEmail(userlogado.getEmail());
+
+
+        Portifolio portifolio = repository.getPortifolioByFreelancer(freelancer.getIdFreelancer()).orElseThrow(()-> new RuntimeException("Portifolio nao encotrado"));
 
         // Pegue o caminho do arquivo
         Path path = Paths.get(portifolio.getArquivo().toURI());

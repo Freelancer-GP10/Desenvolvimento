@@ -64,7 +64,7 @@ public class UsuarioService {
             freelancer.setUsuario(usuarioSalvo);
             freelancerRepository.save(freelancer);
 
-        } else if ("empresa".equalsIgnoreCase(usuarioCriacaoDto.getPapel())) {
+        } else if ("Empresa".equalsIgnoreCase(usuarioCriacaoDto.getPapel())) {
             Empresa empresa = new Empresa();
         //    empresa.setNome(usuarioSalvo.getEmail()); // ajuste conforme necessário
             empresa.setEmail(usuarioSalvo.getEmail());

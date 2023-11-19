@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/endereco")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class ApiEnderecoController {
     private RepositoryApiEndereco repository;
     private final RestTemplate restTemplate = new RestTemplate();

@@ -27,6 +27,7 @@
         private Long idFreelancer;
         private String nome;
         private String sobrenome;
+        private String telefone;
         private String email;
         private String areaAtuacao;
         private String linguagemDominio;

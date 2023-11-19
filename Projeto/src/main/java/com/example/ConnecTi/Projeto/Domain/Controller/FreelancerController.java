@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelancer")
-@CrossOrigin(origins = "http://10.18.33.239:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class FreelancerController {
     @Autowired
     private RepositoryFreelancer repository;
@@ -52,6 +52,8 @@ public class FreelancerController {
         Freelancer freelancer = repository.findByEmail(usuariologado.getEmail());
         freelancer.setNome(dto.nome());
         freelancer.setEmail(usuariologado.getEmail());
+        freelancer.setSobrenome(dto.sobrenome());
+        freelancer.setTelefone(dto.telefone());
         freelancer.setSenha(usuariologado.getSenha());
         freelancer.setFormacao(dto.formacao());
         freelancer.setAreaAtuacao(dto.areaAtuacao());

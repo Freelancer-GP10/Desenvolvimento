@@ -124,7 +124,6 @@ public class ConexaoService {
                     dto.setStatusServico(conexao.isAceito() ? "Aceito" : "Pendente");
                     dto.setDataPostada(conexao.getServico().getDataInicio());
                     dto.setNomeServico(conexao.getServico().getNome());
-                    dto.setTipoServico(conexao.getServico().getEspecialidade().getTipo());
                     dto.setNomeEmpresa(conexao.getServico().getEmpresa().getNome());
                     dto.setDescricao(conexao.getServico().getDescricao());
                     return dto;

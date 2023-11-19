@@ -7,15 +7,12 @@ import com.example.ConnecTi.Projeto.Model.StatusServico;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public record CadastrarServicoDto(Long idServico,
+public record CadastrarServicoDto(
                                   String nome,
                                   LocalDateTime prazo,
                                   Date dataInicio,
                                   LocalDateTime dataFinalizacao,
                                   Double valor,
-                                  String descricao,
-                                  StatusServico statusServico,
-                                  Empresa empresa,
-                                  Especialidade especialidade
+                                  String descricao
 ) {
 }

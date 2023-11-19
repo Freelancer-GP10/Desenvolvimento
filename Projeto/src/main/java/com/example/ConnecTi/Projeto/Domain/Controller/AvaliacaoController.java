@@ -2,6 +2,7 @@ package com.example.ConnecTi.Projeto.Domain.Controller;
 
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryAvaliacao;
 import com.example.ConnecTi.Projeto.Model.Avaliacao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +11,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/avaliacao")
+@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class AvaliacaoController {
-
+    @Autowired
     private RepositoryAvaliacao repository;
 
     @PostMapping
