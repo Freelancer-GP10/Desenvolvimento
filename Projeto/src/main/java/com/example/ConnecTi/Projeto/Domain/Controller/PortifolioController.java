@@ -19,15 +19,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 import static java.util.UUID.*;
@@ -124,6 +128,59 @@ public class PortifolioController {
             throw new RuntimeException("Erro ao determinar o tipo de arquivo", e);
         }
     }
+
+    private List<Long> listaDeDownload = new ArrayList<>();
+
+    @PostMapping("/selecionar-para-download")
+    public ResponseEntity<String> selecionarParaDownload() {
+        List<Portifolio> portifolios = repository.findAll();
+        if (portifolios.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        portifolios.forEach(portifolio -> listaDeDownload.add(portifolio.getIdPortifolio()));
+        return ResponseEntity.ok("Portfólio adicionado à lista de download");
+    }
+    @PostMapping("/remover-da-selecao")
+    public ResponseEntity<String> removerDaSelecao(@RequestBody List<Long> portifolioId) {
+       // faça esse endoint receber uma lista de IDs a serem tirados da lista de donwloads
+        portifolioId.forEach(id -> listaDeDownload.remove(id));
+        return ResponseEntity.ok("Portfólios removido da lista de download");
+    }
+
+    @GetMapping("/baixar-selecionados")
+    public ResponseEntity<?> baixarSelecionados() throws IOException {
+        if (listaDeDownload.isEmpty()) {
+            return ResponseEntity.badRequest().body("Não há portfólios selecionados para download");
+        }
+
+        // Criar um arquivo ZIP temporário
+        File zipFile = File.createTempFile("portfolios-", ".zip");
+        try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile))) {
+            for (Long portifolioId : listaDeDownload) {
+                Portifolio portifolio = repository.findById(portifolioId)
+                        .orElseThrow(() -> new RuntimeException("Portfólio não encontrado: " + portifolioId));
+                File file = portifolio.getArquivo();
+                ZipEntry zipEntry = new ZipEntry(file.getName());
+                zos.putNextEntry(zipEntry);
+                Files.copy(file.toPath(), zos);
+                zos.closeEntry();
+            }
+        }
+
+        // Limpar a lista de download após a criação do ZIP
+        listaDeDownload.clear();
+
+        // Preparar o recurso para download
+        Path zipPath = zipFile.toPath();
+        Resource resource = new UrlResource(zipPath.toUri());
+        String filename = zipPath.getFileName().toString();
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/zip"))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+                .body(resource);
+    }
+
+
 
 
 

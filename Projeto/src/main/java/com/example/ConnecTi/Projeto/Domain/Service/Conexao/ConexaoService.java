@@ -1,5 +1,6 @@
 package com.example.ConnecTi.Projeto.Domain.Service.Conexao;
 
+import com.example.ConnecTi.Projeto.Domain.Controller.ServicoController;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.AceitarServicoDTO;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.CadastrarConexaoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.ConexaoDto;
@@ -26,6 +27,8 @@ import java.util.stream.Collectors;
 public class ConexaoService {
         @Autowired
         private ConexaoRepository conexaoRepository;
+         @Autowired
+        private ServicoController servicoController;
 
         @Autowired
         private RepostioryEmpresa empresaRepository;
@@ -49,6 +52,8 @@ public class ConexaoService {
 
         Avaliacao avaliacao = avaliacaoRepository.findById(novaConexaoDto.fkAvaliacao())
                 .orElseThrow(() -> new ResourceNotFoundException("Avaliação não encontrada"));
+
+
 
         Conexao conexao = new Conexao();
         conexao.setAceito(novaConexaoDto.aceito());
@@ -91,6 +96,18 @@ public class ConexaoService {
         if(servicoJaAceito){
             throw new Exception("Este serviço já foi aceito por outro freelancer");
         }
+        Servico servicoAceito = servicoController.getFilaDeServicos().stream()
+                .filter(s -> s.getIdServico().equals(aceitarServicoDto.fkServico()))
+                .findFirst()
+                .orElse(null);
+
+        if (servicoAceito == null) {
+            throw new Exception("Serviço não está na fila de pendentes ou não encontrado");
+        }
+
+
+        servicoController.getFilaDeServicos().remove(servicoAceito);
+        servicoController.getPilhaServicosAceitos().push(servicoAceito);
 
         // Cria uma nova conexão
         Conexao novaConexao = new Conexao();

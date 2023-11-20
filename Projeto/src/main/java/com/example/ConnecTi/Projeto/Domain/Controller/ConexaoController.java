@@ -8,6 +8,7 @@ import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryServico;
 import com.example.ConnecTi.Projeto.Domain.Service.Conexao.ConexaoService;
 import com.example.ConnecTi.Projeto.Domain.Service.ListObj;
 import com.example.ConnecTi.Projeto.Model.Conexao;
+import com.example.ConnecTi.Projeto.Model.Servico;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,10 +24,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -52,6 +50,7 @@ public class ConexaoController {
 
             return new ResponseEntity<>(novaConexao, HttpStatus.CREATED);
     }
+
 
     @GetMapping("/listar")
     public ResponseEntity<List<Conexao>> listarConexoes(){

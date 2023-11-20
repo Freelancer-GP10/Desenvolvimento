@@ -17,12 +17,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/servico")
 @CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class ServicoController {
+    private Queue<Servico> filaDeServicos = new LinkedList<>();
+    private Stack<Servico> pilhaServicosAceitos = new Stack<>();
+    private Servico ultimoServicoPostado;
+
+    public Queue<Servico> getFilaDeServicos() {
+        return filaDeServicos;
+    }
+
+    public Stack<Servico> getPilhaServicosAceitos() {
+        return pilhaServicosAceitos;
+    }
     @Autowired
     private RepositoryServico servico;
     @Autowired
@@ -52,8 +63,19 @@ public class ServicoController {
         servicoSalvo.setDataInicio(servico.dataInicio());
         servicoSalvo.setDataFinalizacao(servico.dataFinalizacao());
 
+        filaDeServicos.offer(servicoSalvo);
+        ultimoServicoPostado = servicoSalvo; // Armazena o último serviço postado para ser usado no método de aceitar serviço
         this.servico.save(servicoSalvo);
         return ResponseEntity.ok().build();
+    }
+    @PostMapping("/desfazer-postagem")
+    public ResponseEntity<String> desfazerPostagem() {
+        if (ultimoServicoPostado != null) {
+            // Lógica para remover o último serviço postado do banco de dados
+            ultimoServicoPostado = null;
+            return ResponseEntity.ok("Postagem de serviço desfeita com sucesso");
+        }
+        return ResponseEntity.badRequest().body("Nenhuma postagem recente para desfazer");
     }
     @GetMapping
     public ResponseEntity<List<Servico>> listar(){
@@ -62,6 +84,17 @@ public class ServicoController {
           return ResponseEntity.noContent().build();
       }
         return ResponseEntity.ok().body(lista);
+    }
+
+    @GetMapping("/servicos-aceitos")
+    public ResponseEntity<List<Servico>> listarServicosAceitos() {
+        List<Servico> servicosAceitos = new ArrayList<>(pilhaServicosAceitos);
+        if (servicosAceitos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        Collections.reverse(servicosAceitos);
+
+        return ResponseEntity.ok(servicosAceitos);
     }
 
     @GetMapping("/{id}")
