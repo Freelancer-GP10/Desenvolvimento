@@ -1,20 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { CadastroFree, CadastroFree2, CadastroMicro, CadastroMicro2 } from './pages/Cadastro';
 import TelaEscolha from './pages/Escolha.jsx';
+import CadastroServico from './pages/CadastroServico.jsx';
 import Index from './pages/Index';
 import Login from './pages/Login';
 import { MenuLateral } from './componentes/menu-lateral.jsx';
 import { Service } from './pages/service.jsx';
 import { Workspace } from './pages/Workspace.jsx';
 import { Pay } from './pages/Pay.jsx';
-<<<<<<< HEAD
 import Contato from './pages/Contato.jsx';
-=======
+
 import PerfilFreela from './pages/PerfilFreela.jsx';
 import PerfilMicro from './pages/PerfilMicro.jsx';
 
 import Pagamento from './pages/Pagamento.jsx';
->>>>>>> 99ed2e7b84c6330e35b13159c62ef39ba8293dc4
 
 
 const router = createBrowserRouter([
@@ -22,18 +21,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <Index />,
   },
-  {
-<<<<<<< HEAD
-    path: "/contato",
-    element: <Contato />,
-  },
+  
+
   {
       path: "/cadastro-previo-freelancer",
       element: <CadastroFree />,
-=======
+
     path: "/cadastro-previo-freelancer",
     element: <CadastroFree />,
->>>>>>> 99ed2e7b84c6330e35b13159c62ef39ba8293dc4
   },
   {
     path: "/cadastro-freelancer",
@@ -89,7 +84,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <CadastroServico/>
     </>
   )
 }

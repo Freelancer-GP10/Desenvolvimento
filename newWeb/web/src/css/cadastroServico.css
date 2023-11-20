@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.corpo {
+    display: flex;
+    background-color: white;
+}
+
+
+.quadradros{
+    /* height: 100vh; */
+    /* width: 15%; */
+    background-color: blue;
+
+    margin-left: -22%;
+    margin-top: 2%;
+}
+
+.principal {
+
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    /* background-color: red; */
+    height: 100vh;
+}
+
+.caixa_bread{
+    margin-top: -5%;
+    /* background-color: aqua; */
+   width: 100%;
+   /* display: inline-block; */
+
+}
+.aab{
+    width: 8%;
+    height: 7vh;
+    border-radius: 5px;
+    font-size: 17px;
+    margin-left: 87%;
+    margin-top: -5%;
+    border: 1px solid #204A7B;
+    color: #204A7B;
+}
+
+.botao_cadastrar{
+    margin-top: 4%;
+    margin-left: 5% ;
+    border: 1px solid #204A7B;
+    width: 19%;
+    border-radius: 5px;
+    height: 7vh;
+    font-size: 16px;
+    color: #204A7B;
+    font-weight: 400;
+}
+/* Estilos básicos para os breadcrumbs */
+.breadcrumbs {
+  /* background-color: red; */
+    list-style: none;
+    padding: 0;
+   z-index: 1;
+    width: 30%;
+}
+
+.breadcrumbs li {
+    display: inline-block;
+    margin-left: 0px;
+}
+
+.breadcrumbs li::after {
+    content: ">";
+    margin-left: 20px;
+    color: #2B9DB8;
+    /* Cor do separador */
+}
+
+.breadcrumbs li:last-child::after {
+    content: none;
+    /* Remove o separador do último item */
+}
+
+/* Estilos adicionais para os links */
+.breadcrumbs a {
+    text-decoration: none;
+    font-size: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+    color: #2B9DB8;
+    /* Cor do link */
+
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+
+
+.caixa_formulario {
+    margin-left: 5%;
+    margin-top: 6%;
+    width: 100%;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+.linha_inicio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+
+
+input {
+    height: 6vh;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: black;
+    font-weight: 400;;
+}
+
+
+#ipt_nome_servico {
+    width: 72%;
+    background-color: #FFFFFF;
+    border: 1px solid #204A7B;
+}
+
+#ipt_data_inicio {
+    width: 18%;
+
+    background-color: #FFFFFF;
+    border: 1px solid #204A7B;
+}
+
+.linha_simples select {
+    width: 90%;
+    height: 6vh;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #204A7B;
+}
+
+.linha_simples textarea {
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #204A7B;
+    padding: 10px 10px;
+    width: 90%;
+    height: 22vh;
+}
+
+.linha_final {
+    display: flex;
+    flex-direction: row;
+    /* background-color: green; */
+    justify-content: space-between;
+    width: 40%;
+}
+
+.linha_final input {
+    background-color: #FFFFFF;
+    border: 1px solid #204A7B;
+
+}
+
