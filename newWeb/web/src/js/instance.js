@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instace = axios.create({
-     baseURL: 'http://10.18.33.211:8080',
+     baseURL: 'http://26.98.14.153:8080',
      timeout:10000,
      headers: {
           "Content-Type":"application/json",

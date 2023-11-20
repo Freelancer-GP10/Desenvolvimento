@@ -8,12 +8,17 @@ import { Perfil } from './pages/Perfil.jsx';
 import { Service } from './pages/service.jsx';
 import { Workspace } from './pages/Workspace.jsx';
 import { Pay } from './pages/Pay.jsx';
+import Contato from './pages/Contato.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Index />,
+  },
+  {
+    path: "/contato",
+    element: <Contato />,
   },
   {
       path: "/cadastro-previo-freelancer",

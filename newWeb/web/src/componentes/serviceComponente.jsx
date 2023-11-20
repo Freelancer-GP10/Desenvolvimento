@@ -1,4 +1,5 @@
 import "../css/comp/serviceComponente.css";
+import { ServicoJS } from "../js/service";
 
 export function ServiceComponente(){
     return (
@@ -13,7 +14,7 @@ export function ServiceComponente(){
             </div>
 
             <h3 className="valor">R$ 2.000,00</h3>
-            <button className="option aceite">Aceitar</button>
+            <button className="option aceite" onClick={ServicoJS}>Aceitar</button>
             <button className="option recuse">Recusar</button>
 
             <div className="time">

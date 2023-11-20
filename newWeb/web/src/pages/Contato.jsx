@@ -1,9 +1,9 @@
-import React from 'react'
-import "./css/contato.css"
-import logo_email from "./img/e-mail.png"
-import logoimg from "./img/logo.png";
+import { Footer } from '../componentes/Footer';
+import '../css/contato.css';
+// import logo_email from "./img/e-mail.png"
+// import logoImg from "./img/logo.png";
 
-import Footer from './Footer';
+
 
 
 function Contato() {
@@ -16,7 +16,7 @@ function Contato() {
         <div className='lado_esquerdo'>
           <a href="./">
 
-            <img src={logoimg} alt="" className="img-logo" />
+            <img src={"./"} alt="" className="img-logo" />
           </a>
           <div className='mesagem'>
             <span className='principal'>Entre em contato preenchendo todas as informações
@@ -27,7 +27,7 @@ function Contato() {
 
             <span className='terciaria'>
               <a href="./">
-                <img src={logo_email} alt="" />
+                <img src={"./"} alt="" />
               </a>
 
               <p>  conecti@gmail.com.br</p>
@@ -59,7 +59,7 @@ function Contato() {
 
       </div>
 
-      <Footer/>
+      <Footer />
 
     </>
 
