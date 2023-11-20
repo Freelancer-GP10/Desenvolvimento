@@ -30,9 +30,14 @@ header {
     z-index: 1;
     background: transparent;
 }
+ul {
+    display: flex;
+    align-items: center;
+}
 
 li {
     display: inline-block;
+    align-items: center;
     margin: 20px;
 }
 
@@ -139,13 +144,14 @@ button:hover {
 }
 
 
-/* section3 */
+/* section 3 */
 .section-tres {
     margin-top: 110%;
     height: 615px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
 }
 
 .img-servicos {
@@ -170,27 +176,28 @@ button:hover {
 }
 
 
-/* SESSÃO QUATRO*/
+/* section 4*/
 
 .section-quatro {
-    height: 100vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 180%;
-
+    margin-top: 160%;
+    
 }
 
 .section-pagina {
+ 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: 615px;
+    height: 405px;
 }
 
 .titulo-planos {
-    margin-bottom: -30px;
+    margin-bottom: 40px;
 
 }
 
@@ -233,6 +240,7 @@ h5 {
 .card h2 {
     font-size: 22px;
     padding-bottom: 20px;
+    color: #FFF;
 
 }
 
@@ -257,14 +265,14 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    /* height: 187px; */
+    height: 187px;
     position: relative;
-    top: 470vh;
-    /* bottom: 0; */
+    top: 440vh;
 }
 
 footer h2 {
     font-weight: 700;
+    color: #FFF;
 }
 
 a {
@@ -305,6 +313,10 @@ a:hover {
     margin-bottom: 100px;
     padding-top: 40px;
     width: 850px;
+}
+
+footer a {
+    color: #FFF;
 }
 
 .coluna-um,
