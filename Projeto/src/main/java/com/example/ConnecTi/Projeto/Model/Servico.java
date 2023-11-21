@@ -25,6 +25,7 @@ public class Servico {
     private LocalDateTime dataFinalizacao;
     private Double valor;
     private String descricao;
+    private LocalDateTime dataDePostagem;
     @ManyToOne
     @JoinColumn(name = "fkStatusServico", referencedColumnName = "idStatusServico")
     private StatusServico statusServico;

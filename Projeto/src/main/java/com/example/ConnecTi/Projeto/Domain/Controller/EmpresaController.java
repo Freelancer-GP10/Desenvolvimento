@@ -82,7 +82,8 @@ public class EmpresaController {
         if(empresa == null){
             return ResponseEntity.notFound().build();
         }
-
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        usuario.setEmail(dto.email());
         empresa.setEmail(dto.email());
         empresa.setSenha(dto.senha());
         empresa.setRamo(dto.ramo());

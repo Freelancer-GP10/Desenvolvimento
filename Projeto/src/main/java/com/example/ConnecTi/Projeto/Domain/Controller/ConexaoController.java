@@ -41,13 +41,10 @@ public class ConexaoController {
         this.conexaoService = conexaoService;
     }
 
-
-
     @PostMapping("/aceitar-servico")
     public ResponseEntity<Conexao> aceitarServico(@RequestBody @Valid AceitarServicoDTO aceitarServicoDto) throws Exception {
             // Lógica para aceitar o serviço e criar uma conexão
             Conexao novaConexao = conexaoService.aceitarServicoECreateConexao(aceitarServicoDto);
-
             return new ResponseEntity<>(novaConexao, HttpStatus.CREATED);
     }
 
