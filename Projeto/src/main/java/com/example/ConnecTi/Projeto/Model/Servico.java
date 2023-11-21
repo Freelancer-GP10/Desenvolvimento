@@ -1,5 +1,6 @@
 package com.example.ConnecTi.Projeto.Model;
 
+import com.example.ConnecTi.Projeto.Enum.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +27,11 @@ public class Servico {
     private Double valor;
     private String descricao;
     private LocalDateTime dataDePostagem;
-    @ManyToOne
-    @JoinColumn(name = "fkStatusServico", referencedColumnName = "idStatusServico")
-    private StatusServico statusServico;
+//    @ManyToOne
+//    @JoinColumn(name = "fkStatusServico", referencedColumnName = "idStatusServico")
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @ManyToOne
     @JoinColumn(name = "fkEspecialidade", referencedColumnName = "idEspecialidade")
     private Especialidade especialidade;

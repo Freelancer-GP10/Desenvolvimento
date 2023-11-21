@@ -6,6 +6,7 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Servico.ListarServicoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.Mapper.MapperServico;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
+import com.example.ConnecTi.Projeto.Enum.Status;
 import com.example.ConnecTi.Projeto.Model.Empresa;
 import com.example.ConnecTi.Projeto.Model.Servico;
 import com.example.ConnecTi.Projeto.Model.StatusServico;
@@ -64,13 +65,12 @@ public class ServicoController {
 
        Empresa empresa = repositoryEmpresa.findByEmail(usuariologado.getEmail()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,("Não existe empresa com esse nome")));
 
-        StatusServico status = repositoryStatuServico.findById((long)1).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Não existe Status com id 1 no banco"));
 
         servicoSalvo.setNome(servico.nome());
         servicoSalvo.setDescricao(servico.descricao());
         servicoSalvo.setValor(servico.valor());
         servicoSalvo.setEmpresa(empresa);
-        servicoSalvo.setStatusServico(status);
+        servicoSalvo.setStatus(Status.PENDENTE);
         servicoSalvo.setPrazo(servico.prazo());
         servicoSalvo.setDataInicio(servico.dataInicio());
         servicoSalvo.setDataFinalizacao(servico.dataFinalizacao());
@@ -84,26 +84,46 @@ public class ServicoController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("finalizar-servico/{id}")
+    public ResponseEntity<String> trocarStatus(@PathVariable int id){
+        Servico servico = this.servico.findById((long) id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Serviço nao encontrado"));
+
+        servico.setStatus(Status.FINALIZADO);
+        this.servico.save(servico);
+        return ResponseEntity.ok("Serviço finalizado com sucesso");
+    }
+
     @PostMapping("/desfazer-postagem")
     public ResponseEntity<String> desfazerPostagem() {
+        Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Empresa empresaLogada = repositoryEmpresa.findByEmail(usuarioLogado.getEmail())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe empresa com esse nome"));
+
         while (!pilhaDeServicosRecentes.isEmpty()) {
             Servico servicoAtual = pilhaDeServicosRecentes.peek(); // Verifica o serviço no topo da pilha
 
-            // Verifica se o serviço já foi aceito
-            boolean servicoJaAceito = conexaoRepository.existsByServico(servicoAtual);
-            if (servicoJaAceito) {
-                pilhaDeServicosRecentes.pop(); // Remove o serviço já aceito da pilha e continua
+            // Verifica se o serviço já foi aceito ou finalizado
+            if (conexaoRepository.existsByServico(servicoAtual) || servicoAtual.getStatus().equals(Status.FINALIZADO)) {
+                pilhaDeServicosRecentes.pop();
                 continue;
             }
 
-            // Se não foi aceito, desfaz a postagem do serviço
-            pilhaDeServicosRecentes.pop(); // Agora remove da pilha
-            filaDeServicos.remove(servicoAtual);
-            servico.delete(servicoAtual);
-            return ResponseEntity.ok("Postagem de serviço desfeita com sucesso: " + servicoAtual.getNome());
+            // Verifica se o serviço atual pertence à empresa logada
+            if (servicoAtual.getEmpresa().getIdEmpresa().equals(empresaLogada.getIdEmpresa())) {
+                // Se pertence, desfaz a postagem do serviço
+                pilhaDeServicosRecentes.pop();
+                filaDeServicos.remove(servicoAtual);
+                servico.delete(servicoAtual);
+                return ResponseEntity.ok("Postagem de serviço desfeita com sucesso: " + servicoAtual.getNome());
+            }
+
+            // Se o serviço não é da empresa logada, passe para o próximo serviço
+            pilhaDeServicosRecentes.pop();
         }
-        return ResponseEntity.badRequest().body("Nenhuma postagem recente para desfazer ou todos os serviços recentes já foram aceitos");
+
+        return ResponseEntity.badRequest().body("Nenhuma postagem recente para desfazer ou todos os serviços recentes já foram aceitos ou finalizados.");
     }
+
     @GetMapping("/proximo-servico")
     public ResponseEntity<ListarServicoDto> obterProximoServico() {
         if (!filaDeServicos.isEmpty()) {
