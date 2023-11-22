@@ -94,7 +94,7 @@ public class ServicoController {
     }
 
     @PostMapping("/desfazer-postagem")
-    public ResponseEntity<String> desfazerPostagem() {
+    public ResponseEntity<String> desfazerPostagem(){
         Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
         Empresa empresaLogada = repositoryEmpresa.findByEmail(usuarioLogado.getEmail())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe empresa com esse nome"));
@@ -116,6 +116,13 @@ public class ServicoController {
                 servico.delete(servicoAtual);
                 return ResponseEntity.ok("Postagem de serviço desfeita com sucesso: " + servicoAtual.getNome());
             }
+            System.out.println("sexo");
+            System.out.println("sexo");
+            System.out.println("sexo");
+            System.out.println("sexo");
+            System.out.println("sexo");
+            System.out.println("sexo");
+
 
             // Se o serviço não é da empresa logada, passe para o próximo serviço
             pilhaDeServicosRecentes.pop();

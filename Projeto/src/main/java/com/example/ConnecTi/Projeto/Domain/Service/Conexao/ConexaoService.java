@@ -14,12 +14,11 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -128,7 +127,7 @@ public class ConexaoService {
 
         return conexaoRepository.save(novaConexao);
     }
-    private String getFormattedCurrentDateTime() {
+    public String getFormattedCurrentDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
         LocalDateTime now = LocalDateTime.now();
         return now.format(formatter);
@@ -186,6 +185,65 @@ public class ConexaoService {
             e.printStackTrace();
         }
     }
+    public void exportConexaoEspecificaTxt(Conexao conexao, String path) {
+        try (FileWriter writer = new FileWriter(path, StandardCharsets.UTF_8, true)) {
+            Freelancer freelancer = conexao.getFreelancer();
+            Servico servico = conexao.getServico();
+            Empresa empresa = servico.getEmpresa();
+
+            // Formatando a string para ser escrita no arquivo TXT
+            String linha =
+                    freelancer.getIdFreelancer() + ", " +
+                    freelancer.getNome() + ", " +
+                    freelancer.getSobrenome() + ", " +
+                    freelancer.getEmail() + ", " +
+                    servico.getIdServico() + ", " +
+                    servico.getNome() + ", " +
+                            servico.getDescricao() + ", " +
+                            servico.getValor() + ", " +
+                    cleanString(servico.getDescricao()) + ", " +
+                    servico.getValor() + ", " +
+                    empresa.getIdEmpresa() + ", " +
+                    empresa.getNome() + "\n"+
+                    empresa.getEmail() + "\n";
+
+            writer.append(linha);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public List<Conexao> importarConexoesDeTxt(String path) {
+        List<Conexao> conexoesImportadas = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                // Aqui você precisa dividir a linha com base no seu delimitador
+                String[] dados = linha.split(", ");
+
+                // Criar e configurar o objeto Conexao com base nos dados
+                Conexao conexao = new Conexao();
+                // Por exemplo: conexao.setFreelancer(criarFreelancerComDados(dados[0], dados[1], dados[2]));
+                // Continuar configurando o objeto Conexao com os dados restantes
+
+                conexoesImportadas.add(conexao);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return conexoesImportadas;
+    }
+
+    // Exemplo de um método auxiliar para criar um objeto Freelancer
+    private Freelancer criarFreelancerComDados(String id, String nome, String sobrenome) {
+        Freelancer freelancer = new Freelancer();
+        freelancer.setIdFreelancer(Long.parseLong(id.trim()));
+        freelancer.setNome(nome.trim());
+        freelancer.setSobrenome(sobrenome.trim());
+        // Configure os outros campos do Freelancer conforme necessário
+        return freelancer;
+    }
+
+
 
     private String quote(String value) {
         if (value == null) {

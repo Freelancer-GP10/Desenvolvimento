@@ -94,7 +94,6 @@ public class PortifolioController {
         System.out.println(userlogado+"AAAAAAAAAAAAAAAAAAA");
         Freelancer freelancer = repositoryFreelancer.findByEmail(userlogado.getEmail());
 
-
         Portifolio portifolio = repository.getPortifolioByFreelancer(freelancer.getIdFreelancer()).orElseThrow(()-> new RuntimeException("Portifolio nao encotrado"));
 
         // Pegue o caminho do arquivo
@@ -132,8 +131,8 @@ public class PortifolioController {
     private List<Long> listaDeDownload = new ArrayList<>();
 
     @PostMapping("/selecionar-para-download")
-    public ResponseEntity<String> selecionarParaDownload() {
-        List<Portifolio> portifolios = repository.findAll();
+    public ResponseEntity<String> selecionarParaDownload(@RequestBody List<Long> portifolioId) {
+        List<Portifolio> portifolios = repository.findAllById(portifolioId);
         if (portifolios.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
