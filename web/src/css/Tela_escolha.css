@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+    font-family: 'Oxanium';
+}
+
+body {
+    background: linear-gradient(90deg, #50FAAB 10%, white 80%);
+    /* width: 100%;
+    height: 100%;
+    padding: 10%; */
+    height: 10vh;
+}
+
+.img-logo {
+    margin-left: 2%;
+    margin-top: 0%;
+    height: auto;
+    /* background-color: red; */
+}
+
+.circulo_azul2 {
+    padding: 40% 0%;
+    width: 100%;
+    margin-left: -40%;
+    margin-top: -75%;
+    background: radial-gradient(rgba(116, 112, 181, 0.6), transparent 60%);
+    border-radius: 40%;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+.texto_cadastro {
+    /* padding: 20% 0; */
+    width: 65%;
+    height: 50vh;
+    margin-left: 18%;
+    /* margin-tl/op: -10%; */
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 350%;
+    /* font-weight: 280; */
+    color: #20497A;
+    /* font-family: 'Oxanium', cursive; */
+    margin-top: 3%;
+}
+
+span {
+    /* margin-top: 15%; */
+    font-size: 110%;
+    /* font-family: 'Oxanium'; */
+    margin-top: 0%;
+}
+
+.caixa_botao {
+
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-around;
+}
+
+button {
+    padding: 18px 0px;
+    width: 300px;
+    background-color: transparent;
+    border: 2px solid #215683;
+    color: black;
+    font-size: 30%;
+    border-radius: 6px;
+    margin: 50px;
+    cursor: pointer;
+}
+
+.button1:hover,
+.button2:hover {
+    background-color: #215683;
+    color: white;
+
+
+}
+
+.quadrado1 {
+    width: 23%;
+    height: 39vh;
+    border: 3px solid #215683;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 90%;
+    margin-top: -13%;
+}
+
+.quadrado2 {
+    width: 21%;
+    height: 39vh;
+    border: 3px solid #215683;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 80%;
+    margin-top: 0%;
+}
+
+.quadrado3 {
+    width: 25%;
+    height: 44vh;
+    border: 3px solid #bdeff1;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 77%;
+    margin-top: -3%;
+}
+
+.quadrado4 {
+    width: 21%;
+    height: 39vh;
+    border: 3px solid #bdeff1;
+    position: fixed;
+    transform: rotate(16deg);
+    margin-left: 87%;
+    margin-top: -10.5%;
+}

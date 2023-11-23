@@ -1,0 +1,46 @@
+.cont{
+    background: url(../img/backgroundTec.png);
+    lighting-color: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 55%;
+    height: 100vh;
+}
+
+.cont2{
+    background: url(../img/backgroundEmpreendedor.png);
+    lighting-color: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 50%;
+    height: 100vh;
+}
+
+
+.cont3{
+    background: url(../img/backgroundFreelancer.png);
+    lighting-color: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    width: 55%;
+    height: 100vh;
+}
+/* NÃO FUNCIONOUUU */
+/* .background-login{
+    background: url(../img/background-login.png);
+    lighting-color: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+.background-index {
+    background: url(../img/background-index.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: absolute; 
+    z-index: -1; 
+  }

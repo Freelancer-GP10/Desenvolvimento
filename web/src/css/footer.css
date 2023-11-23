@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Oxanium', cursive;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+.imgLogo {
+    display: flex;
+    justify-content: flex-start;
+    width: 132px;
+    height: 135px;
+
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+li:hover {
+    color: #FFF;
+    transition: 1s;
+}
+
+a {
+    color: #BAD6ED;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+button {
+    color: #BAD6ED;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    background: transparent;
+
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button:hover {
+    color: #BAD6ED;
+    background-color: #204A7B;
+    transition: 1s;
+
+}
+
+section {
+    z-index: 2;
+    position: relative;
+    height: 400px;
+
+}
+
+h1 {
+    color: #FFF;
+    text-align: center;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    margin-top: 50px;
+}
+
+h2 {
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.card h2 {
+    color: white;
+}
+
+
+/* SESSÃO DOIS */
+
+.section-dois {
+    height: 615px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.conteudo-central {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    padding: 10px;
+}
+
+.caixa-central {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo-grande {
+    width: 344px;
+    height: 277px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 100px;
+}
+
+.texto-direita {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* SESSÃO TRÊS*/
+.section-tres {
+    height: 615px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-servicos {
+    margin-top: 20px;
+    width: 10px;
+    height: 400px;
+
+}
+
+/* SESSÃO QUATRO*/
+
+.section-quatro {
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-pagina {
+    display: flex;
+    flex-direction: column;
+    /* Alinhe os elementos verticalmente */
+    align-items: center;
+    text-align: center;
+    /* Alinhe o texto centralmente */
+    height: 615px;
+}
+
+.titulo-planos {
+    margin-bottom: 20px;
+    /* Adicione espaço entre o título e os cards */
+}
+
+h5 {
+    color: #204A7B;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.grupo-cards {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    gap: 57px;
+    /* Adicione um espaçamento horizontal de 20px entre os cards */
+}
+
+.card {
+    border-radius: 8px;
+    background: #024F60;
+    box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.40);
+    width: 300px;
+    height: 490px;
+    padding: 40px;
+}
+
+.icone {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+
+}
+
+.card h2 {
+    font-size: 20px;
+    padding-bottom: 20px;
+
+}
+
+.card h4 {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 10px;
+    text-align: start;
+
+}
+
+
+
+/* FOOTER */
+footer {
+    margin: 0;
+    padding: 0;
+    background-color: #024C5D;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 187px;
+}
+
+footer h2 {
+    font-weight: 700;
+}
+
+a {
+    transition: transform 0.2s ease;
+}
+
+a:hover {
+    transform: scale(1.1);
+
+}
+
+.logofooter {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+}
+
+.coluna-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.coluna-logo img {
+    width: 100px;
+    height: 100px;
+
+}
+
+.colunas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 100px;
+    padding-top: 40px;
+    width: 850px;
+}
+
+.coluna-um,
+.coluna-dois {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.coluna-tres img {
+    margin-top: 10px;
+    margin-right: 30px;
+
+}
+
+.coluna-tres .icone-twitter {
+    width: 25px;
+    height: 25px;
+}
