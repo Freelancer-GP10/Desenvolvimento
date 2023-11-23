@@ -1,0 +1,90 @@
+
+.background{
+    border-radius: 50%;
+    height: 25%;
+    position: static;
+    filter: blur(100px);
+    background-color: #B5B4B4;
+    mix-blend-mode: color-dodge;
+}
+
+.back{
+    margin-top: 90%;
+}
+
+.menu-lateral{
+width: 15%;
+height: 100vh;
+flex-shrink: 0;
+float: left;
+
+background-color: #12324D;
+color: white;
+font-family: Oxanium;
+}
+
+.logo-branca{
+    margin: 10%;
+}
+.position{
+    position: absolute;
+    margin-top: -44%;
+}
+.container{
+    margin-left: 20%;
+    margin-top: 180%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.workspace{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+.service{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+.pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+.suporte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+.perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+.dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+.logOff{
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+hr{
+    width: 110%;
+    height: 1px;
+    background: linear-gradient(180deg, #50FAAB 100%, #B5B4B4 100%);
+}

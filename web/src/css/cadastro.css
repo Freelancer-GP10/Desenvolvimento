@@ -9,16 +9,67 @@ section{
 
 }
 
+
+p{
+    margin-top: 2%;
+}
+
 .container{
     align-items: center;
 }
 
 .form{
-    margin-left: 20%;
-    margin-top: 10%;
+    margin-left: 17%;
+    width: 80%;
+    margin-top: 5%;
 }
+
 .form2{
-    margin-top: 20%;
+    margin-top: 6%;
+    margin-left: 17%;
+    width: 80%;
+}
+
+.formMicro{
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+.formMicro input{
+    height: 3vh;
+}
+
+.formMicro2{
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+.formMicro2 input{
+    margin-top: -3%;
+    width: 80%;
+}
+
+.formFre{
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+.formFre input{
+    margin-top: -4%;
+}
+
+.form2Micro{
+    width: 90%;
+    margin-left: 10%;
+    margin-top: 8%;
+}
+
+.form2free{
+    margin-left: 40%;
+    background-color: #204A7B;
+    width: 50%;
+}
+.formFre2 input{
+    margin-top: -2%;
+    width: 50%;
+    height: 6vh;
 }
 
 form{
@@ -26,21 +77,48 @@ form{
     width: 100%;
     align-items: flex-start;
     align-content: flex-start;
-    gap: 25px 7px;
+    gap: 10px;
     flex-wrap: wrap;
-
-    margin-top: 2%;
 }
 
 form input{
     display: flex;
     width: 80%;
-    height: 4vh;
+    height: 6vh;
+    padding: 10px 12px;
+    align-items: center;
+    /* gap: 10px; */
+    flex-shrink: 0;
+
+    font-family: Oxanium;
+
+    border-radius: 8px;
+    border: 1px solid #204A7B;
+}
+
+.inputNome{
+    display: flex;
+    height: 6vh;
     padding: 10px 12px;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
+}
 
-    border-radius: 8px;
-    border: 1px solid #204A7B;
+.inputInfo{
+    display: flex;
+    width: 45%;
+    height: 4vh;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputInfo2{
+    display: flex;
+    width: 36.7%;
+    height: 4vh;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
 }

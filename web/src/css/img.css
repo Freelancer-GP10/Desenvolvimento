@@ -1,17 +1,28 @@
-.cont{
-    background: url(../img/backgroundTec.png);
-    lighting-color: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
+/* Imagens */
 
-    width: 55%;
+/* Logo branca */
+.logo-branca-menu{
+    position: absolute;
+    width: 130%;
+    height: 30vh;
+    flex-shrink: 0;
+
+    margin-top: 50%;
+    margin-left: 5%;
 }
 
-.cont2{
-    background: url(../img/backgroundEmpreendedor.png);
+.logo-grande-footer{
+    width: 87%;
+    height: 30vh;
+}
+
+
+.cont{
+    background: url(../assets/backgroud-tech.png);
     lighting-color: 50%;
     background-size: cover;
     background-repeat: no-repeat;
 
     width: 55%;
+    height: 100vh;
 }

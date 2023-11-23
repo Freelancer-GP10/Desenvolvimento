@@ -1,0 +1,128 @@
+.containerServices{
+    position: absolute;
+    border: 2px solid #2B9DB8;
+    border-radius: 8px;
+    height: 30vh;
+    width: 77%;
+    margin-top: 12%;
+    margin-left: 18%;
+    padding: 0;
+    display: flex;
+}
+
+.Titulo{
+    color: #000;
+    font-size: 30px;
+    margin-top: 3%;
+    margin-left: 3%;
+    font-family: Oxanium;
+    position: absolute;
+}
+.empresa{
+    margin-left: 3%;
+    margin-top: 8%
+}
+.descricao{
+    margin-left: -12.5%;
+    margin-top: 12%;
+
+}
+.descicaoDemanda{
+    color: #000;
+    font-size: 15px;
+}
+.verMais{
+    position: absolute;
+    border: none;
+    font-size: 15px;
+    color: #2B9DB8;
+    background-color: transparent;
+    margin-left: 21%;
+    margin-top: -3.5%;
+}
+.verMais:hover{
+    background-color: transparent;
+    border: none;
+    color: #2B9DB8;
+}
+
+.valor{
+    /* position: absolute; */
+    font-family: Oxanium;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    color: #12324d;
+
+    margin-top: 3.5%;
+    margin-left: 20%;
+}
+
+.option{
+    position: absolute;
+    display: flex;
+    width: 8%;
+    height: 4vh;
+    /* padding: 10px 24px; */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid #12324d;
+
+    font-size: 12px;
+    color: #2E2C2C;
+
+}
+.aceite{
+    margin-top: 8%;
+    margin-left: 85%;
+}
+.recuse{
+    margin-top: 11.5%;
+    margin-left: 85%;
+}
+
+.time{
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 16%;
+    margin-left: 78%;
+}
+.time p{
+    font-size: 12px;
+}
+
+.timeW{
+
+    margin-top: 8%;
+    margin-left: 84%;
+}
+
+.status{
+    border-radius: 8px;
+    border: #2E2C2C;
+    background: #50FAAB80;
+
+    margin-top: 3.5%;
+    margin-left: 85%;
+}
+.status:hover{
+    background-color: #50FAAB80;
+    color: #2E2C2C;
+}
+
+
+.money{
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 13px;
+    height: 5vh;
+    width: 12%;
+
+    margin-top: 15%;
+    margin-left: 21%;
+}
