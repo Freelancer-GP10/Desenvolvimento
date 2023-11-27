@@ -12,6 +12,8 @@ import com.example.ConnecTi.Projeto.Model.Freelancer;
 
 import com.example.ConnecTi.Projeto.Model.Usuario;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,29 +24,15 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/freelancer")
 @CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class FreelancerController {
-    @Autowired
-    private RepositoryFreelancer repository;
-    @Autowired
-    private RepositoryServico servico;
-
-    @Autowired
-    private AutenticacaoService autenticacaoService;
-    @Autowired
-    private RepositoryStatuServico statusServico;
+    private final RepositoryFreelancer repository;
+    private final AutenticacaoService autenticacaoService;
 
 
     @PostMapping
-    public ResponseEntity<Freelancer> cadastrarFreelancer(@RequestBody CadastrarFreelaDto dto) {
+    public ResponseEntity<Freelancer> cadastrarFreelancer(@RequestBody @Valid CadastrarFreelaDto dto) {
         Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
-        System.out.println(dto.nome());
-        System.out.println(dto.cpf());
-        System.out.println(dto.sobrenome());
-        System.out.println(dto.formacao());
-        System.out.println(dto.areaAtuacao());
-        System.out.println(dto.linguagemDominio());
-        System.out.println(dto.telefone());
-
 
         // Verifica se o papel do usuário é "Freelancer"
       //  autenticacaoService.verificarPapelFreelancer(usuariologado);
@@ -83,7 +71,7 @@ public class FreelancerController {
         var retornar =new ListarFreelaDto(freelancer.getIdFreelancer(),freelancer.getNome(),freelancer.getEmail(),freelancer.getCpf());
         return ResponseEntity.ok(retornar);
     }
-    @PutMapping("dev-/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Freelancer> atualizarFreelancer(@PathVariable int id, @RequestBody AtualizarFreelancerDto dto){
         Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
 
@@ -91,6 +79,9 @@ public class FreelancerController {
         if(freelancer == null){
             return ResponseEntity.notFound().build();
         }
+        freelancer.setTelefone(dto.telefone());
+        freelancer.setAreaAtuacao(dto.areaAtuacao());
+        freelancer.setLinguagemDominio(dto.dominio());
         freelancer.setNome(dto.nome());
         freelancer.setEmail(dto.email());
         freelancer.setSenha(dto.senha());

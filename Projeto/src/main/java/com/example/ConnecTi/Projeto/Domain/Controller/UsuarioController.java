@@ -9,6 +9,8 @@ import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoSe
 import com.example.ConnecTi.Projeto.Domain.Service.UsuarioService.UsuarioService;
 import com.example.ConnecTi.Projeto.Model.Usuario;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,28 +25,19 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class UsuarioController {
-
-    @Autowired
-    private UsuarioService usuarioService;
-    @Autowired
-    private AutenticacaoService autenticacaoService;
-    @Autowired
-    private RepositoryUsuario usuarioRepository;
-//    @PostMapping
-//    @SecurityRequirement(name="Bearer")
-//    public ResponseEntity<Void> criarUsuario(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
-//        usuarioService.criarUsuario(usuarioCriacaoDto);
-//        return ResponseEntity.ok().build();
-//    }
+    private final UsuarioService usuarioService;
+    private final AutenticacaoService autenticacaoService;
+    private final RepositoryUsuario usuarioRepository;
     @PostMapping
     @SecurityRequirement(name="Bearer")
-    public ResponseEntity<Usuario> criarUsuario(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) throws Exception {
+    public ResponseEntity<Usuario> criarUsuario(@RequestBody @Valid UsuarioCriacaoDto usuarioCriacaoDto){
         Usuario usuarioCriado = usuarioService.criarUsuario(usuarioCriacaoDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
     }
     @PostMapping("/login")
-    public ResponseEntity<UsuarioTokenDto> login(@RequestBody UsuarioLoginDto usuarioLoginDto){
+    public ResponseEntity<UsuarioTokenDto> login(@RequestBody @Valid UsuarioLoginDto usuarioLoginDto){
         UsuarioTokenDto usuarioTokenDto = usuarioService.autenticar(usuarioLoginDto);
         return ResponseEntity.ok(usuarioTokenDto);
     }
@@ -53,8 +46,6 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> suaRota() {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
-    
-
 
 
 }
