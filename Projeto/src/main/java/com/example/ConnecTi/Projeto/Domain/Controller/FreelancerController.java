@@ -7,6 +7,7 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Freelancer.ListarFreelaDto;
 
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryServico;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryStatuServico;
+import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryUsuario;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Model.Freelancer;
 
@@ -19,14 +20,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelancer")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 @RequiredArgsConstructor
 public class FreelancerController {
     private final RepositoryFreelancer repository;
+    private final RepositoryUsuario repositoryUsuario;
     private final AutenticacaoService autenticacaoService;
 
 
@@ -73,12 +75,16 @@ public class FreelancerController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Freelancer> atualizarFreelancer(@PathVariable int id, @RequestBody AtualizarFreelancerDto dto){
-        Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
-
+     //   Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Optional<Usuario> usuario = repositoryUsuario.findByEmail(dto.email());
+        if (usuario.isPresent()) {
+            return ResponseEntity.badRequest().build();
+        }
         Freelancer freelancer = repository.findById((long)id).orElse(null);
         if(freelancer == null){
             return ResponseEntity.notFound().build();
         }
+        usuario.get().setEmail(dto.email());
         freelancer.setTelefone(dto.telefone());
         freelancer.setAreaAtuacao(dto.areaAtuacao());
         freelancer.setLinguagemDominio(dto.dominio());

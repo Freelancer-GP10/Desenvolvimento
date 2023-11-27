@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/empresa")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class EmpresaController {
 
     @Autowired

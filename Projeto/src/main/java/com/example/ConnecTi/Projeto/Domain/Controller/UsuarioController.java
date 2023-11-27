@@ -24,7 +24,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
+
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService usuarioService;

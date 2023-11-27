@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/conexao")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class ConexaoController {
     @Autowired
     private RepositoryServico servico;
@@ -47,6 +46,7 @@ public class ConexaoController {
             Conexao novaConexao = conexaoService.aceitarServicoECreateConexao(aceitarServicoDto);
             return new ResponseEntity<>(novaConexao, HttpStatus.CREATED);
     }
+
 
 
     @GetMapping("/listar")

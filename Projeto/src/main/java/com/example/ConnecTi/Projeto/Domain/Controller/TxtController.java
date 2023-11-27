@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/txt")
 @RequiredArgsConstructor
 @RestController
+
 public class TxtController {
 
     private final ConexaoService conexaoService;
