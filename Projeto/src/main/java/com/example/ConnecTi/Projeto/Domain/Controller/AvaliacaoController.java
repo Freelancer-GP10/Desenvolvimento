@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/avaliacao")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class AvaliacaoController {
     @Autowired
     private RepositoryAvaliacao repository;

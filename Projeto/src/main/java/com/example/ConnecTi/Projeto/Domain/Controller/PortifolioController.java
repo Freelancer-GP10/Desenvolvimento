@@ -38,7 +38,6 @@ import static java.util.UUID.*;
 
 @RestController
 @RequestMapping("/portifolio")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class PortifolioController {
 
     @Autowired

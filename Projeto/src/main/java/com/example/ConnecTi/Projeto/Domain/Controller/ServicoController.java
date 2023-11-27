@@ -4,13 +4,11 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Servico.AtualizarServicoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.CadastrarServicoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.ListarServicoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.Mapper.MapperServico;
+import com.example.ConnecTi.Projeto.Domain.Dto.Servico.TelaPagamentoDto;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Enum.Status;
-import com.example.ConnecTi.Projeto.Model.Empresa;
-import com.example.ConnecTi.Projeto.Model.Servico;
-import com.example.ConnecTi.Projeto.Model.StatusServico;
-import com.example.ConnecTi.Projeto.Model.Usuario;
+import com.example.ConnecTi.Projeto.Model.*;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/servico")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class ServicoController {
     private final RepositoryServico servico;
     private final RepositoryStatuServico repositoryStatuServico;
@@ -56,6 +53,49 @@ public class ServicoController {
             pilhaDeServicosRecentes.push(s);
         }
     }
+    @GetMapping("/pay")
+    public ResponseEntity<List<TelaPagamentoDto>> pay() {
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        System.out.println("AAAAAAA");
+        System.out.println(usuario.getEmail());
+        Freelancer freelancer = repositoryFreelancer.findByEmail(usuario.getEmail());
+
+        System.out.println(freelancer.getIdFreelancer());
+        List<Servico> servicosPendentes = servico.findServicosPendentesByFreelancer(freelancer);
+
+        List<TelaPagamentoDto> servicoDtos = new ArrayList<>();
+        for (Servico servico : servicosPendentes) {
+            TelaPagamentoDto servicoDto = new TelaPagamentoDto();
+            servicoDto.setId(servico.getIdServico());
+            servicoDto.setNome(servico.getNome());
+            servicoDto.setPrazo(servico.getPrazo());
+            servicoDto.setValor(servico.getValor());
+            servicoDtos.add(servicoDto);
+        }
+
+        return ResponseEntity.ok(servicoDtos);
+    }
+
+    @PutMapping("/sacar")
+    public ResponseEntity<TelaPagamentoDto> RealizarSaque(Double valor){
+    return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/carteira")
+    public ResponseEntity<Double> getWalletBalance() {
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Freelancer freelancer = repositoryFreelancer.findByEmail(usuario.getEmail());
+
+        List<Servico> servicosFinalizados = servico.findServicosFinalizadosByFreelancer(freelancer);
+
+        double totalBalance = 0.0;
+
+        for (Servico servico : servicosFinalizados) {
+            totalBalance += servico.getValor();
+        }
+
+        return ResponseEntity.ok(totalBalance);
+    }
+
 
     @PostMapping
     public ResponseEntity<CadastrarServicoDto> cadastrar(@RequestBody CadastrarServicoDto servico){
