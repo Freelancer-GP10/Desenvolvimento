@@ -8,6 +8,7 @@ import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryServico;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepostioryEmpresa;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Model.Empresa;
+import com.example.ConnecTi.Projeto.Model.Freelancer;
 import com.example.ConnecTi.Projeto.Model.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,14 +76,16 @@ public class EmpresaController {
         return ResponseEntity.ok(retornar);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Empresa> atualizar(@PathVariable int id, @RequestBody AtualizarEmpresaDto dto){
-        Empresa empresa= repositoryEmpresa.findById((long) id).orElse(null);
+    @PutMapping
+    public ResponseEntity<Empresa> atualizar(@RequestBody AtualizarEmpresaDto dto){
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Empresa empresa= repositoryEmpresa.findByEmail(usuario.getEmail()).orElse(null);
         if(empresa == null){
             return ResponseEntity.notFound().build();
         }
-        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
         usuario.setEmail(dto.email());
+        empresa.setNome(dto.nome());
+        empresa.setCnpj(dto.cnpj());
         empresa.setEmail(dto.email());
         empresa.setSenha(dto.senha());
         empresa.setRamo(dto.ramo());
@@ -91,16 +94,15 @@ public class EmpresaController {
         repositoryEmpresa.save(empresa);
         return ResponseEntity.ok(empresa);
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Empresa> desativar(@PathVariable int id){
-        Empresa empresa =repositoryEmpresa.findById((long) id).orElse(null);
+    @DeleteMapping
+    public ResponseEntity<Empresa> desativar(){
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Empresa empresa = repositoryEmpresa.findByEmail(usuario.getEmail()).orElse(null);
         if(empresa == null){
             return ResponseEntity.notFound().build();
         }
-        //DELETAR DO BANCO
+
         repositoryEmpresa.delete(empresa);
-
-
 
         return ResponseEntity.noContent().build();
     }

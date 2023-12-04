@@ -73,18 +73,16 @@ public class FreelancerController {
         var retornar =new ListarFreelaDto(freelancer.getIdFreelancer(),freelancer.getNome(),freelancer.getEmail(),freelancer.getCpf());
         return ResponseEntity.ok(retornar);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Freelancer> atualizarFreelancer(@PathVariable int id, @RequestBody AtualizarFreelancerDto dto){
-     //   Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
-        Optional<Usuario> usuario = repositoryUsuario.findByEmail(dto.email());
-        if (usuario.isPresent()) {
-            return ResponseEntity.badRequest().build();
-        }
-        Freelancer freelancer = repository.findById((long)id).orElse(null);
+    @PutMapping
+    public ResponseEntity<Freelancer> atualizarFreelancer(@RequestBody AtualizarFreelancerDto dto){
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        //Optional<Usuario> usuario = repositoryUsuario.findByEmail(dto.email());
+
+        Freelancer freelancer = repository.findByUsuarioEmail(usuario.getEmail()).orElse(null);
         if(freelancer == null){
             return ResponseEntity.notFound().build();
         }
-        usuario.get().setEmail(dto.email());
+        usuario.setEmail(dto.email());
         freelancer.setTelefone(dto.telefone());
         freelancer.setAreaAtuacao(dto.areaAtuacao());
         freelancer.setLinguagemDominio(dto.dominio());
@@ -93,16 +91,20 @@ public class FreelancerController {
         freelancer.setSenha(dto.senha());
 
         repository.save(freelancer);
-      return  ResponseEntity.ok(freelancer);
+        return ResponseEntity.ok()
+                .header("Update-Email", "true")
+                .body(freelancer);
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Freelancer> deletarFreelancer(@PathVariable int id){
-        Freelancer freelancer = repository.findById((long) id).orElse(null);
+    @PutMapping("/deletar")
+    public ResponseEntity<Freelancer> deletarFreelancer(){
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Freelancer freelancer = repository.findByUsuarioEmail(usuario.getEmail()).orElse(null);
         if(freelancer == null){
             return ResponseEntity.notFound().build();
         }
         freelancer.setAtivo(false);
         repository.save(freelancer);
+
         return ResponseEntity.ok(freelancer);
     }
 

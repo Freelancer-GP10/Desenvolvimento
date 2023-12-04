@@ -7,7 +7,6 @@ public record AtualizarServicoDto(
         String nome,
         String descricao,
         Double valor,
-        LocalDateTime prazo,
-        LocalDateTime dataFinalizacao
+        Date prazo
 ) {
 }

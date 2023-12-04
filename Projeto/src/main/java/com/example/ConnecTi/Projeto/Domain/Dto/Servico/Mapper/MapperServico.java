@@ -10,7 +10,6 @@ public class MapperServico {
                 servico.getNome(),
                 servico.getPrazo(),
                 servico.getDataInicio(),
-                servico.getDataFinalizacao(),
                 servico.getValor(),
                 servico.getDescricao()
         );

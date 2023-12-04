@@ -76,10 +76,10 @@ public class ServicoController {
         return ResponseEntity.ok(servicoDtos);
     }
 
-    @PutMapping("/sacar")
-    public ResponseEntity<TelaPagamentoDto> RealizarSaque(Double valor){
-    return ResponseEntity.noContent().build();
-    }
+//    @PutMapping("/sacar")
+//    public ResponseEntity<TelaPagamentoDto> RealizarSaque(Double valor){
+//        ResponseEntity totalCarteira = getWalletBalance();
+//    }
     @GetMapping("/carteira")
     public ResponseEntity<Double> getWalletBalance() {
         Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
@@ -113,7 +113,6 @@ public class ServicoController {
         servicoSalvo.setStatus(Status.PENDENTE);
         servicoSalvo.setPrazo(servico.prazo());
         servicoSalvo.setDataInicio(servico.dataInicio());
-        servicoSalvo.setDataFinalizacao(servico.dataFinalizacao());
 
         servicoSalvo.setDataDePostagem(LocalDateTime.now());
 
@@ -147,7 +146,6 @@ public class ServicoController {
                 pilhaDeServicosRecentes.pop();
                 continue;
             }
-
             // Verifica se o serviço atual pertence à empresa logada
             if (servicoAtual.getEmpresa().getIdEmpresa().equals(empresaLogada.getIdEmpresa())) {
                 // Se pertence, desfaz a postagem do serviço
@@ -156,14 +154,6 @@ public class ServicoController {
                 servico.delete(servicoAtual);
                 return ResponseEntity.ok("Postagem de serviço desfeita com sucesso: " + servicoAtual.getNome());
             }
-            System.out.println("sexo");
-            System.out.println("sexo");
-            System.out.println("sexo");
-            System.out.println("sexo");
-            System.out.println("sexo");
-            System.out.println("sexo");
-
-
             // Se o serviço não é da empresa logada, passe para o próximo serviço
             pilhaDeServicosRecentes.pop();
         }
@@ -217,7 +207,6 @@ public class ServicoController {
         servicoAtualizado.setDescricao(servico.descricao());
         servicoAtualizado.setValor(servico.valor());
         servicoAtualizado.setPrazo(servico.prazo());
-        servicoAtualizado.setDataFinalizacao(servico.dataFinalizacao());
         this.servico.save(servicoAtualizado);
         return ResponseEntity.ok().build();
     }

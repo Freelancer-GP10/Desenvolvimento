@@ -21,9 +21,8 @@ public class Servico {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long idServico;
     private String nome;
-    private LocalDateTime prazo;
+    private Date prazo;
     private Date dataInicio;
-    private LocalDateTime dataFinalizacao;
     private Double valor;
     private String descricao;
     private LocalDateTime dataDePostagem;

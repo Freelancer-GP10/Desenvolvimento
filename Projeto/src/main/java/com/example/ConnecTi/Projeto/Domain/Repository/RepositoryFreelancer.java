@@ -12,6 +12,7 @@ public interface RepositoryFreelancer extends JpaRepository<Freelancer,Long> {
 
 
     Freelancer findByEmail(String email);
+    Optional<Freelancer> findByUsuarioEmail(String email);
 
     @Query("SELECT f FROM Freelancer f WHERE f.usuario.id = :idUsuario")
     Freelancer findByFkUsuarioId(@Param("idUsuario") Long idUsuario);

@@ -20,6 +20,6 @@ public class TelaPagamentoDto
      private Status status;
      private Date dataTransacao;
      private String tipoTransacao;
-     private LocalDateTime prazo;
+     private Date prazo;
 
 }

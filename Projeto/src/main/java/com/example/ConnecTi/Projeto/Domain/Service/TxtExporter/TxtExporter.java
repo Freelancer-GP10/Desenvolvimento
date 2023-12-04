@@ -59,9 +59,7 @@ public class TxtExporter {
             return BODY_PREFIX +
                     "ID_Servico:" + servico.getIdServico() +
                     "|Nome:" + servico.getNome() +
-                    "|Prazo:" + servico.getPrazo().format(DATE_TIME_FORMATTER) +
                     "|DataInicio:" + servico.getDataInicio() +
-                    "|DataFinalizacao:" + servico.getDataFinalizacao().format(DATE_TIME_FORMATTER) +
                     "|Valor:" + servico.getValor() +
                     "|Descricao:" + servico.getDescricao() +
                     "|DataDePostagem:" + servico.getDataDePostagem().format(DATE_TIME_FORMATTER) +

@@ -9,9 +9,8 @@ import java.util.Date;
 
 public record CadastrarServicoDto(
                                   String nome,
-                                  LocalDateTime prazo,
+                                  Date prazo,
                                   Date dataInicio,
-                                  LocalDateTime dataFinalizacao,
                                   Double valor,
                                   String descricao
 ) {
