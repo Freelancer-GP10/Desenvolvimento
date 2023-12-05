@@ -176,10 +176,16 @@ public class ServicoController {
             List<ListarServicoDto> servicosDto = filaDeServicos.stream()
                     .map(MapperServico::fromEntity)
                     .collect(Collectors.toList());
+
+            // Invertendo a ordem dos serviços
+            Collections.reverse(servicosDto);
+
             return ResponseEntity.ok(servicosDto);
         }
+
         return ResponseEntity.noContent().build();
     }
+
 
 //    @GetMapping
 //    public ResponseEntity<Stack> listar(){
