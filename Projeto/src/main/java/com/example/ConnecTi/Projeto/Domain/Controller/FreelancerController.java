@@ -51,8 +51,8 @@ public class FreelancerController {
         freelancer.setCpf(dto.cpf());
         freelancer.setAtivo(true);
         repository.save(freelancer);
-
         return ResponseEntity.ok(freelancer);
+
     }
     @GetMapping
     public ResponseEntity<List<ListarFreelaDto>> listarFreelancer(){

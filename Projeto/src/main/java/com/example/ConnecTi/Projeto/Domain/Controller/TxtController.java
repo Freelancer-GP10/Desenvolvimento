@@ -66,8 +66,7 @@ public class TxtController {
 
             // Importar conexões do arquivo
             List<Conexao> conexoesImportadas = conexaoService.importarConexoesDeTxt(absolutePath);
-            // Aqui, você pode salvar as conexões importadas no banco de dados
-            // Exemplo: conexaoRepository.saveAll(conexoesImportadas);
+
 
             return ResponseEntity.ok("Arquivo importado com sucesso.");
         } catch (IOException e) {

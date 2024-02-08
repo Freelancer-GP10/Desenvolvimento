@@ -44,7 +44,6 @@ public class EmpresaController {
 
 
         System.out.println(dto.nome());
-        System.out.println("aaaaaaaaaaaa");
         empresa.setNome(dto.nome());
         empresa.setEmail(usuarioLogado.getEmail());
         empresa.setSenha(usuarioLogado.getSenha());

@@ -47,8 +47,6 @@ public class ConexaoController {
             return new ResponseEntity<>(novaConexao, HttpStatus.CREATED);
     }
 
-
-
     @GetMapping("/listar")
     public ResponseEntity<List<Conexao>> listarConexoes(){
         try {
@@ -96,6 +94,7 @@ public class ConexaoController {
         try {
             File folder = new File("C:\\Users\\thiag\\Downloads\\");
             File[] listOfFiles = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".csv"));
+            // NAO ESQUECER DE COLOCAR O CAMINHO RELATIVO
 
             List<String> fileNames = Arrays.stream(listOfFiles)
                     .map(File::getName)

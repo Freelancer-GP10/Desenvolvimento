@@ -43,7 +43,7 @@ public class ServicoController {
         return pilhaDeServicosRecentes;
     }
 
-
+    // PRA GERAR A FILA E A PILHA DE SERVIÇOS ASSIM QUE LIGAR A APLICACAO PUXANDO DO BANCO
     @PostConstruct
     public void inicializarEstruturas() {
         List<Servico> servicos = servico.findAllByOrderByDataDePostagemAsc();
@@ -96,15 +96,14 @@ public class ServicoController {
         return ResponseEntity.ok(totalBalance);
     }
 
-
+    // quando CADASTRA ELE FICA NA FILA E NA PILHA FILA PRA INSERIR FILA PRA DESFAZER
     @PostMapping
-    public ResponseEntity<CadastrarServicoDto> cadastrar(@RequestBody CadastrarServicoDto servico){
+    public ResponseEntity<Servico> cadastrar(@RequestBody CadastrarServicoDto servico){
         Servico servicoSalvo =  new Servico();
         Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
         System.out.println(usuariologado.getEmail());
 
        Empresa empresa = repositoryEmpresa.findByEmail(usuariologado.getEmail()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,("Não existe empresa com esse nome")));
-
 
         servicoSalvo.setNome(servico.nome());
         servicoSalvo.setDescricao(servico.descricao());
@@ -113,14 +112,13 @@ public class ServicoController {
         servicoSalvo.setStatus(Status.PENDENTE);
         servicoSalvo.setPrazo(servico.prazo());
         servicoSalvo.setDataInicio(servico.dataInicio());
-
         servicoSalvo.setDataDePostagem(LocalDateTime.now());
 
         filaDeServicos.offer(servicoSalvo); // Adiciona o serviço na fila
         pilhaDeServicosRecentes.push(servicoSalvo); // Adiciona o serviço na pilha de serviços recentes
 
         this.servico.save(servicoSalvo);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(servicoSalvo);
     }
 
     @PostMapping("finalizar-servico/{id}")
@@ -132,6 +130,7 @@ public class ServicoController {
         return ResponseEntity.ok("Serviço finalizado com sucesso");
     }
 
+    // ESSE METODO PROFESSORA TIRA DA PILHA E DA FILA
     @PostMapping("/desfazer-postagem")
     public ResponseEntity<String> desfazerPostagem(){
         Usuario usuarioLogado = autenticacaoService.getUsuarioFromUsuarioDetails();
