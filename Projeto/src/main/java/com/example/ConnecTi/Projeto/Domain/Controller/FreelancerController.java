@@ -105,7 +105,7 @@ public class FreelancerController {
         freelancer.setAtivo(false);
         repository.save(freelancer);
 
-        return ResponseEntity.ok(freelancer);
+        return ResponseEntity.noContent().build();
     }
 
 

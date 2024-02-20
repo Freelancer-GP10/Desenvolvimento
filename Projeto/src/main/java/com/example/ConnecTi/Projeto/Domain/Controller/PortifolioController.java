@@ -68,16 +68,34 @@ public class PortifolioController {
             Path path = Paths.get(BASE_PATH, uniqueFilename);
             Files.createDirectories(path.getParent()); // Garante que os diretórios existam
             Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-            // COLOCAR AQUI O ID DO JWT DO FREELANCER OU SEJA LOGADO DA VEZ
+
+            // Obter o freelancer do banco de dados
             Usuario freelancer = usuarioRepository.findById(userLogado)
                     .orElseThrow(() -> new EntityNotFoundException("Freelancer não encontrado com o ID: " + userLogado));
 
-            Portifolio portifolio = new Portifolio();
-            portifolio.setArquivo(new File(path.toString()));
-            portifolio.setLinkRepositorio(git);
-            portifolio.setFreelancer(freelancer.getFreelancer()); // Associe o Portifolio ao Freelancer
+            // Verificar se o freelancer já tem um portfólio
+            if (freelancer.getFreelancer().getPortifolio() != null) {
+                // Se já tiver, atualize as informações do portfólio existente
+                Portifolio portifolio = freelancer.getFreelancer().getPortifolio();
+                portifolio.setArquivo(new File(path.toString()));
+                portifolio.setLinkRepositorio(git);
+                portifolio.setFreelancer(freelancer.getFreelancer()); // Associe o Portifolio ao Freelancer
 
-            repository.save(portifolio);
+                // Salvar as atualizações no banco de dados
+                repository.save(portifolio);
+            } else {
+                // Se não tiver, crie um novo portfólio
+                Portifolio portifolio = new Portifolio();
+                portifolio.setArquivo(new File(path.toString()));
+                portifolio.setLinkRepositorio(git);
+                portifolio.setFreelancer(freelancer.getFreelancer()); // Associe o Portifolio ao Freelancer
+
+                // Salvar o novo portfólio no banco de dados
+                repository.save(portifolio);
+
+                // Atualizar a referência do portfólio no freelancer
+                freelancer.getFreelancer().setPortifolio(portifolio);
+            }
 
             return ResponseEntity.ok("Arquivo recebido com sucesso");
         } catch (IOException e) {
@@ -85,6 +103,7 @@ public class PortifolioController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar o arquivo.");
         }
     }
+
 
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadFile() {

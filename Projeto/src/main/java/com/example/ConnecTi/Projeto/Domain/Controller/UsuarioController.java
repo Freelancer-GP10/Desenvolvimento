@@ -39,6 +39,11 @@ public class UsuarioController {
     @PostMapping
     @SecurityRequirement(name="Bearer")
     public ResponseEntity<Usuario> criarUsuario(@RequestBody @Valid UsuarioCriacaoDto usuarioCriacaoDto){
+
+        Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuarioCriacaoDto.getEmail());
+        if(usuarioExistente.isPresent()){
+            throw new EntidadeNaoEncontrada("Já existe um usuário com esse email");
+        }
         Usuario usuarioCriado = usuarioService.criarUsuario(usuarioCriacaoDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
     }
@@ -58,6 +63,12 @@ public class UsuarioController {
         Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
         Empresa empresa = empresaRepository.findByEmail(usuario.getEmail()).orElseThrow(() -> new EntidadeNaoEncontrada("Não existe uma empresa com esse email"));
         return ResponseEntity.ok(empresa);
+    }
+    @GetMapping("/detalhes-usuario")
+    public ResponseEntity<Freelancer> detalhesUsuario(){
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Freelancer freelancer = freelancerRepository.findByEmail(usuario.getEmail());
+        return ResponseEntity.ok(freelancer);
     }
 
     @GetMapping("/dados")

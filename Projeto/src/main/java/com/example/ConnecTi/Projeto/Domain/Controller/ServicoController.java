@@ -188,8 +188,9 @@ public class ServicoController {
 
 //    @GetMapping
 //    public ResponseEntity<Stack> listar(){
-//      if(pilhaDeServicosRecentes.isEmpty()){
+//      if(pilhaDeServicosRecentes.isEmpty()) {
 //          return ResponseEntity.noContent().build();
+//      }
 //
 //        return ResponseEntity.ok().body(pilhaDeServicosRecentes);
 //    }
