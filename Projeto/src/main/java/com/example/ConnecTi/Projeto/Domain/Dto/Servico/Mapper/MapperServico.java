@@ -7,6 +7,7 @@ public class MapperServico {
 
     public static ListarServicoDto fromEntity(Servico servico) {
         ListarServicoDto dto = new ListarServicoDto(
+                servico.getIdServico(),
                 servico.getNome(),
                 servico.getPrazo(),
                 servico.getDataInicio(),

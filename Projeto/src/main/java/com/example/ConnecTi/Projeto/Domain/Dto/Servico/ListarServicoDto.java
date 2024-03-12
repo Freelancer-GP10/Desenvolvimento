@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public record ListarServicoDto(
+                                Long id,
                                 String nome,
                                 Date prazo,
                                 Date dataInicio,

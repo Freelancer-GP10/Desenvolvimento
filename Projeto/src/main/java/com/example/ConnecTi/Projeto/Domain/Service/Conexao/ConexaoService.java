@@ -5,6 +5,8 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.AceitarServicoDTO;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.CadastrarConexaoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.ConexaoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.ConexaoInfoDTO;
+import com.example.ConnecTi.Projeto.Domain.Exception.JaFoiAceitoException;
+import com.example.ConnecTi.Projeto.Domain.Exception.NaoAutorizadoException;
 import com.example.ConnecTi.Projeto.Domain.Exception.ResourceNotFoundException;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
@@ -93,16 +95,13 @@ public class ConexaoService {
         // Verifica se o serviço já não foi aceito por outro freelancer
         boolean servicoJaAceito = conexaoRepository.existsByServico(servico);
         if(servicoJaAceito){
-            throw new Exception("Este serviço já foi aceito por outro freelancer");
+            JaFoiAceitoException jaFoiAceitoException = new JaFoiAceitoException("Este serviço já foi aceito por outro freelancer");
+
         }
         Servico servicoAceito = servicoController.getFilaDeServicos().stream()
                 .filter(s -> s.getIdServico().equals(aceitarServicoDto.fkServico()))
                 .findFirst()
                 .orElse(null);
-
-        if (servicoAceito == null) {
-            throw new Exception("Serviço não está na fila de pendentes ou não encontrado");
-        }
 
 
         servicoController.getFilaDeServicos().remove(servicoAceito);
@@ -118,8 +117,8 @@ public class ConexaoService {
 
         String currentDateTime = getFormattedCurrentDateTime();
         String filename = "conexao_" + currentDateTime + ".csv";
-        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Downloads\\" + filename);
-        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Desktop\\Desenvolvimento\\Projeto\\" + filename);
+//        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Downloads\\" + filename);
+//        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Desktop\\Desenvolvimento\\Projeto\\" + filename);
 
 
 

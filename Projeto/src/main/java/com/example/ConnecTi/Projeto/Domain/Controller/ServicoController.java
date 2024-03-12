@@ -194,7 +194,15 @@ public class ServicoController {
 //
 //        return ResponseEntity.ok().body(pilhaDeServicosRecentes);
 //    }
-
+    // busque todos os serviços que estão pendentes
+    @GetMapping
+    public ResponseEntity<List<Servico>> listar(){
+        List<Servico> servicos = this.servico.findAll();
+        if (servicos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(servicos);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Servico> listarPorId(@PathVariable Long id){
         Servico servico = this.servico.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Serviço nao encontrado"));

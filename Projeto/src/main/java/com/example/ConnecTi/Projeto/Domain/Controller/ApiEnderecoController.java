@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/endereco")
-@CrossOrigin(origins = "http://26.118.2.221:5173", allowedHeaders = "*")
 public class ApiEnderecoController {
     private RepositoryApiEndereco repository;
     private final RestTemplate restTemplate = new RestTemplate();
@@ -59,8 +58,8 @@ public class ApiEnderecoController {
             }
             return ResponseEntity.noContent().build();
     }
-    @GetMapping("/cep")
-    public ResponseEntity<String> getCepInfo(@RequestParam String cep) {
+    @GetMapping("/cep/{cep}")
+    public ResponseEntity<String> getCepInfo(@PathVariable String cep){
         String uri = String.format("https://viacep.com.br/ws/%s/json/", cep);
         String result = restTemplate.getForObject(uri, String.class);
         return ResponseEntity.ok(result);
