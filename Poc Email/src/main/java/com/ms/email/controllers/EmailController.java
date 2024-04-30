@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -46,5 +47,11 @@ public class EmailController {
         }else {
             return ResponseEntity.status(HttpStatus.OK).body(emailModelOptional.get());
         }
+    }
+    @GetMapping("/whatsapp/{number}")
+    public RedirectView redirectToWhatsApp(@PathVariable String number) {
+        // Substitua 'NUMBER' pelo número de telefone com código do país
+        String whatsappUrl = "https://api.whatsapp.com/send?phone="+number;
+        return new RedirectView(whatsappUrl);
     }
 }
