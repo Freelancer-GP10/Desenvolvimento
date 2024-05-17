@@ -30,6 +30,10 @@ public class EmailController {
     public ResponseEntity<EmailModel> sendingEmail(@RequestBody @Valid EmailDto emailDto) {
         EmailModel emailModel = new EmailModel();
         BeanUtils.copyProperties(emailDto, emailModel);
+        System.out.println(emailModel.getEmailFrom());
+        System.out.println("Chegou aqui");
+        System.out.printf("Chegou aqui", emailModel.getEmailTo());
+        System.out.println(emailModel.getStatusEmail());
         emailService.sendEmail(emailModel);
         return new ResponseEntity<>(emailModel, HttpStatus.CREATED);
     }
