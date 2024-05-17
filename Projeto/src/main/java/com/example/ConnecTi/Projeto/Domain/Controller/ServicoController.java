@@ -5,6 +5,8 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Servico.CadastrarServicoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.ListarServicoDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.Mapper.MapperServico;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.TelaPagamentoDto;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.ApiEmail;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.EmailDto;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Enum.Status;
@@ -31,6 +33,7 @@ public class ServicoController {
     private final RepositoryFreelancer repositoryFreelancer;
     private final RepostioryEmpresa repositoryEmpresa;
     private final ConexaoRepository conexaoRepository;
+    private final ApiEmail emailServiceClient;
     private Queue<Servico> filaDeServicos = new LinkedList<>();
     private Stack<Servico> pilhaDeServicosRecentes = new Stack<>();
     private Servico ultimoServicoPostado;
@@ -101,6 +104,7 @@ public class ServicoController {
     public ResponseEntity<Servico> cadastrar(@RequestBody CadastrarServicoDto servico){
         Servico servicoSalvo =  new Servico();
         Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
+        Freelancer freelancer = repositoryFreelancer.findByEmail(usuariologado.getEmail());
         System.out.println(usuariologado.getEmail());
 
        Empresa empresa = repositoryEmpresa.findByEmail(usuariologado.getEmail()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,("Não existe empresa com esse nome")));
@@ -116,6 +120,15 @@ public class ServicoController {
 
         filaDeServicos.offer(servicoSalvo); // Adiciona o serviço na fila
         pilhaDeServicosRecentes.push(servicoSalvo); // Adiciona o serviço na pilha de serviços recentes
+
+        EmailDto emailDto = new EmailDto();
+        emailDto.setOwnerRef(usuariologado.getId().toString());
+        emailDto.setEmailFrom("no-reply@minhaempresa.com");
+        emailDto.setEmailTo(freelancer.getEmail());
+        emailDto.setSubject("Bem-vindo!");
+        emailDto.setText("Seu usuário foi criado com sucesso.");
+
+        emailServiceClient.sendEmail(emailDto);
 
         this.servico.save(servicoSalvo);
         return ResponseEntity.ok(servicoSalvo);

@@ -5,6 +5,8 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Usuario.UsuarioDetalhesDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Usuario.UsuarioLoginDto;
 import com.example.ConnecTi.Projeto.Domain.Dto.Usuario.UsuarioTokenDto;
 import com.example.ConnecTi.Projeto.Domain.Exception.EntidadeNaoEncontrada;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.ApiEmail;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.EmailDto;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryFreelancer;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryUsuario;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepostioryEmpresa;
@@ -34,6 +36,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AutenticacaoService autenticacaoService;
     private final RepositoryFreelancer freelancerRepository;
+    private final ApiEmail emailServiceClient;
     private final RepositoryUsuario usuarioRepository;
     private final RepostioryEmpresa empresaRepository;
     @PostMapping
@@ -44,12 +47,23 @@ public class UsuarioController {
         if(usuarioExistente.isPresent()){
             throw new EntidadeNaoEncontrada("Já existe um usuário com esse email");
         }
+        EmailDto emailDto = new EmailDto();
+        emailDto.setOwnerRef("Dono");
+        emailDto.setEmailFrom("no-reply@minhaempresa.com");
+        emailDto.setEmailTo(usuarioCriacaoDto.getEmail());
+        emailDto.setSubject("Bem-vindo!");
+        emailDto.setText("Seu usuário foi criado com sucesso.");
+
+        emailServiceClient.sendEmail(emailDto);
+        System.out.println("Email enviado"+ emailDto.getEmailTo());
+        System.out.println("Email enviado"+ emailDto.getEmailFrom());
         Usuario usuarioCriado = usuarioService.criarUsuario(usuarioCriacaoDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
     }
     @PostMapping("/login")
     public ResponseEntity<UsuarioTokenDto> login(@RequestBody @Valid UsuarioLoginDto usuarioLoginDto){
         UsuarioTokenDto usuarioTokenDto = usuarioService.autenticar(usuarioLoginDto);
+
         return ResponseEntity.ok(usuarioTokenDto);
     }
     @GetMapping("/detalhes")
