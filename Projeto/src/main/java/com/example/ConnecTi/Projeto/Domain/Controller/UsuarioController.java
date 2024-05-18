@@ -7,6 +7,7 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Usuario.UsuarioTokenDto;
 import com.example.ConnecTi.Projeto.Domain.Exception.EntidadeNaoEncontrada;
 import com.example.ConnecTi.Projeto.Domain.Inovacao.ApiEmail;
 import com.example.ConnecTi.Projeto.Domain.Inovacao.EmailDto;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.TemplateEmail;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryFreelancer;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryUsuario;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepostioryEmpresa;
@@ -26,7 +27,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -38,6 +41,7 @@ public class UsuarioController {
     private final RepositoryFreelancer freelancerRepository;
     private final ApiEmail emailServiceClient;
     private final RepositoryUsuario usuarioRepository;
+    private final TemplateEmail templateService;
     private final RepostioryEmpresa empresaRepository;
     @PostMapping
     @SecurityRequirement(name="Bearer")
@@ -47,17 +51,30 @@ public class UsuarioController {
         if(usuarioExistente.isPresent()){
             throw new EntidadeNaoEncontrada("Já existe um usuário com esse email");
         }
+
+        Usuario usuarioCriado = usuarioService.criarUsuario(usuarioCriacaoDto);
+
+        // Dados para o template
+        Map<String, Object> templateModel = new HashMap<>();
+        templateModel.put("name", usuarioCriado.getEmail());
+        templateModel.put("link", "http://example.com/verify?token=123");
+
+        // Processar o template HTML
+        String htmlContent = templateService.processTemplate("boasvindas", templateModel);
+
+        // Criar o DTO do email
         EmailDto emailDto = new EmailDto();
         emailDto.setOwnerRef("Dono");
         emailDto.setEmailFrom("no-reply@minhaempresa.com");
         emailDto.setEmailTo(usuarioCriacaoDto.getEmail());
-        emailDto.setSubject("Bem-vindo!");
-        emailDto.setText("Seu usuário foi criado com sucesso.");
+        emailDto.setSubject("Bem-vindo a Conecti!");
+        emailDto.setText(htmlContent);  // Definir o conteúdo HTML aqui
 
         emailServiceClient.sendEmail(emailDto);
-        System.out.println("Email enviado"+ emailDto.getEmailTo());
-        System.out.println("Email enviado"+ emailDto.getEmailFrom());
-        Usuario usuarioCriado = usuarioService.criarUsuario(usuarioCriacaoDto);
+
+        System.out.println("Email enviado para: " + emailDto.getEmailTo());
+        System.out.println("Email enviado de: " + emailDto.getEmailFrom());
+
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
     }
     @PostMapping("/login")

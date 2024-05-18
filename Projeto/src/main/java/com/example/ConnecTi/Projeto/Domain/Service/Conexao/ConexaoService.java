@@ -8,11 +8,15 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.ConexaoInfoDTO;
 import com.example.ConnecTi.Projeto.Domain.Exception.JaFoiAceitoException;
 import com.example.ConnecTi.Projeto.Domain.Exception.NaoAutorizadoException;
 import com.example.ConnecTi.Projeto.Domain.Exception.ResourceNotFoundException;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.ApiEmail;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.EmailDto;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.TemplateEmail;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Domain.Service.UsuarioService.UsuarioService;
 import com.example.ConnecTi.Projeto.Model.*;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +25,16 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ConexaoService {
+        private final TemplateEmail templateService;
+        private final ApiEmail emailServiceClient;
         @Autowired
         private ConexaoRepository conexaoRepository;
          @Autowired
@@ -81,6 +90,9 @@ public class ConexaoService {
         // Busca o freelancer e o serviço pelos IDs fornecidos
 
         Long userLogado = autenticacaoService.getUsuarioFromUsuarioDetails().getId();
+        Usuario usuario = autenticacaoService.getUsuarioFromUsuarioDetails();
+
+
         System.out.println(autenticacaoService.getUsuarioFromUsuarioDetails());
 
         Freelancer freelancer = freelancerRepository.findByFkUsuarioId(userLogado);
@@ -107,22 +119,28 @@ public class ConexaoService {
         servicoController.getFilaDeServicos().remove(servicoAceito);
         servicoController.getPilhaServicosAceitos().push(servicoAceito);
 
-        // Cria uma nova conexão
+
         Conexao novaConexao = new Conexao();
         novaConexao.setFreelancer(freelancer);
         novaConexao.setServico(servico);
         novaConexao.setDataInsercao(LocalDateTime.now());
-        novaConexao.setAceito(true);  // Como o freelancer está aceitando o serviço, definimos aceito como true
+        novaConexao.setAceito(true);
 
+        Map<String, Object> templateModel = new HashMap<>();
+        templateModel.put("servico", servico.getNome());
+        templateModel.put("link", "http://example.com/verify?token=123");
 
-        String currentDateTime = getFormattedCurrentDateTime();
-        String filename = "conexao_" + currentDateTime + ".csv";
-//        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Downloads\\" + filename);
-//        exportConexaoespecifica(novaConexao, "C:\\Users\\thiag\\Desktop\\Desenvolvimento\\Projeto\\" + filename);
+        // Processar o template HTML
+        String htmlContent = templateService.processTemplate("conexaoAceita", templateModel);
+        EmailDto emailDto = new EmailDto();
+        emailDto.setOwnerRef(usuario.getEmail());
+        emailDto.setEmailFrom("no-reply@minhaempresa.com");
+        emailDto.setEmailTo(freelancer.getEmail());
+        emailDto.setSubject("Demanda de serviço recebida!");
+        emailDto.setText(htmlContent);  // Definir o conteúdo HTML aqui
 
+        emailServiceClient.sendEmail(emailDto);
 
-
-        // Salva a conexão no banco de dados
 
         return conexaoRepository.save(novaConexao);
     }

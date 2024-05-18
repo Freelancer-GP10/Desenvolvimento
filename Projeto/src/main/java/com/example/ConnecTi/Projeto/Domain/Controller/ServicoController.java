@@ -7,6 +7,7 @@ import com.example.ConnecTi.Projeto.Domain.Dto.Servico.Mapper.MapperServico;
 import com.example.ConnecTi.Projeto.Domain.Dto.Servico.TelaPagamentoDto;
 import com.example.ConnecTi.Projeto.Domain.Inovacao.ApiEmail;
 import com.example.ConnecTi.Projeto.Domain.Inovacao.EmailDto;
+import com.example.ConnecTi.Projeto.Domain.Inovacao.TemplateEmail;
 import com.example.ConnecTi.Projeto.Domain.Repository.*;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
 import com.example.ConnecTi.Projeto.Enum.Status;
@@ -33,6 +34,7 @@ public class ServicoController {
     private final RepositoryFreelancer repositoryFreelancer;
     private final RepostioryEmpresa repositoryEmpresa;
     private final ConexaoRepository conexaoRepository;
+    private final TemplateEmail templateService;
     private final ApiEmail emailServiceClient;
     private Queue<Servico> filaDeServicos = new LinkedList<>();
     private Stack<Servico> pilhaDeServicosRecentes = new Stack<>();
@@ -105,9 +107,9 @@ public class ServicoController {
         Servico servicoSalvo =  new Servico();
         Usuario usuariologado = autenticacaoService.getUsuarioFromUsuarioDetails();
         Freelancer freelancer = repositoryFreelancer.findByEmail(usuariologado.getEmail());
-        System.out.println(usuariologado.getEmail());
+        Empresa empresa = repositoryEmpresa.findByEmail(usuariologado.getEmail()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,("Não existe empresa com esse nome")));
 
-       Empresa empresa = repositoryEmpresa.findByEmail(usuariologado.getEmail()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,("Não existe empresa com esse nome")));
+        System.out.println(usuariologado.getEmail());
 
         servicoSalvo.setNome(servico.nome());
         servicoSalvo.setDescricao(servico.descricao());
@@ -121,12 +123,18 @@ public class ServicoController {
         filaDeServicos.offer(servicoSalvo); // Adiciona o serviço na fila
         pilhaDeServicosRecentes.push(servicoSalvo); // Adiciona o serviço na pilha de serviços recentes
 
+        Map<String, Object> templateModel = new HashMap<>();
+        templateModel.put("name", empresa.getEmail());
+        templateModel.put("link", "http://example.com/verify?token=123");
+
+        // Processar o template HTML
+        String htmlContent = templateService.processTemplate("servicocadastrado", templateModel);
         EmailDto emailDto = new EmailDto();
         emailDto.setOwnerRef(usuariologado.getId().toString());
         emailDto.setEmailFrom("no-reply@minhaempresa.com");
-        emailDto.setEmailTo(freelancer.getEmail());
-        emailDto.setSubject("Bem-vindo!");
-        emailDto.setText("Seu usuário foi criado com sucesso.");
+        emailDto.setEmailTo(empresa.getEmail());
+        emailDto.setSubject("Demanda de serviço recebida!");
+        emailDto.setText(htmlContent);  // Definir o conteúdo HTML aqui
 
         emailServiceClient.sendEmail(emailDto);
 

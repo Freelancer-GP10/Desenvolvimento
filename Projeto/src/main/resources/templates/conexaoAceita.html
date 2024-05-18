@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo à Conecti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #1d4f77;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #215683;
+        }
+        .content p {
+            line-height: 1.6;
+            color: #333333;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            color: #666666;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #215683;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Bem-vindo à Conecti!</h1>
+    </div>
+    <div class="content">
+
+        <h2>Olá, Seu email cadastado: <span th:text="${name}"></span></h2>
+        <p>
+            Você acaba de se juntar à Conecti, uma empresa de tecnologia líder no mercado.
+            Voce aceitou demanda de conexão com o email: <span th:text="${email}"></span>
+
+        </p>
+        <p>
+            Abaixo estão alguns recursos para ajudá-lo a começar:
+        </p>
+        <ul>
+            <li>Acesso ao <a href="#">Portal do Colaborador</a></li>
+            <li>Manual de Boas Práticas</li>
+            <li>Contato do RH: rh@conecti.com</li>
+        </ul>
+        <p>
+            Se você tiver alguma dúvida ou precisar de assistência, não hesite em entrar em contato conosco.
+        </p>
+        <a href="#" class="button">Acessar Portal do Colaborador</a>
+    </div>
+    <div class="footer">
+        <p>© 2024 Conecti. Todos os direitos reservados.</p>
+        <p>Rua Evaldo calabrez, 123 - Bairro flores, Cidade Campinas, SP - CEP 12345-678</p>
+    </div>
+</div>
+</body>
+</html>

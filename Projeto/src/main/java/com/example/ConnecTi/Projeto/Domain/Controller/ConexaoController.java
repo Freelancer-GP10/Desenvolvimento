@@ -44,7 +44,6 @@ public class ConexaoController {
     public ResponseEntity<Conexao> aceitarServico(@RequestBody @Valid AceitarServicoDTO aceitarServicoDto) throws Exception {
 
         System.out.println(aceitarServicoDto.fkServico());
-            // Lógica para aceitar o serviço e criar uma conexão
             Conexao novaConexao = conexaoService.aceitarServicoECreateConexao(aceitarServicoDto);
             return new ResponseEntity<>(novaConexao, HttpStatus.CREATED);
     }
@@ -122,46 +121,7 @@ public class ConexaoController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-//    public String getDownloadsPath() {
-//        String userHome = System.getProperty("user.home");
-//        String os = System.getProperty("os.name").toLowerCase();
-//
-//        if (os.contains("win")) {
-//            return userHome + "\\Downloads\\";
-//        } else if (os.contains("mac")) {
-//            return userHome + "/Downloads/";
-//        } else if (os.contains("nix") || os.contains("nux")) {
-//            return userHome + "/Downloads/";  // geralmente, mas pode variar dependendo da distribuição
-//        } else {
-//            throw new UnsupportedOperationException("Sistema operacional não reconhecido");
-//        }
-//    }
 
-
-
-
-
-
-
-
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Conexao> atualizarPorId(@PathVariable int id, @RequestBody Conexao conexaoAtualizada){
-//        if (id >= 0 && id < listaConexoes.size()){
-//            listaConexoes.set(id, conexaoAtualizada);
-//            return ResponseEntity.ok(conexaoAtualizada);
-//        }
-//        return ResponseEntity.noContent().build();
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Conexao> deletarPorId(@PathVariable int id){
-//        if (id >= 0 && id < listaConexoes.size()){
-//            listaConexoes.remove(id);
-//            return ResponseEntity.status(204).build();
-//        }
-//        return ResponseEntity.noContent().build();
-//    }
 }
 
 
