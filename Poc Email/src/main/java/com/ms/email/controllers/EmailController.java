@@ -27,15 +27,15 @@ public class EmailController {
     EmailService emailService;
 
     @PostMapping("/sending-email")
-    public ResponseEntity<EmailModel> sendingEmail(@RequestBody @Valid EmailDto emailDto) {
-        EmailModel emailModel = new EmailModel();
-        BeanUtils.copyProperties(emailDto, emailModel);
-        System.out.println(emailModel.getEmailFrom());
-        System.out.println("Chegou aqui");
-        System.out.printf("Chegou aqui", emailModel.getEmailTo());
-        System.out.println(emailModel.getStatusEmail());
-        emailService.sendEmail(emailModel);
-        return new ResponseEntity<>(emailModel, HttpStatus.CREATED);
+    public ResponseEntity<Void> sendEmail(@RequestBody EmailDto emailDto) {
+        try {
+            emailService.sendEmail(emailDto);
+            System.out.println("Email Status: Email enviado com sucesso!");
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
+        }
     }
 
     @GetMapping("/emails")
