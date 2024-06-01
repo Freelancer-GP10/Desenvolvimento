@@ -12,6 +12,7 @@ import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryFreelancer;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepositoryUsuario;
 import com.example.ConnecTi.Projeto.Domain.Repository.RepostioryEmpresa;
 import com.example.ConnecTi.Projeto.Domain.Security.Configuration.AutenticacaoService;
+import com.example.ConnecTi.Projeto.Domain.Service.EmailService;
 import com.example.ConnecTi.Projeto.Domain.Service.UsuarioService.UsuarioService;
 import com.example.ConnecTi.Projeto.Model.Empresa;
 import com.example.ConnecTi.Projeto.Model.Freelancer;
@@ -39,10 +40,10 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AutenticacaoService autenticacaoService;
     private final RepositoryFreelancer freelancerRepository;
-    private final ApiEmail emailServiceClient;
     private final RepositoryUsuario usuarioRepository;
     private final TemplateEmail templateService;
     private final RepostioryEmpresa empresaRepository;
+    private final EmailController emailController;
     @PostMapping
     @SecurityRequirement(name="Bearer")
     public ResponseEntity<Usuario> criarUsuario(@RequestBody @Valid UsuarioCriacaoDto usuarioCriacaoDto){
@@ -69,8 +70,8 @@ public class UsuarioController {
         emailDto.setEmailTo(usuarioCriacaoDto.getEmail());
         emailDto.setSubject("Bem-vindo a Conecti!");
         emailDto.setText(htmlContent);  // Definir o conteúdo HTML aqui
-
-        emailServiceClient.sendEmail(emailDto);
+        emailController.sendEmail(emailDto);
+        // Enviar o email
 
         System.out.println("Email enviado para: " + emailDto.getEmailTo());
         System.out.println("Email enviado de: " + emailDto.getEmailFrom());

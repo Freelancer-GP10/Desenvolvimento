@@ -36,6 +36,7 @@ public class ServicoController {
     private final ConexaoRepository conexaoRepository;
     private final TemplateEmail templateService;
     private final ApiEmail emailServiceClient;
+    private final EmailController emailController;
     private Queue<Servico> filaDeServicos = new LinkedList<>();
     private Stack<Servico> pilhaDeServicosRecentes = new Stack<>();
     private Servico ultimoServicoPostado;
@@ -135,8 +136,7 @@ public class ServicoController {
         emailDto.setEmailTo(empresa.getEmail());
         emailDto.setSubject("Demanda de serviço recebida!");
         emailDto.setText(htmlContent);  // Definir o conteúdo HTML aqui
-
-        emailServiceClient.sendEmail(emailDto);
+        emailController.sendEmail(emailDto);
 
         this.servico.save(servicoSalvo);
         return ResponseEntity.ok(servicoSalvo);

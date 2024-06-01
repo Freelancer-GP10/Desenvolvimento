@@ -1,5 +1,6 @@
 package com.example.ConnecTi.Projeto.Domain.Service.Conexao;
 
+import com.example.ConnecTi.Projeto.Domain.Controller.EmailController;
 import com.example.ConnecTi.Projeto.Domain.Controller.ServicoController;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.AceitarServicoDTO;
 import com.example.ConnecTi.Projeto.Domain.Dto.Conexao.CadastrarConexaoDto;
@@ -34,11 +35,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ConexaoService {
         private final TemplateEmail templateService;
-        private final ApiEmail emailServiceClient;
         @Autowired
         private ConexaoRepository conexaoRepository;
          @Autowired
         private ServicoController servicoController;
+         private final EmailController emailController;
 
         @Autowired
         private RepostioryEmpresa empresaRepository;
@@ -128,7 +129,6 @@ public class ConexaoService {
 
         Map<String, Object> templateModel = new HashMap<>();
         templateModel.put("servico", servico.getNome());
-        templateModel.put("link", "http://example.com/verify?token=123");
 
         // Processar o template HTML
         String htmlContent = templateService.processTemplate("conexaoAceita", templateModel);
@@ -138,8 +138,7 @@ public class ConexaoService {
         emailDto.setEmailTo(freelancer.getEmail());
         emailDto.setSubject("Demanda de serviço recebida!");
         emailDto.setText(htmlContent);  // Definir o conteúdo HTML aqui
-
-        emailServiceClient.sendEmail(emailDto);
+        emailController.sendEmail(emailDto);
 
 
         return conexaoRepository.save(novaConexao);

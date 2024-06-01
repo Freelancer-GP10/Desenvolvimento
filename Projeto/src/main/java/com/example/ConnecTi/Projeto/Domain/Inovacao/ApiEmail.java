@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "email", url = "http://localhost:8081/envio-email")
 public interface ApiEmail {
 
-    @PostMapping("/sending-email")
-    ResponseEntity<EmailModel> sendEmail(@RequestBody EmailDto emailDto);
+//    @PostMapping("/sending-email")
+//    ResponseEntity<EmailModel> sendEmail(@RequestBody EmailDto emailDto);
+//
 }
